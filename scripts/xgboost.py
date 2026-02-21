@@ -19,6 +19,7 @@ import numpy as np
 import pandas as pd
 from rapidfuzz import fuzz
 from website_validator import verify_website
+from phonenumber_validator import validate_phone_number
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 
@@ -93,6 +94,16 @@ def _check_website(url) -> bool:
     is_valid, _ = verify_website(url)
     return is_valid
 
+def _check_phone_number(phone_number: str) -> bool:
+    """Return True if the phone number is non-empty and valid."""
+    if not phone_number or (isinstance(phone_number, float) and np.isnan(phone_number)):
+        return False
+    phone_number = str(phone_number).strip()
+    if not phone_number:
+        return False
+    valid, _ = validate_phone_number(phone_number)
+    return valid
+
 def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
     print("  Extracting names and categories from JSON ...")
     df["_name"] = df["names"].apply(extract_primary_name)
@@ -132,6 +143,13 @@ def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
     print("  Validating website URLs (this may take a while) ...")
     df["feat_match_web_valid"] = df["norm_conflated_website"].apply(_check_website).astype(int)
     df["feat_base_web_valid"] = df["norm_base_website"].apply(_check_website).astype(int)
+
+
+    # Phone Validation (is the phone number actually valid?)
+    print("  Validating phone numbers (this may take a while) ...")
+    df["feat_match_phone_valid"] = df["norm_conflated_phone"].apply(_check_phone_number).astype(int)
+    df["feat_base_phone_valid"] = df["norm_base_phone"].apply(_check_phone_number).astype(int)
+
 
     # C. Similarity
     df["feat_name_similarity"] = df.apply(
@@ -283,6 +301,22 @@ def main():
     y_pred = (model.predict_proba(X[test_idx]) >= 0.5).astype(int)
     acc = (y_pred == y[test_idx]).sum() / len(y_pred)
     print(f"\n  Acccuracy on Test Set: {acc:.4%}")
+
+    # Feature usage distribution (how often each feature was used in splits)
+    feature_usage = np.zeros(len(FEATURE_COLS), dtype=np.int64)
+    for tree in model.trees:
+        feature_usage[tree.feature_idx] += 1
+    feature_prob = feature_usage / len(model.trees)
+
+    print("\n  Feature usage distribution (fraction of trees using each feature):")
+    print("  " + "-" * 60)
+    for name, prob, count in sorted(
+        zip(FEATURE_COLS, feature_prob, feature_usage),
+        key=lambda x: -x[1],
+    ):
+        print(f"    {name}: {prob:.4f}  ({count} trees)")
+    print("  " + "-" * 60)
+    print(f"  Sum of fractions: {feature_prob.sum():.4f} (one feature per tree)")
 
     # Predict all
     print(f"\n  Predicting conflation for all {len(df)} records ...")
