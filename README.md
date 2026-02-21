@@ -33,8 +33,19 @@ neha-reva-places-attribute-conflation/
 ├── data/
 │   ├── project_a_samples.parquet   # Main sample (~2,000 pre-matched pairs)
 │   └── sampledata.parquet          # Additional sample data
+├── analysis/
+│   └── inspection/
+│       ├── golden/                 # Golden labeling dataset (JSON, 200 records)
+│       ├── side_by_side/            # Main side-by-side sample
+│       └── attributes/             # Per-attribute pair samples
 ├── scripts/
-│   └── inspect_parquet.py          # Dataset overview & stats (DuckDB)
+│   ├── inspect_parquet.py         # Dataset overview & stats (DuckDB)
+│   └── attributes/
+│       ├── inspect_attr_pair.py   # Shared logic for attribute-pair inspection
+│       ├── inspect_categories.py  # base_categories vs categories
+│       ├── inspect_addresses.py   # base_addresses vs addresses
+│       ├── inspect_phones.py      # base_phones vs phones
+│       └── inspect_websites.py    # base_websites vs websites
 ├── requirements.txt
 └── README.md
 ```
@@ -47,7 +58,7 @@ From the project root:
 
 ```bash
 source overture/bin/activate
-python scripts/project_data.py
+python scripts/inspect_parquet.py
 ```
 
 This prints a dataset overview including:
@@ -58,6 +69,24 @@ This prints a dataset overview including:
 - **Confidence distribution** — Conflated vs base record confidence
 - **Sample rows** — Example key attributes
 - **Uniqueness** — `id` and `base_id` cardinality
+
+### Attribute-specific scripts
+
+For focused analysis of each important attribute pair, run:
+
+```bash
+python scripts/attributes/inspect_categories.py   # base_categories vs categories
+python scripts/attributes/inspect_addresses.py    # base_addresses vs addresses
+python scripts/attributes/inspect_phones.py       # base_phones vs phones
+python scripts/attributes/inspect_websites.py     # base_websites vs websites
+```
+
+Each script prints stats (coverage, comparable count, disagreement rate), value examples, disagreement examples, and exports to `analysis/inspection/attributes/{attr}_pair_sample.json`.
+
+**Output layout:**
+- `analysis/inspection/golden/` — golden labeling dataset
+- `analysis/inspection/side_by_side/` — main side-by-side sample
+- `analysis/inspection/attributes/` — per-attribute pair samples (JSON only)
 
 ---
 
