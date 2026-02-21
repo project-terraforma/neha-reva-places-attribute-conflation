@@ -94,9 +94,22 @@ Each row is a pre-matched pair. Columns without a prefix come from the **conflat
 
 - **Base record** — The original place from one dataset (e.g., Microsoft); has `base_*` columns.
 - **Conflated record** — The merged result, combining attributes from multiple sources; non-prefixed columns.
-- **Confidence** — Indicates how reliable the conflation is. Base confidence is typically ~0.77; conflated confidence is often higher (0.95–1.0) when multiple sources agree.
+- **Confidence** — Indicates the confidence that a place exists. Base confidence is typically ~0.77.
 
 ---
+
+## Phase 1: Preprocessing
+
+## Phase 2: Feature Engineering
+
+## Phase 3: Labeling
+
+## Phase 4: Model Training
+
+## Phase 5: Evaluation
+
+## XGBoost
+
 
 ## Schema Reference
 

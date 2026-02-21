@@ -4,3 +4,4 @@ pandas==3.0.0
 rapidfuzz==3.12.1
 pyarrow==19.0.0
 xgboost
+requests
