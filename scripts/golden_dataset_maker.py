@@ -1,0 +1,283 @@
+import sys
+from pathlib import Path
+
+import pandas as pd
+
+from phonenumber_validator import validate_phone_number
+from website_validator import verify_website
+
+# Paths when run as script (project root = parent of scripts/)
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+DATA_PATH = PROJECT_ROOT / "data" / "project_a_samples.parquet"
+OUTPUT_PATH = PROJECT_ROOT / "data" / "golden_dataset_100.parquet"
+NUM_RECORDS = 100
+SAVE_EVERY_N = 5
+ATTR_ATTRS = ("name", "phone", "web", "address", "category")
+# Bookkeeping columns included in the golden dataset output (base/alt/both/none per attribute)
+BOOKKEEPING_COLUMNS = ["golden_label"] + [f"attr_{a}_winner" for a in ATTR_ATTRS]
+
+
+def _prompt_superiority(label, base_display, alt_display):
+    """
+    Ask human which value is better. Returns 'base', 'alt', 'both', or None (skip).
+    """
+    print(f"\n--- {label} ---")
+    print(f"  base:  {base_display}")
+    print(f"  match: {alt_display}")
+    while True:
+        choice = input("Which is better? (base / match / both / none): ").strip().lower()
+        if choice in ("base", "b"):
+            return "base"
+        if choice in ("match", "m", "alt", "a"):
+            return "alt"
+        if choice in ("both", "t"):
+            return "both"
+        if choice in ("none", "n", "skip", "s", ""):
+            return None
+        print("Please enter: base, match, both, or none")
+
+
+def _winner_str(w):
+    """Normalize winner to 'base', 'alt', 'both', or 'none' for bookkeeping."""
+    return w if w in ("base", "alt", "both") else "none"
+
+
+def generate_golden_label(row):
+    """
+    Golden label per spec: base / alt / abstain from comparing core attributes.
+    Every attribute is recorded as one of: base, match, both, none.
+    Name, address, category: human choice (base / match / both / none).
+    Phone, website: automatic (both valid → both, neither valid → none, else base or match).
+    +2 margin rule; special edge case when one has 0 valid and the other has >= 2.
+    Returns (label, bookkeeping_dict) with per-attribute winner: 'base', 'alt', 'both', or 'none'.
+    """
+    # STEP 1 — Initialize scores and bookkeeping
+    base_score = 0
+    alt_score = 0
+    bookkeeping = {}
+
+    def check_phone_superiority(base_phone, alt_phone):
+        """
+        Auto: both valid → 'both', neither valid → 'none', else base/alt.
+        +1 only when one side wins (base or alt).
+        """
+        base_valid, _ = validate_phone_number(base_phone)
+        alt_valid, _ = validate_phone_number(alt_phone)
+        if not base_valid and not alt_valid:
+            return None  # → bookkeeping "none"
+        if base_valid and not alt_valid:
+            return "base"
+        if not base_valid and alt_valid:
+            return "alt"
+        return "both"  # both valid
+
+    # STEP 2 — Evaluate each core attribute (phones, websites, addresses, categories, name)
+    # Place name — human selection (or auto "both" if same)
+    def _name_display(val):
+        if val is None or (isinstance(val, float) and str(val) == 'nan'):
+            return "(empty)"
+        if isinstance(val, dict):
+            return (val.get('primary') or val.get('raw') or str(val)).strip() or "(empty)"
+        return str(val).strip() or "(empty)"
+
+    base_name_display = _name_display(row.get('base_name') or row.get('base_names'))
+    alt_name_display = _name_display(row.get('alt_name') or row.get('names'))
+    if base_name_display == alt_name_display:
+        print("\n--- Place name ---")
+        print(f"  base:  {base_name_display}")
+        print(f"  match: {alt_name_display}")
+        print("  Same → both")
+        name_winner = "both"
+    else:
+        name_winner = _prompt_superiority("Place name", base_name_display, alt_name_display)
+    bookkeeping["name"] = _winner_str(name_winner)
+    if name_winner == 'base':
+        base_score += 1
+    elif name_winner == 'alt':
+        alt_score += 1
+
+    # 📞 Phones
+    phone_winner = check_phone_superiority(row.get('base_phone'), row.get('alt_phone'))
+    bookkeeping["phone"] = _winner_str(phone_winner)
+    if phone_winner == 'base':
+        base_score += 1
+    elif phone_winner == 'alt':
+        alt_score += 1
+
+    # 🌐 Websites — auto: both valid → 'both', neither → 'none', else base/alt
+    def check_web_superiority(base_web, alt_web):
+        def prep_url(url):
+            if not url or (isinstance(url, float) and str(url) == 'nan'):
+                return None
+            u = str(url).strip()
+            if not u:
+                return None
+            if not u.startswith(("http://", "https://")):
+                u = "https://" + u
+            return u
+        base_url = prep_url(base_web)
+        alt_url = prep_url(alt_web)
+        base_valid, _ = verify_website(base_url) if base_url else (False, None)
+        alt_valid, _ = verify_website(alt_url) if alt_url else (False, None)
+        if not base_valid and not alt_valid:
+            return None  # → bookkeeping "none"
+        if base_valid and not alt_valid:
+            return "base"
+        if not base_valid and alt_valid:
+            return "alt"
+        return "both"  # both valid
+
+    web_winner = check_web_superiority(row.get('base_web'), row.get('alt_web'))
+    bookkeeping["web"] = _winner_str(web_winner)
+    if web_winner == 'base':
+        base_score += 1
+    elif web_winner == 'alt':
+        alt_score += 1
+
+    # 🏠 Addresses — auto "both" if exact same (and not empty); if same but one has more items in array, that one wins; else human
+    base_addr_raw = row.get('base_address') or row.get('norm_base_addr') or row.get('base_addresses')
+    alt_addr_raw = row.get('alt_address') or row.get('norm_conflated_addr') or row.get('addresses')
+
+    def _addr_show(val):
+        if val is None or (isinstance(val, float) and pd.isna(val)):
+            return "(empty)"
+        return str(val)
+
+    def _addr_to_list(val):
+        """Normalize address to list of non-empty strings for comparison."""
+        if val is None or (isinstance(val, float) and pd.isna(val)):
+            return []
+        if isinstance(val, list):
+            return [str(x).strip() for x in val if str(x).strip()]
+        if isinstance(val, dict):
+            s = (val.get("freeform") or val.get("raw") or str(val)).strip()
+            return [s] if s else []
+        s = str(val).strip()
+        return [s] if s else []
+
+    base_list = _addr_to_list(base_addr_raw)
+    alt_list = _addr_to_list(alt_addr_raw)
+    addr_winner = None
+    if base_list or alt_list:
+        if base_list == alt_list:
+            print("\n--- Address ---")
+            print(f"  base:  {_addr_show(base_addr_raw)}")
+            print(f"  match: {_addr_show(alt_addr_raw)}")
+            print("  Same → both")
+            addr_winner = "both"
+        elif len(base_list) > len(alt_list) and set(alt_list) <= set(base_list):
+            print("\n--- Address ---")
+            print(f"  base:  {_addr_show(base_addr_raw)}")
+            print(f"  match: {_addr_show(alt_addr_raw)}")
+            print("  Base has more items → base")
+            addr_winner = "base"
+        elif len(alt_list) > len(base_list) and set(base_list) <= set(alt_list):
+            print("\n--- Address ---")
+            print(f"  base:  {_addr_show(base_addr_raw)}")
+            print(f"  match: {_addr_show(alt_addr_raw)}")
+            print("  Match has more items → match")
+            addr_winner = "alt"
+    if addr_winner is None:
+        addr_winner = _prompt_superiority(
+            "Address",
+            _addr_show(base_addr_raw),
+            _addr_show(alt_addr_raw),
+        )
+    bookkeeping["address"] = _winner_str(addr_winner)
+    if addr_winner == 'base':
+        base_score += 1
+    elif addr_winner == 'alt':
+        alt_score += 1
+
+    # 🗂 Categories — human selection (or auto "both" if same)
+    def _category_display(val):
+        if val is None or (isinstance(val, float) and str(val) == 'nan'):
+            return "(empty)"
+        if isinstance(val, dict):
+            s = (val.get('primary') or val.get('raw') or "").strip()
+            return s or "(empty)"
+        return str(val).strip() or "(empty)"
+
+    base_cat_display = _category_display(row.get('base_categories'))
+    alt_cat_display = _category_display(row.get('alt_categories') or row.get('categories'))
+    if base_cat_display == alt_cat_display:
+        print("\n--- Category ---")
+        print(f"  base:  {base_cat_display}")
+        print(f"  match: {alt_cat_display}")
+        print("  Same → both")
+        cat_winner = "both"
+    else:
+        cat_winner = _prompt_superiority("Category", base_cat_display, alt_cat_display)
+    bookkeeping["category"] = _winner_str(cat_winner)
+    if cat_winner == 'base':
+        base_score += 1
+    elif cat_winner == 'alt':
+        alt_score += 1
+
+    # STEP 3 — Compare total scores
+    # Special edge case: one has 0 valid, the other has >= 2 → choose the one with valid
+    if base_score == 0 and alt_score >= 2:
+        return "alt", bookkeeping
+    if alt_score == 0 and base_score >= 2:
+        return "base", bookkeeping
+    # +2 margin rule
+    if base_score >= alt_score + 2:
+        return "base", bookkeeping
+    if alt_score >= base_score + 2:
+        return "alt", bookkeeping
+    return "abstain", bookkeeping
+
+
+def _save_golden(df: pd.DataFrame, path: Path) -> None:
+    """Write golden dataset with all bookkeeping columns (original + golden_label + attr_*_winner)."""
+    other_cols = [c for c in df.columns if c not in BOOKKEEPING_COLUMNS]
+    ordered = other_cols + [c for c in BOOKKEEPING_COLUMNS if c in df.columns]
+    df[ordered].to_parquet(path, index=False)
+
+
+if __name__ == "__main__":
+    if not DATA_PATH.exists():
+        print(f"Error: {DATA_PATH} not found.", file=sys.stderr)
+        sys.exit(1)
+
+    df = pd.read_parquet(DATA_PATH)
+    subset = df.head(NUM_RECORDS).copy()
+
+    # Resume: load already-labeled rows if output exists
+    n_done = 0
+    if OUTPUT_PATH.exists():
+        results_df = pd.read_parquet(OUTPUT_PATH)
+        n_done = len(results_df)
+        print(f"Resuming: {n_done} records already labeled in {OUTPUT_PATH}")
+    else:
+        results_df = pd.DataFrame()
+
+    for i in range(n_done, NUM_RECORDS):
+        row = subset.iloc[i]
+        rec_num = i + 1
+        print(f"\n{'='*60} Record {rec_num} / {NUM_RECORDS} {'='*60}")
+        label, bookkeeping = generate_golden_label(row)
+        print(f"  → golden_label = {label}")
+
+        # Append this row with label and bookkeeping (all BOOKKEEPING_COLUMNS in golden dataset)
+        new_row = row.to_dict()
+        new_row["golden_label"] = label
+        for attr in ATTR_ATTRS:
+            new_row[f"attr_{attr}_winner"] = bookkeeping[attr]
+        new_df = pd.DataFrame([new_row])
+        results_df = pd.concat([results_df, new_df], ignore_index=True)
+
+        # Save every SAVE_EVERY_N records (ensure bookkeeping columns are present and ordered)
+        if (i - n_done + 1) % SAVE_EVERY_N == 0:
+            _save_golden(results_df, OUTPUT_PATH)
+            print(f"  [Saved {len(results_df)} records to {OUTPUT_PATH}]")
+
+        if i < NUM_RECORDS - 1:
+            choice = input("\nPress Enter for next record, or 'pause' to save and quit: ").strip().lower()
+            if choice in ("pause", "p", "quit", "q"):
+                _save_golden(results_df, OUTPUT_PATH)
+                print(f"Paused. Saved {len(results_df)} records to {OUTPUT_PATH}. Run again to continue.")
+                break
+
+    _save_golden(results_df, OUTPUT_PATH)
+    print(f"\nDone. Saved {len(results_df)} labeled records to {OUTPUT_PATH}")
