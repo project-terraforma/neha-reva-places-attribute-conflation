@@ -1,9 +1,10 @@
+import re
 import sys
 from pathlib import Path
 
 import pandas as pd
 
-from phonenumber_validator import validate_phone_number
+from phonenumber_validator import validate_phone_number, try_with_region
 from website_validator import verify_website
 
 # Paths when run as script (project root = parent of scripts/)
@@ -15,6 +16,8 @@ SAVE_EVERY_N = 5
 ATTR_ATTRS = ("name", "phone", "web", "address", "category")
 # Bookkeeping columns included in the golden dataset output (base/alt/both/none per attribute)
 BOOKKEEPING_COLUMNS = ["golden_label"] + [f"attr_{a}_winner" for a in ATTR_ATTRS]
+# Phone numbers corrected with country code from address (when validation failed without it)
+PHONE_CORRECTED_COLUMNS = ["base_phone_with_country", "alt_phone_with_country"]
 
 
 def _prompt_superiority(label, base_display, alt_display):
@@ -49,12 +52,31 @@ def generate_golden_label(row):
     Name, address, category: human choice (base / match / both / none).
     Phone, website: automatic (both valid → both, neither valid → none, else base or match).
     +2 margin rule; special edge case when one has 0 valid and the other has >= 2.
-    Returns (label, bookkeeping_dict) with per-attribute winner: 'base', 'alt', 'both', or 'none'.
+    Returns (label, bookkeeping_dict, corrected_phones_dict).
+    corrected_phones_dict has base_phone_with_country, alt_phone_with_country when we fixed with country code.
     """
     # STEP 1 — Initialize scores and bookkeeping
     base_score = 0
     alt_score = 0
     bookkeeping = {}
+    corrected_phones = {}
+
+    def _region_from_address(addr):
+        """Infer country/region code from address text for phone parsing (e.g. US, CA, GB)."""
+        if addr is None or (isinstance(addr, float) and pd.isna(addr)):
+            return None
+        text = str(addr).upper()
+        # Explicit country mentions
+        if " UNITED STATES" in text or " USA" in text or " U.S." in text or " U.S.A" in text:
+            return "US"
+        if " CANADA" in text or " CAN" in text or " ON " in text or " BC " in text or " AB " in text or " QB " in text:
+            return "CA"
+        if " UNITED KINGDOM" in text or " UK" in text or " GB " in text or " ENGLAND" in text or " SCOTLAND" in text:
+            return "GB"
+        # US state abbreviations (two-letter before ZIP pattern or standalone)
+        if re.search(r"\b(AK|AL|AR|AZ|CA|CO|CT|DE|FL|GA|HI|IA|ID|IL|IN|KS|KY|LA|MA|MD|ME|MI|MN|MO|MS|MT|NC|ND|NE|NH|NJ|NM|NV|NY|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VA|VT|WA|WI|WV|WY)\b", text):
+            return "US"
+        return None
 
     def check_phone_superiority(base_phone, alt_phone):
         """
@@ -96,38 +118,75 @@ def generate_golden_label(row):
     elif name_winner == 'alt':
         alt_score += 1
 
-    # 📞 Phones
-    phone_winner = check_phone_superiority(row.get('base_phone'), row.get('alt_phone'))
+    # 📞 Phones — always print values and auto outcome; if invalid, try with country from address and store in new column
+    # Column fallbacks: phase1 = norm_base_phone / norm_conflated_phone; raw = base_phones / phones
+    def _first_str(val):
+        if isinstance(val, list) and len(val) > 0:
+            return str(val[0]).strip() or None
+        return val
+    base_phone = _first_str(row.get('base_phone') or row.get('norm_base_phone') or row.get('base_phones'))
+    alt_phone = _first_str(row.get('alt_phone') or row.get('norm_conflated_phone') or row.get('phones'))
+    base_addr_for_region = row.get('base_address') or row.get('norm_base_addr') or row.get('base_addresses')
+    alt_addr_for_region = row.get('alt_address') or row.get('norm_conflated_addr') or row.get('addresses')
+    if base_phone and not validate_phone_number(base_phone)[0]:
+        region = _region_from_address(base_addr_for_region) or "US"
+        ok, e164 = try_with_region(base_phone, region)
+        if ok:
+            corrected_phones["base_phone_with_country"] = e164
+    if alt_phone and not validate_phone_number(alt_phone)[0]:
+        region = _region_from_address(alt_addr_for_region) or "US"
+        ok, e164 = try_with_region(alt_phone, region)
+        if ok:
+            corrected_phones["alt_phone_with_country"] = e164
+    phone_winner = check_phone_superiority(base_phone, alt_phone)
+    # If validation gave no winner but both values are the same, mark as both
+    if phone_winner is None and base_phone and alt_phone:
+        _norm_phone = lambda v: re.sub(r"\D", "", str(v).strip()) if v and str(v).strip() else ""
+        if _norm_phone(base_phone) == _norm_phone(alt_phone):
+            phone_winner = "both"
+    _phone_show = lambda v: "(empty)" if v is None or (isinstance(v, float) and pd.isna(v)) else str(v)
+    print("\n--- Phone ---")
+    print(f"  base:  {_phone_show(base_phone)}")
+    print(f"  match: {_phone_show(alt_phone)}")
+    print(f"  → {_winner_str(phone_winner)}")
     bookkeeping["phone"] = _winner_str(phone_winner)
     if phone_winner == 'base':
         base_score += 1
     elif phone_winner == 'alt':
         alt_score += 1
 
-    # 🌐 Websites — auto: both valid → 'both', neither → 'none', else base/alt
+    # 🌐 Websites — auto when one or both validate; if neither validates, human chooses (no URL preprocessing)
     def check_web_superiority(base_web, alt_web):
-        def prep_url(url):
-            if not url or (isinstance(url, float) and str(url) == 'nan'):
-                return None
-            u = str(url).strip()
-            if not u:
-                return None
-            if not u.startswith(("http://", "https://")):
-                u = "https://" + u
-            return u
-        base_url = prep_url(base_web)
-        alt_url = prep_url(alt_web)
+        base_url = None if not base_web or (isinstance(base_web, float) and pd.isna(base_web)) else str(base_web).strip() or None
+        alt_url = None if not alt_web or (isinstance(alt_web, float) and pd.isna(alt_web)) else str(alt_web).strip() or None
         base_valid, _ = verify_website(base_url) if base_url else (False, None)
         alt_valid, _ = verify_website(alt_url) if alt_url else (False, None)
-        if not base_valid and not alt_valid:
-            return None  # → bookkeeping "none"
         if base_valid and not alt_valid:
             return "base"
         if not base_valid and alt_valid:
             return "alt"
-        return "both"  # both valid
+        if base_valid and alt_valid:
+            return "both"
+        return None  # neither validated → human will choose
 
-    web_winner = check_web_superiority(row.get('base_web'), row.get('alt_web'))
+    # Column fallbacks: phase1 = norm_base_website / norm_conflated_website; raw = base_websites / websites
+    base_web = _first_str(row.get('base_web') or row.get('norm_base_website') or row.get('base_websites'))
+    alt_web = _first_str(row.get('alt_web') or row.get('norm_conflated_website') or row.get('websites'))
+    web_winner = check_web_superiority(base_web, alt_web)
+    # If validation gave no winner but both URLs are the same, mark as both (before human check)
+    if web_winner is None and base_web and alt_web:
+        _norm_web = lambda v: str(v).strip().lower().rstrip("/") if v and str(v).strip() else ""
+        if _norm_web(base_web) == _norm_web(alt_web):
+            web_winner = "both"
+    _web_show = lambda v: "(empty)" if v is None or (isinstance(v, float) and pd.isna(v)) else str(v)
+    if web_winner is None:
+        print("\n  (Website: neither validated automatically — please choose)")
+        web_winner = _prompt_superiority("Website", _web_show(base_web), _web_show(alt_web))
+    else:
+        print("\n--- Website ---")
+        print(f"  base:  {_web_show(base_web)}")
+        print(f"  match: {_web_show(alt_web)}")
+        print(f"  → {_winner_str(web_winner)}")
     bookkeeping["web"] = _winner_str(web_winner)
     if web_winner == 'base':
         base_score += 1
@@ -155,6 +214,25 @@ def generate_golden_label(row):
         s = str(val).strip()
         return [s] if s else []
 
+    def _addr_completeness(val):
+        """Count non-empty fields in address (for list of dicts: e.g. region empty = less complete)."""
+        if val is None or (isinstance(val, float) and pd.isna(val)):
+            return 0
+        if isinstance(val, list):
+            total = 0
+            for item in val:
+                if isinstance(item, dict):
+                    for k, v in item.items():
+                        if v is not None and str(v).strip():
+                            total += 1
+                else:
+                    if str(item).strip():
+                        total += 1
+            return total
+        if isinstance(val, dict):
+            return sum(1 for k, v in val.items() if v is not None and str(v).strip())
+        return 1 if str(val).strip() else 0
+
     base_list = _addr_to_list(base_addr_raw)
     alt_list = _addr_to_list(alt_addr_raw)
     addr_winner = None
@@ -177,6 +255,21 @@ def generate_golden_label(row):
             print(f"  match: {_addr_show(alt_addr_raw)}")
             print("  Match has more items → match")
             addr_winner = "alt"
+        if addr_winner is None:
+            base_complete = _addr_completeness(base_addr_raw)
+            alt_complete = _addr_completeness(alt_addr_raw)
+            if base_complete > alt_complete:
+                print("\n--- Address ---")
+                print(f"  base:  {_addr_show(base_addr_raw)}")
+                print(f"  match: {_addr_show(alt_addr_raw)}")
+                print("  Base has fewer empty fields → base")
+                addr_winner = "base"
+            elif alt_complete > base_complete:
+                print("\n--- Address ---")
+                print(f"  base:  {_addr_show(base_addr_raw)}")
+                print(f"  match: {_addr_show(alt_addr_raw)}")
+                print("  Match has fewer empty fields → match")
+                addr_winner = "alt"
     if addr_winner is None:
         addr_winner = _prompt_superiority(
             "Address",
@@ -217,21 +310,21 @@ def generate_golden_label(row):
     # STEP 3 — Compare total scores
     # Special edge case: one has 0 valid, the other has >= 2 → choose the one with valid
     if base_score == 0 and alt_score >= 2:
-        return "alt", bookkeeping
+        return "alt", bookkeeping, corrected_phones
     if alt_score == 0 and base_score >= 2:
-        return "base", bookkeeping
+        return "base", bookkeeping, corrected_phones
     # +2 margin rule
     if base_score >= alt_score + 2:
-        return "base", bookkeeping
+        return "base", bookkeeping, corrected_phones
     if alt_score >= base_score + 2:
-        return "alt", bookkeeping
-    return "abstain", bookkeeping
+        return "alt", bookkeeping, corrected_phones
+    return "abstain", bookkeeping, corrected_phones
 
 
 def _save_golden(df: pd.DataFrame, path: Path) -> None:
-    """Write golden dataset with all bookkeeping columns (original + golden_label + attr_*_winner)."""
-    other_cols = [c for c in df.columns if c not in BOOKKEEPING_COLUMNS]
-    ordered = other_cols + [c for c in BOOKKEEPING_COLUMNS if c in df.columns]
+    """Write golden dataset with all bookkeeping and phone-corrected columns."""
+    other_cols = [c for c in df.columns if c not in BOOKKEEPING_COLUMNS and c not in PHONE_CORRECTED_COLUMNS]
+    ordered = other_cols + [c for c in PHONE_CORRECTED_COLUMNS if c in df.columns] + [c for c in BOOKKEEPING_COLUMNS if c in df.columns]
     df[ordered].to_parquet(path, index=False)
 
 
@@ -256,14 +349,16 @@ if __name__ == "__main__":
         row = subset.iloc[i]
         rec_num = i + 1
         print(f"\n{'='*60} Record {rec_num} / {NUM_RECORDS} {'='*60}")
-        label, bookkeeping = generate_golden_label(row)
+        label, bookkeeping, corrected_phones = generate_golden_label(row)
         print(f"  → golden_label = {label}")
 
-        # Append this row with label and bookkeeping (all BOOKKEEPING_COLUMNS in golden dataset)
+        # Append this row with label, bookkeeping, and corrected phone columns when applicable
         new_row = row.to_dict()
         new_row["golden_label"] = label
         for attr in ATTR_ATTRS:
             new_row[f"attr_{attr}_winner"] = bookkeeping[attr]
+        new_row["base_phone_with_country"] = corrected_phones.get("base_phone_with_country")
+        new_row["alt_phone_with_country"] = corrected_phones.get("alt_phone_with_country")
         new_df = pd.DataFrame([new_row])
         results_df = pd.concat([results_df, new_df], ignore_index=True)
 

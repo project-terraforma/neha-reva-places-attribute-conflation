@@ -6,3 +6,4 @@ pyarrow==19.0.0
 xgboost
 requests
 phonenumbers
+beautifulsoup4
