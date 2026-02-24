@@ -1,13 +1,14 @@
 """
-Inspect places attribute conflation Parquet data: schema, stats, samples, and golden labeling.
+Inspect places attribute conflation Parquet data: schema, stats, samples.
 
 Run from project root: python scripts/inspect_parquet.py
 
 Outputs:
   - Console: schema, stats, side-by-side samples, value examples
-  - analysis/inspection/golden/: golden_labeling_sample.json
   - analysis/inspection/side_by_side/: side_by_side_sample.csv, .jsonl
-  - analysis/inspection/attributes/: {attr}_pair_sample.csv, .jsonl (from attribute scripts)
+  - analysis/inspection/attributes/: {attr}_pair_sample.json (from attribute scripts)
+
+Golden dataset: run scripts/create_golden_dataset.py
 """
 import json
 import duckdb
@@ -18,12 +19,10 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).parent.parent
 PARQUET_PATH = PROJECT_ROOT / "data" / "project_a_samples.parquet"
 OUT_DIR = PROJECT_ROOT / "analysis" / "inspection"
-OUT_DIR_GOLDEN = OUT_DIR / "golden"
 OUT_DIR_SIDE_BY_SIDE = OUT_DIR / "side_by_side"
 DATA_PATH = Path(__file__).parent.parent / "data" / "project_a_samples.parquet"
 
-SAMPLE_N = 30          # small sample to print + export
-GOLDEN_SAMPLE_N = 200  # for labeling
+SAMPLE_N = 30
 
 CORE_ATTRS = ["addresses", "categories", "phones", "websites", "names", "emails", "socials"]
 ID_COLS = ["id", "base_id"]
@@ -31,7 +30,6 @@ ID_COLS = ["id", "base_id"]
 
 def ensure_out_dir():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    OUT_DIR_GOLDEN.mkdir(parents=True, exist_ok=True)
     OUT_DIR_SIDE_BY_SIDE.mkdir(parents=True, exist_ok=True)
 
 
@@ -119,86 +117,6 @@ def show_value_examples(con, attr="phones", k=10):
         print(f"\nRow {i} id={r['id']}")
         print(f"  {base_attr}: {r[base_attr]}")
         print(f"  {attr}:      {r[attr]}")
-
-
-def make_golden_labeling_sample(con, n=GOLDEN_SAMPLE_N):
-    """
-    Make a reproducible golden dataset of 200 values in JSON format.
-    Biases toward "interesting" rows: conflicts or one-sided presence.
-    Format matches other teams: id, record_index, label, method, data{current, base}.
-    """
-    existing = set(con.execute(f"DESCRIBE SELECT * FROM '{PARQUET_PATH}'").fetchdf()["column_name"])
-
-    # Pick one core attribute to drive "interestingness" if available
-    driver = "phones" if "phones" in existing and "base_phones" in existing else None
-
-    if driver:
-        query = f"""
-            SELECT id, base_id, names, base_names, phones, base_phones, websites, base_websites,
-                   addresses, base_addresses, categories, base_categories, confidence, base_confidence
-            FROM '{PARQUET_PATH}'
-            WHERE
-                ({driver} IS NOT NULL OR base_{driver} IS NOT NULL)
-            ORDER BY
-                CASE
-                    WHEN {driver} IS NOT NULL AND base_{driver} IS NOT NULL AND {driver} != base_{driver} THEN 0
-                    WHEN {driver} IS NOT NULL AND base_{driver} IS NULL THEN 1
-                    WHEN {driver} IS NULL AND base_{driver} IS NOT NULL THEN 2
-                    ELSE 3
-                END,
-                random()
-            LIMIT {n}
-        """
-    else:
-        query = f"""
-            SELECT id, base_id, names, base_names, phones, base_phones, websites, base_websites,
-                   addresses, base_addresses, categories, base_categories, confidence, base_confidence
-            FROM '{PARQUET_PATH}'
-            USING SAMPLE {n} ROWS
-        """
-
-    df = con.execute(query).fetchdf()
-
-    def to_entry_val(v, key):
-        """Convert to JSON-serializable value; use [null] for empty phones/websites."""
-        if pd.isna(v) or v is None:
-            return "[null]" if key in ("phones", "websites") else None
-        if isinstance(v, (int, float)):
-            return v
-        return str(v)
-
-    records = []
-    for record_index, (_, row) in enumerate(df.iterrows()):
-        current = {
-            "names": to_entry_val(row.get("names"), "names"),
-            "phones": to_entry_val(row.get("phones"), "phones"),
-            "websites": to_entry_val(row.get("websites"), "websites"),
-            "addresses": to_entry_val(row.get("addresses"), "addresses"),
-            "categories": to_entry_val(row.get("categories"), "categories"),
-            "confidence": to_entry_val(row.get("confidence"), "confidence"),
-        }
-        base = {
-            "names": to_entry_val(row.get("base_names"), "names"),
-            "phones": to_entry_val(row.get("base_phones"), "phones"),
-            "websites": to_entry_val(row.get("base_websites"), "websites"),
-            "addresses": to_entry_val(row.get("base_addresses"), "addresses"),
-            "categories": to_entry_val(row.get("base_categories"), "categories"),
-            "confidence": to_entry_val(row.get("base_confidence"), "confidence"),
-        }
-
-        records.append({
-            "id": str(row["id"]),
-            "record_index": record_index,
-            "label": "",
-            "method": "manual_review (manual)",
-            "data": {"current": current, "base": base},
-        })
-
-    out_path = OUT_DIR_GOLDEN / "golden_dataset.json"
-    with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(records, f, indent=2, default=str)
-
-    print(f"\nGolden labeling sample saved to: {out_path} ({len(records)} records)")
 
 
 def analyze_disagreement_rates(con):
@@ -356,9 +274,6 @@ def main():
     # Show a few example values per attribute (helps interpret nested fields)
     for a in ["phones", "websites", "addresses", "categories", "names", "emails", "sources"]:
         show_value_examples(con, attr=a, k=8)
-
-    # Create labeling sample for golden dataset
-    make_golden_labeling_sample(con, n=GOLDEN_SAMPLE_N)
 
     con.close()
     print("\n" + "=" * 60)

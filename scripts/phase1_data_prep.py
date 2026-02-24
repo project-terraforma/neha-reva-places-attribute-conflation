@@ -1,3 +1,17 @@
+"""
+Phase 1 Data Preparation for Places Attribute Conflation.
+
+This script prepares the golden dataset for attribute-level comparison by:
+1. Normalizing addresses, phones, and websites so base vs conflated values can be
+   compared consistently (e.g., "St" vs "Street", "123-456-7890" vs "1234567890").
+2. Computing fuzzy matching scores between base and conflated versions for each
+   attribute using RapidFuzz (ratio, token_sort_ratio for addresses).
+
+Input:  data/project_a_samples.parquet
+Output: data/phase1_processed.parquet (adds norm_* columns and *_similarity columns)
+
+Run from project root: python scripts/phase1_data_prep.py
+"""
 import pandas as pd
 import rapidfuzz
 from rapidfuzz import fuzz
