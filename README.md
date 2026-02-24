@@ -35,11 +35,12 @@ neha-reva-places-attribute-conflation/
 │   └── sampledata.parquet          # Additional sample data
 ├── analysis/
 │   └── inspection/
-│       ├── golden/                 # Golden labeling dataset (JSON, 200 records)
+│       ├── golden/                 # Golden labeling dataset (CSV, 200 records)
 │       ├── side_by_side/            # Main side-by-side sample
 │       └── attributes/             # Per-attribute pair samples
 ├── scripts/
 │   ├── inspect_parquet.py         # Dataset overview & stats (DuckDB)
+│   ├── create_golden_dataset.py   # Create 200-record golden labeling CSV
 │   └── attributes/
 │       ├── inspect_attr_pair.py   # Shared logic for attribute-pair inspection
 │       ├── inspect_categories.py  # base_categories vs categories
@@ -83,8 +84,14 @@ python scripts/attributes/inspect_websites.py     # base_websites vs websites
 
 Each script prints stats (coverage, comparable count, disagreement rate), value examples, disagreement examples, and exports to `analysis/inspection/attributes/{attr}_pair_sample.json`.
 
+**Golden dataset (CSV):**
+```bash
+python scripts/create_golden_dataset.py
+```
+Creates `analysis/inspection/golden/golden_labeling_sample.csv` with 200 records and blank `label_*` / `notes_*` columns for manual review.
+
 **Output layout:**
-- `analysis/inspection/golden/` — golden labeling dataset
+- `analysis/inspection/golden/` — golden labeling dataset (CSV)
 - `analysis/inspection/side_by_side/` — main side-by-side sample
 - `analysis/inspection/attributes/` — per-attribute pair samples (JSON only)
 
