@@ -2,33 +2,40 @@
 Schema config: mapping of canonical fields to actual parquet columns.
 
 Maps the standard adapter output keys (base.*, other.*) to the column names
-in the places attribute conflation parquet.
+in the places attribute conflation parquet. This allows the adapter to
+transform raw parquet rows into a uniform structure regardless of source schema.
 """
 
-# Canonical field -> parquet column name
-# "other" = conflated/merged record; "base" = original record
+# SCHEMA: Maps our canonical field names (used in adapted output) to the actual
+# parquet column names in project_a_samples.parquet.
+# - "base" = original place record from one dataset (e.g., Microsoft)
+# - "other" = conflated/merged record combining attributes from multiple sources
 SCHEMA = {
-    "id": "id",
-    "base_id": "base_id",
+    # Row identifiers
+    "id": "id",                    # Conflated record ID
+    "base_id": "base_id",          # Base (original) place record ID
+    # Base record attributes (original source)
     "base.name": "base_names",
-    "other.name": "names",
     "base.address": "base_addresses",
-    "other.address": "addresses",
     "base.phones": "base_phones",
-    "other.phones": "phones",
     "base.website": "base_websites",
-    "other.website": "websites",
     "base.category": "base_categories",
-    "other.category": "categories",
     "base.brand": "base_brand",
-    "other.brand": "brand",
     "base.socials": "base_socials",
-    "other.socials": "socials",
     "base.email": "base_emails",
+    # Other/conflated record attributes (merged from multiple sources)
+    "other.name": "names",
+    "other.address": "addresses",
+    "other.phones": "phones",
+    "other.website": "websites",
+    "other.category": "categories",
+    "other.brand": "brand",
+    "other.socials": "socials",
     "other.email": "emails",
 }
 
-# Canonical attribute keys for base/other dicts (in output order)
+# CANONICAL_ATTRS: Ordered list of attribute keys used when building base/other
+# dicts. Order determines output structure for downstream evidence gathering.
 CANONICAL_ATTRS = [
     "name",
     "address",

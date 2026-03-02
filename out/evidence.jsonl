@@ -1,0 +1,79 @@
+{   "id": "08f44f055a9a016e0390f050aa3c93c0", 
+    "base_id": "1688849865669487", 
+    "evidence_sources": [
+        {
+            "url": "https://www.goinpostaljacksonville.com/", 
+            "status": 200, 
+            "classification": "relevant", 
+            "tier": "A", 
+            "tier_score": 1.0
+        }
+    ], 
+    "best_evidence": {
+        "name": {
+            "value": "Welcome To Goin' Postal Jacksonville", 
+            "score": 0.85, 
+            "tier": "A", 
+            "conflicts": [
+                {
+                    "value": "Packing, Shipping, Mailing | Jacksonville, FL | Goin' Postal Jacksonville", 
+                    "score": 0.8, 
+                    "tier": "A"
+                }
+            ]
+        }, 
+        "phones": {
+            "value": "904.998.9600", 
+            "score": 0.75, 
+            "tier": "A", 
+            "conflicts": [
+                {
+                    "value": "904.253.3492", 
+                    "score": 0.75, "tier": "A"
+                }
+            ]
+        }, 
+        "address": {
+            "value": "904.998.9600 7643 Gate Pkwy Ste 104 Jacksonville, FL  32256", 
+            "score": 0.7, 
+            "tier": "A", 
+            "conflicts": [
+                {
+                    "value": "7643 Gate Pkwy Ste 104 Jacksonville, FL 32256", 
+                    "score": 0.7, 
+                    "tier": "A"
+                }, 
+                {
+                    "value": "7643 Gate Pkwy Ste 104 Jacksonville , FL 32256", 
+                    "score": 0.7, 
+                    "tier": "A"
+                }
+            ]
+        }, 
+        "socials": {
+            "value": "https://www.facebook.com/GOINPOSTALJAX/", 
+            "score": 0.8, 
+            "tier": "A", 
+            "conflicts": [
+                {
+                    "value": "https://twitter.com/goinpostaljax", 
+                    "score": 0.8, 
+                    "tier": "A"
+                }, 
+                {
+                    "value": "https://twitter.com/goinpostaljax", 
+                    "score": 0.8, 
+                    "tier": "A"
+                }, 
+                {
+                    "value": "https://twitter.com/goinpostaljax", 
+                    "score": 0.8, 
+                    "tier": "A"
+                }
+            ]
+        }
+    }, 
+    "evidence_tier_used": "A", 
+    "row_confidence": 0.517
+}
+{"id": "08f29a456e42e5830324637954145c50", "base_id": "1125899907111860", "evidence_sources": [{"url": "https://valleytransca.com/", "status": 200, "classification": "relevant", "tier": "A", "tier_score": 1.0}], "best_evidence": {"name": {"value": "Transmission Repair Shop In El Cajon, CAServing The Entire San Diego County Area", "score": 0.85, "tier": "A", "conflicts": [{"value": "Transmission Repair Shop In El Cajon, CA", "score": 0.8, "tier": "A"}]}, "phones": {"value": "(619) 447-4353", "score": 0.75, "tier": "A", "conflicts": []}, "address": {"value": "447-4353 Contact Us OUR LOCATION 1158 N 2nd St. El Cajon, CA 92021", "score": 0.7, "tier": "A", "conflicts": [{"value": "1158 N 2nd St. El Cajon, CA 92021", "score": 0.7, "tier": "A"}, {"value": "20.00 off your next normal transmission service. Valley Transmission is conveniently located at 1158 N. 2nd Street in El Cajon, CA 92021", "score": 0.7, "tier": "A"}, {"value": "447-4353 Home About Us Transmission Services Specials Reviews Blog Contact Us Privacy Policy Site Map Why Choose Us Repair Process Transmission Rebuild Torque Converter Repair Truck Transmission Repair Automatic Transmission Repair Location 1158 N 2nd St. El Cajon, CA 92021", "score": 0.7, "tier": "A"}]}, "socials": {"value": "https://www.facebook.com/Valley-Transmission-107150256087765/", "score": 0.8, "tier": "A", "conflicts": []}}, "evidence_tier_used": "A", "row_confidence": 0.517}

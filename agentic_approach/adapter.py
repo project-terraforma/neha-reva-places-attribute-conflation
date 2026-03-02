@@ -1,5 +1,9 @@
 """
 Row adapter: convert raw parquet row to canonical format for the agent.
+
+Transforms the flat parquet schema (base_names, names, base_phones, phones, etc.)
+into a nested structure {id, base_id, base: {...}, other: {...}} that the
+evidence-gathering step expects.
 """
 
 from .schema_config import SCHEMA, CANONICAL_ATTRS
@@ -9,16 +13,17 @@ def _safe_value(val):
     """
     Handle nulls and ensure lists stay as lists.
     Returns None for null/NaN, otherwise the value as-is.
+    Pandas/NumPy types (e.g. ndarray) are converted to JSON-serializable forms.
     """
     if val is None:
         return None
+    # Iterables (lists, ndarrays) -> list for JSON serialization
     if hasattr(val, "__iter__") and not isinstance(val, (str, dict)):
-        # Could be list, ndarray, etc. - convert to list for JSON
         try:
             return list(val)
         except (TypeError, ValueError):
             return val
-    # Check for pandas NA/NaN
+    # Pandas NA/NaN must be treated as None
     try:
         import pandas as pd
         if pd.isna(val):
@@ -47,6 +52,7 @@ def adapt_row(raw_row: dict, schema: dict | None = None) -> dict:
     """
     schema = schema or SCHEMA
 
+    # Helper: look up parquet column by canonical key, return safe value
     def get(key: str):
         col = schema.get(key)
         if col is None:
@@ -54,6 +60,7 @@ def adapt_row(raw_row: dict, schema: dict | None = None) -> dict:
         val = raw_row.get(col)
         return _safe_value(val)
 
+    # Build base and other attribute dicts from canonical attribute list
     base = {}
     other = {}
     for attr in CANONICAL_ATTRS:
@@ -62,6 +69,7 @@ def adapt_row(raw_row: dict, schema: dict | None = None) -> dict:
         base[attr] = get(base_key)
         other[attr] = get(other_key)
 
+    # Assemble final canonical row: ids + base/other attribute dicts
     return {
         "id": get("id") or str(raw_row.get("id", "")),
         "base_id": get("base_id") or str(raw_row.get("base_id", "")),

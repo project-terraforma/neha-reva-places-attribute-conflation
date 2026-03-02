@@ -90,6 +90,24 @@ Each script prints stats (coverage, comparable count, disagreement rate), value 
 
 ---
 
+## Agentic Approach Pipeline
+
+Step 1 adapts parquet rows to canonical format; Step 2 gathers evidence from websites.
+
+```bash
+# Step 1: Adapt rows (parquet → JSONL)
+python -m agentic_approach.validate --input data/project_a_samples.parquet --out data/rows_adapted.jsonl
+
+# Step 2: Evidence gathering (fetch websites, extract fields, consolidate)
+python -m agentic_approach.evidence --input data/rows_adapted.jsonl --out out/evidence.jsonl
+```
+
+Step 2 outputs `evidence_sources`, `best_evidence`, `evidence_tier_used`, and `row_confidence` per row. No label/winner decision is made in this step.
+
+**Output schema:** See [`agentic_approach/OUTPUT_SCHEMA.md`](agentic_approach/OUTPUT_SCHEMA.md) for a full description of each field in `rows_adapted.jsonl` and `evidence.jsonl`.
+
+---
+
 ## Data Schema
 
 Each row is a pre-matched pair. Columns without a prefix come from the **conflated** record; columns with the `base_` prefix come from the **base** (original) place record.

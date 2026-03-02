@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """
-Preview tool: load parquet, adapt rows, write JSONL.
+Step 1 of the agentic pipeline: load parquet, adapt rows to canonical format, write JSONL.
+
+This script transforms project_a_samples.parquet into rows_adapted.jsonl, which
+is the input for Step 2 (evidence gathering). Each output row has {id, base_id, base, other}.
 
 Usage:
   python -m agentic_approach.validate --input data/project_a_samples.parquet --limit 20 --out out/rows_preview.jsonl
@@ -43,16 +46,21 @@ def main():
         print(f"Error: input file not found: {input_path}")
         return 1
 
+    # Ensure output directory exists
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
+    # Load parquet into DataFrame
     df = load_parquet(input_path)
     adapted = []
+    # Iterate over rows (up to limit), adapt each to canonical format
     for raw_row in iter_rows(df, limit=args.limit):
         adapted.append(adapt_row(raw_row))
 
+    # Write one JSON object per line (JSONL format)
     with open(out_path, "w", encoding="utf-8") as f:
         for row in adapted:
+            # default=str handles numpy/pandas types that aren't JSON-serializable
             f.write(json.dumps(row, default=str) + "\n")
 
     print(f"Wrote {len(adapted)} adapted rows to {out_path}")
