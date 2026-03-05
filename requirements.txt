@@ -6,3 +6,5 @@ pyarrow==19.0.0
 requests>=2.28.0
 beautifulsoup4>=4.12.0
 phonenumbers>=8.13.0
+huggingface_hub>=0.25.0
+ddgs>=7.0.0

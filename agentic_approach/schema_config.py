@@ -35,7 +35,7 @@ SCHEMA = {
 }
 
 # CANONICAL_ATTRS: Ordered list of attribute keys used when building base/other
-# dicts. Order determines output structure for downstream evidence gathering.
+# dicts. Order determines output structure for the unified flow.
 CANONICAL_ATTRS = [
     "name",
     "address",

@@ -2,7 +2,7 @@
   {
     "id": "08f2a1345c68e8b3038979f9ceb4b9d6",
     "record_index": 0,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -21,12 +21,36 @@
         "categories": "{\"primary\":\"paint_store\",\"alternate\":[\"home_improvement_store\",\"painting\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 12,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 1,
+        "base_q": 7,
+        "alt_q": 5
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "08f1f8e85aa527990316b84b2abd4965",
     "record_index": 1,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -45,12 +69,36 @@
         "categories": "{\"primary\":\"Sports and Recreation > Gym and Studio > Gym\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 10,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 3
     }
   },
   {
     "id": "08f438c2a4b2834003ef6d541c6af5db",
     "record_index": 2,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -69,12 +117,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Restaurant > Fast Food Restaurant\",\"alternate\":[\"Dining and Drinking > Restaurant > Fried Chicken Joint\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 9,
+        "alt_q": 10
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f264d133962a4d03f03f3066a92a36",
     "record_index": 3,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -93,12 +165,36 @@
         "categories": "{\"primary\":\"used_car_dealer\",\"alternate\":[\"automotive\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f44d98e090865d032189974eb99946",
     "record_index": 4,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -117,12 +213,36 @@
         "categories": "{\"primary\":\"battery_store\",\"alternate\":[\"electronics_repair_shop\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 11,
+        "alt_q": 11
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08fbb50015ba55700333798ebed62ef7",
     "record_index": 5,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -141,12 +261,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Cafe, Coffee, and Tea House > Coffee Shop\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": -1,
+        "base_q": 9,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 3
     }
   },
   {
     "id": "08f1ea2c73d24aad03ecd7b6134ec824",
     "record_index": 6,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -165,12 +309,36 @@
         "categories": "{\"primary\":\"Retail > Fashion Retail > Jewelry Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f499586b644a620342160687c22f5f",
     "record_index": 7,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -189,12 +357,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Automotive Service > Automotive Repair Shop\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 9,
+        "alt_q": 9
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "1407374885189080",
     "record_index": 8,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -213,12 +405,36 @@
         "categories": "{\"primary\":\"department_store\",\"alternate\":[\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f44daa186492700369b30881806ea8",
     "record_index": 9,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -237,12 +453,36 @@
         "categories": "{\"primary\":\"Retail\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08fc203609766b2e03adc81852d54f07",
     "record_index": 10,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -261,12 +501,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Restaurant > Mexican Restaurant\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 14,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f446c25679a70e03572240a924ba2c",
     "record_index": 11,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -285,12 +549,36 @@
         "categories": "{\"primary\":\"fast_food_restaurant\",\"alternate\":[\"restaurant\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2664c1ac147b303398c7666393849",
     "record_index": 12,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -309,12 +597,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Cafe, Coffee, and Tea House > Coffee Shop\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 3
     }
   },
   {
     "id": "08f1f8591a54d1a6035e577189f681fc",
     "record_index": 13,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -333,12 +645,36 @@
         "categories": "{\"primary\":\"Retail > Furniture and Home Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 2,
+      "alt_score": 1
     }
   },
   {
     "id": "08fbe0e34b44c79a035b92414e02f7e3",
     "record_index": 14,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -357,12 +693,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Restaurant > Deli\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f4995b820d0700036453215bbd45a3",
     "record_index": 15,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -381,12 +741,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Restaurant > Burger Joint\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": -1,
+        "base_q": 10,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 4
     }
   },
   {
     "id": "08f1f14ab63038d50325e59ff5a13089",
     "record_index": 16,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -405,12 +789,36 @@
         "categories": "{\"primary\":\"online_shop\",\"alternate\":[\"corporate_office\",\"private_establishments_and_corporates\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 11,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": 1,
+        "base_q": 7,
+        "alt_q": 4
+      },
+      "base_score": 2,
+      "alt_score": 1
     }
   },
   {
     "id": "08f29a1c23a8b0b1034c5de9e8b672ef",
     "record_index": 17,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -429,12 +837,36 @@
         "categories": "{}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 12,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": -2,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 3
     }
   },
   {
     "id": "08f2a93cecb23ba303831aaa9a16169c",
     "record_index": 18,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -453,12 +885,36 @@
         "categories": "{\"primary\":\"bank_credit_union\"}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f4458d334c9d0c03c41f278c8b9f76",
     "record_index": 19,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -477,12 +933,36 @@
         "categories": "{\"primary\":\"homeless_shelter\",\"alternate\":[\"organization\",\"health_and_medical\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2a9625a169202036560877baa0345",
     "record_index": 20,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -501,12 +981,36 @@
         "categories": "{\"primary\":\"information_technology_company\",\"alternate\":[\"it_support_snd_service\",\"it_service_and_computer_repair\",\"security_services\",\"web_designer\",\"business_to_business_services\",\"business_to_business\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08fa83120535a54b03b3b2e5732f7962",
     "record_index": 21,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -525,12 +1029,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Repair Service\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 14,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f2832144c15018033b04c5ec312b53",
     "record_index": 22,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -549,12 +1077,36 @@
         "categories": "{\"primary\":\"self_storage_facility\",\"alternate\":[\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f1eb5ba8ba504603b783a90e1e34e9",
     "record_index": 23,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -573,12 +1125,36 @@
         "categories": "{\"primary\":\"auto_parts_and_supply_store\",\"alternate\":[\"automotive\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f275802d4745a4036f3b1a815dd617",
     "record_index": 24,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -597,12 +1173,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Financial Service > Banking and Finance > ATM\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 4
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "1407374886203415",
     "record_index": 25,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -621,12 +1221,36 @@
         "categories": "{\"primary\":\"anesthesiologist\",\"alternate\":[\"doctor\",\"health_and_medical\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 0
     }
   },
   {
     "id": "08f2e1bb53cd504403234c70bf5394f2",
     "record_index": 26,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -645,12 +1269,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Shipping, Freight, and Material Transportation Service\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 10
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 11,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 4
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f1959b447aaa900389169fac74b366",
     "record_index": 27,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -669,12 +1317,36 @@
         "categories": "{\"primary\":\"doctor\",\"alternate\":[\"massage_therapy\",\"medical_center\",\"health_and_medical\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": -1,
+        "base_q": 12,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f8b863004a2b2203f2341952e1ddd1",
     "record_index": 28,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -693,12 +1365,36 @@
         "categories": "{\"primary\":\"Retail > Food and Beverage Retail > Supermarket\",\"alternate\":[\"Retail > Food and Beverage Retail > Grocery Store\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 14,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08fbe085a649119103cdee4bf64a472b",
     "record_index": 29,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -717,12 +1413,36 @@
         "categories": "{\"primary\":\"beer_wine_and_spirits\",\"alternate\":[\"beverage_store\",\"food\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 1,
+        "base_q": 7,
+        "alt_q": 5
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2e6151a723c5103d08e98e7ded4a2",
     "record_index": 30,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -741,12 +1461,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Cafe, Coffee, and Tea House > Caf\u00e9\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 14,
+        "alt_q": 12
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 5
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2a3408249a11c0397b54731c9a7c6",
     "record_index": 31,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -765,12 +1509,36 @@
         "categories": "{\"primary\":\"hair_salon\",\"alternate\":[\"beauty_and_spa\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f64b504005a58b030db55a839aba58",
     "record_index": 32,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -789,12 +1557,36 @@
         "categories": "{\"primary\":\"Retail > Hardware Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 2,
+        "alt_q": 2
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f260e25c7121b303d84b33416f785d",
     "record_index": 33,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -813,12 +1605,36 @@
         "categories": "{\"primary\":\"atms\"}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f29126484e986d033383dfda3c9539",
     "record_index": 34,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -837,12 +1653,36 @@
         "categories": "{\"primary\":\"electrical_supply_store\",\"alternate\":[\"electrician\",\"lighting_fixtures_and_equipment\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 1,
+        "base_q": 7,
+        "alt_q": 5
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f44e8346794333033a01eb53999680",
     "record_index": 35,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -861,12 +1701,36 @@
         "categories": "{\"primary\":\"ice_cream_and_frozen_yoghurt\",\"alternate\":[\"restaurant\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f39046f6b28a8203b5698ab5e2b65c",
     "record_index": 36,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -885,12 +1749,36 @@
         "categories": "{\"primary\":\"Business and Professional Services\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 14,
+        "alt_q": 12
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "1407374887763681",
     "record_index": 37,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -909,12 +1797,36 @@
         "categories": "{\"primary\":\"assisted_living_facility\",\"alternate\":[\"skilled_nursing\",\"foot_care\",\"beauty_and_spa\",\"health_and_medical\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 7
+      },
+      "base_score": 0,
+      "alt_score": 0
     }
   },
   {
     "id": "08f27022da661146031df2517711075f",
     "record_index": 38,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -933,12 +1845,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Financial Service > Banking and Finance > ATM\",\"alternate\":[\"Business and Professional Services > Financial Service > Banking and Finance > Bank\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 14,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f26504732d0220036ff8e633a6f62d",
     "record_index": 39,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -957,12 +1893,36 @@
         "categories": "{\"primary\":\"bank_credit_union\"}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f262198389e743030e805bc88aee13",
     "record_index": 40,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -981,12 +1941,36 @@
         "categories": "{\"primary\":\"ice_supplier\"}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f29950db69d390037ec63e208557a3",
     "record_index": 41,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1005,12 +1989,36 @@
         "categories": "{\"primary\":\"cafe\",\"alternate\":[\"restaurant\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 12,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f2e6cba0b345400310a25fb96b017d",
     "record_index": 42,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1029,12 +2037,36 @@
         "categories": "{\"primary\":\"Retail > Sporting Goods Retail > Fishing Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 14,
+        "alt_q": 12
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "08f441a85563288d036586a4365fde15",
     "record_index": 43,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1053,12 +2085,36 @@
         "categories": "{\"primary\":\"senior_citizen_services\",\"alternate\":[\"health_consultant\",\"personal_care_service\",\"elder_care_planning\",\"organization\",\"active_life\",\"health_and_medical\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f44e8370919a52039878b85f41c031",
     "record_index": 44,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1077,12 +2133,36 @@
         "categories": "{}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": -2,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f6d20cdc22b60003f00f48b996c255",
     "record_index": 45,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1101,12 +2181,36 @@
         "categories": "{\"primary\":\"Retail > Convenience Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 12,
+        "alt_q": 8
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "08f44aeaf2b02cec03fd06b92c412a87",
     "record_index": 46,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1125,12 +2229,36 @@
         "categories": "{\"primary\":\"home_health_care\",\"alternate\":[\"assisted_living_facility\",\"personal_care_service\",\"health_and_medical\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f64a4b8a2182d803efaceee497ac25",
     "record_index": 47,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1149,12 +2277,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Restaurant > Asian Restaurant > Noodle Restaurant\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 2,
+        "alt_q": 2
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f274864eb8c0f30307c49f06635d20",
     "record_index": 48,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1173,12 +2325,36 @@
         "categories": "{\"primary\":\"printing_services\",\"alternate\":[\"sign_making\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f64a484c9a0c5403339a1fcf0ce87c",
     "record_index": 49,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1197,12 +2373,36 @@
         "categories": "{\"primary\":\"Health and Medicine > Veterinarian\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "08f26c866888838503899ce333500e26",
     "record_index": 50,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1221,12 +2421,36 @@
         "categories": "{\"primary\":\"general_litigation\",\"alternate\":[\"personal_injury_law\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2e610f108a700030602a2193e8013",
     "record_index": 51,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1245,12 +2469,36 @@
         "categories": "{\"primary\":\"Landmarks and Outdoors > Park > Playground\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": -1,
+        "base_q": 10,
+        "alt_q": 12
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 3
     }
   },
   {
     "id": "08f44c174c09444103c4be2cf2199428",
     "record_index": 52,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1269,12 +2517,36 @@
         "categories": "{\"primary\":\"martial_arts_club\",\"alternate\":[\"active_life\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f1f166d246c3290303ee41124b93fa",
     "record_index": 53,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1293,12 +2565,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Tailor\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "08f2aab52140802c0395a9524fcac41d",
     "record_index": 54,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1317,12 +2613,36 @@
         "categories": "{\"primary\":\"tax_services\",\"alternate\":[\"tax_office\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f49aa86aa4519a038f686a7731008d",
     "record_index": 55,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1341,12 +2661,36 @@
         "categories": "{\"primary\":\"Retail\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "08f186b6ca96aac003075fe4e8c7df44",
     "record_index": 56,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1365,12 +2709,36 @@
         "categories": "{\"primary\":\"Retail > Fashion Retail > Clothing Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 12,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 3
     }
   },
   {
     "id": "08f44abb7594926303625ed86db05aad",
     "record_index": 57,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1389,12 +2757,36 @@
         "categories": "{\"primary\":\"b2b_tractor_dealers\",\"alternate\":[\"trucks_and_industrial_vehicles\",\"business_storage_and_transportation\",\"business_to_business\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 12,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 1,
+        "base_q": 7,
+        "alt_q": 5
+      },
+      "base_score": 2,
+      "alt_score": 1
     }
   },
   {
     "id": "08f1f19882108743037aa0e2fefe6fdb",
     "record_index": 58,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1413,12 +2805,36 @@
         "categories": "{\"primary\":\"tile_store\",\"alternate\":[\"flooring_store\",\"tiling\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "1125899911544695",
     "record_index": 59,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1437,12 +2853,36 @@
         "categories": "{\"primary\":\"painting\"}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 4
+      },
+      "base_score": 0,
+      "alt_score": 0
     }
   },
   {
     "id": "1688849860470200",
     "record_index": 60,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1461,12 +2901,36 @@
         "categories": "{\"primary\":\"beverage_supplier\",\"alternate\":[\"burger_restaurant\",\"fast_food_restaurant\",\"sandwich_shop\",\"business_equipment_and_supply\",\"food_and_beverage_consultant\",\"restaurant\",\"business_to_business\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 10
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 7
+      },
+      "base_score": 1,
+      "alt_score": 0
     }
   },
   {
     "id": "08f2a101ab4a4d6603318d4b9c6dea88",
     "record_index": 61,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1485,12 +2949,36 @@
         "categories": "{\"primary\":\"pizza_restaurant\",\"alternate\":[\"sandwich_shop\",\"restaurant\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f26c8281c10b0903503e29b128ada1",
     "record_index": 62,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1509,12 +2997,36 @@
         "categories": "{\"primary\":\"t_shirt_store\",\"alternate\":[\"clothing_store\",\"discount_store\",\"department_store\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f28d559965c49d037360e0cf9c144e",
     "record_index": 63,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1533,12 +3045,36 @@
         "categories": "{\"primary\":\"middle_school\",\"alternate\":[\"school\",\"education\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08fbe0899519c116035ccb4f246d7ac9",
     "record_index": 64,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1557,12 +3093,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Restaurant\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "08f4446683d42d710322dff3bebb785b",
     "record_index": 65,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1581,12 +3141,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Real Estate Service\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 0
     }
   },
   {
     "id": "08f390cb1b4015a203636d915a9d5abe",
     "record_index": 66,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1605,12 +3189,36 @@
         "categories": "{\"primary\":\"mediterranean_restaurant\",\"alternate\":[\"tapas_bar\",\"food\",\"restaurant\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 11,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2748ba583136103a98b5793ae4f2b",
     "record_index": 67,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1629,12 +3237,36 @@
         "categories": "{\"primary\":\"pet_groomer\",\"alternate\":[\"pet_services\",\"pets\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f445c0410468040344947a33820152",
     "record_index": 68,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1653,12 +3285,36 @@
         "categories": "{\"primary\":\"burger_restaurant\",\"alternate\":[\"restaurant\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f1fa92de5b0082037f3d436a2668d0",
     "record_index": 69,
-    "label": "",
+    "label": 0,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1677,12 +3333,36 @@
         "categories": "{\"primary\":\"active_life\",\"alternate\":[\"business_to_business\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 4
+      },
+      "base_score": 2,
+      "alt_score": 0
     }
   },
   {
     "id": "08f28f012d60e6ad03f99abbc4c48bf1",
     "record_index": 70,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1701,12 +3381,36 @@
         "categories": "{\"primary\":\"coffee_shop\",\"alternate\":[\"restaurant\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "562949961114758",
     "record_index": 71,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1725,12 +3429,36 @@
         "categories": "{\"primary\":\"organization\",\"alternate\":[\"active_life\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f1e84ab06b5a88032fba924b9dab12",
     "record_index": 72,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1749,12 +3477,36 @@
         "categories": "{\"primary\":\"Retail > Food and Beverage Retail > Supermarket\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 10
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "08f2af634e769b080308c0dc69fae58f",
     "record_index": 73,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1773,12 +3525,36 @@
         "categories": "{\"primary\":\"breakfast_and_brunch_restaurant\",\"alternate\":[\"cafe\",\"restaurant\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f446cad8a910f203fe01900db1c70a",
     "record_index": 74,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1797,12 +3573,36 @@
         "categories": "{\"primary\":\"optometrist\",\"alternate\":[\"health_and_medical\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f1faeab62d943503ef95d39fa13b13",
     "record_index": 75,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1821,12 +3621,36 @@
         "categories": "{\"primary\":\"Retail > Food and Beverage Retail > Supermarket\",\"alternate\":[\"Retail > Discount Store\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f26ea944756ceb03f73abefbca4a32",
     "record_index": 76,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1845,12 +3669,36 @@
         "categories": "{\"primary\":\"key_and_locksmith\"}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f18606561587130300656616c838e9",
     "record_index": 77,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1869,12 +3717,36 @@
         "categories": "{\"primary\":\"Health and Medicine > Nutritionist\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 11,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f3950d1d5a6bae03a09c30bbb17406",
     "record_index": 78,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1893,12 +3765,36 @@
         "categories": "{\"primary\":\"car_wash\",\"alternate\":[\"gas_station\",\"automotive\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 10,
+        "alt_q": 10
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f11aa78c7ad0e5034e75b4b7abd882",
     "record_index": 79,
-    "label": "",
+    "label": 0,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1917,12 +3813,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Legal Service > Law Office\",\"alternate\":[\"Business and Professional Services > Financial Service\",\"Business and Professional Services > Legal Service\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 12,
+        "alt_q": 9
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": 1,
+        "base_q": 6,
+        "alt_q": 4
+      },
+      "base_score": 3,
+      "alt_score": 1
     }
   },
   {
     "id": "08f260a13399236b03992e39e7aca4b9",
     "record_index": 80,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1941,12 +3861,36 @@
         "categories": "{\"primary\":\"appliance_store\",\"alternate\":[\"hvac_services\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f1f1a4e530eca00354ca529f964738",
     "record_index": 81,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1965,12 +3909,36 @@
         "categories": "{\"primary\":\"Travel and Transportation > Lodging > Hotel\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 10,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f6505096d0c1b503af0fc23cd0d011",
     "record_index": 82,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -1989,12 +3957,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Office\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": -1,
+        "base_q": 9,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 4
     }
   },
   {
     "id": "08f1ea51035b162d0343203da2b4dfcd",
     "record_index": 83,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2013,12 +4005,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Bar\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 10
+      },
+      "addresses": {
+        "winner": -1,
+        "base_q": 10,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 4
     }
   },
   {
     "id": "08f42d9d6e29845403d6b6ed118b2c53",
     "record_index": 84,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2037,12 +4053,36 @@
         "categories": "{\"primary\":\"pharmaceutical_companies\",\"alternate\":[\"medical_center\",\"b2b_medical_support_services\",\"health_and_medical\",\"business_to_business\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 9
+      },
+      "categories": {
+        "winner": 1,
+        "base_q": 7,
+        "alt_q": 5
+      },
+      "base_score": 2,
+      "alt_score": 1
     }
   },
   {
     "id": "1970324842101934",
     "record_index": 85,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2061,12 +4101,36 @@
         "categories": "{\"primary\":\"shoe_store\",\"alternate\":[\"clothing_store\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f444e180261b4d032aaeb179c3c442",
     "record_index": 86,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2085,12 +4149,36 @@
         "categories": "{\"primary\":\"car_wash\",\"alternate\":[\"automotive\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f6511b20d0a8e3037c00308b98eef7",
     "record_index": 87,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2109,12 +4197,36 @@
         "categories": "{\"primary\":\"Retail > Computers and Electronics Retail > Mobile Phone Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 9
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "08f2f5a6db2de6ee03f97c6dd76ee950",
     "record_index": 88,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2133,12 +4245,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Health and Beauty Service\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 14,
+        "alt_q": 12
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "08f1959b8e6099a80376e30d9f0ffc74",
     "record_index": 89,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2157,12 +4293,36 @@
         "categories": "{\"primary\":\"wholesaler\",\"alternate\":[\"business_equipment_and_supply\",\"business_to_business\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 12,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 12,
+        "alt_q": 10
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 5
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "08f1fa5b010ab293030b6022cf9dd0f4",
     "record_index": 90,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2181,12 +4341,36 @@
         "categories": "{\"primary\":\"Retail > Construction Supplies Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 5
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2f5bd324367920389e650cbf19583",
     "record_index": 91,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2205,12 +4389,36 @@
         "categories": "{}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 14,
+        "alt_q": 10
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": -2,
+        "alt_q": 4
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f186c1017310dc032b2936bfc7cfe5",
     "record_index": 92,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2229,12 +4437,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Health and Beauty Service > Hair Salon\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "08f2d03c6dd16d6303924a43a7507eb1",
     "record_index": 93,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2253,12 +4485,36 @@
         "categories": "{\"primary\":\"Community and Government > Education\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 2,
+        "alt_q": 2
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f390ca05845b1e035f3debc9e06d88",
     "record_index": 94,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2277,12 +4533,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Bar > Pub\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 10,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f274d2ee0deca803fbeaa15840ec3d",
     "record_index": 95,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2301,12 +4581,36 @@
         "categories": "{\"primary\":\"Retail > Music Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f2aa87330ca7a903957473b2acce21",
     "record_index": 96,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2325,12 +4629,36 @@
         "categories": "{\"primary\":\"fast_food_restaurant\",\"alternate\":[\"pizza_restaurant\",\"food\",\"restaurant\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 11
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f1eb5ba816144903b0fcb227e14e49",
     "record_index": 97,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2349,12 +4677,36 @@
         "categories": "{\"primary\":\"Health and Medicine > Dentist\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 5
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2b983417951b10336b4afa2d10c16",
     "record_index": 98,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2373,12 +4725,36 @@
         "categories": "{\"primary\":\"tax_services\",\"alternate\":[\"tax_office\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 14,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2ab64dc861084031a5c3d4276da63",
     "record_index": 99,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2397,12 +4773,36 @@
         "categories": "{\"primary\":\"used_car_dealer\",\"alternate\":[\"automotive\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 12,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08fa91b462cced9b033b481c4d3cc79f",
     "record_index": 100,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2421,12 +4821,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Juice Bar\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": -1,
+        "base_q": 9,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 3
     }
   },
   {
     "id": "08f2aa6d8e0d0a450398f2b2725ab488",
     "record_index": 101,
-    "label": "",
+    "label": 0,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2445,12 +4869,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Financial Service\",\"alternate\":[\"Business and Professional Services > Legal Service\",\"Business and Professional Services > Business Service\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 1,
+        "base_q": 6,
+        "alt_q": 4
+      },
+      "base_score": 2,
+      "alt_score": 0
     }
   },
   {
     "id": "08fa82433524dc68030b79a2d60882ac",
     "record_index": 102,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2469,12 +4917,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Restaurant\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 14,
+        "alt_q": 12
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 3
     }
   },
   {
     "id": "08f1fb4084c42340038af719372c4e42",
     "record_index": 103,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2493,12 +4965,36 @@
         "categories": "{\"primary\":\"Landmarks and Outdoors > Garden\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 12,
+        "alt_q": 8
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "08f1fae52413460803d4a1d7b6ee7184",
     "record_index": 104,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2517,12 +5013,36 @@
         "categories": "{}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": -2,
+        "alt_q": 6
+      },
+      "base_score": 2,
+      "alt_score": 2
     }
   },
   {
     "id": "08f26c84401a416e03eb1dc0009a8062",
     "record_index": 105,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2541,12 +5061,36 @@
         "categories": "{\"primary\":\"Travel and Transportation > Fuel Station\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": -1,
+        "base_q": 10,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f262d8a6ba4b2c03985a80e46d0827",
     "record_index": 106,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2565,12 +5109,36 @@
         "categories": "{\"primary\":\"pet_store\",\"alternate\":[\"veterinarian\",\"pets\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2aaa843ab441a03c3a2b3b4cca9fd",
     "record_index": 107,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2589,12 +5157,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Home Improvement Service > Home Service\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 10
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 5
+      },
+      "base_score": 1,
+      "alt_score": 0
     }
   },
   {
     "id": "08f2b9aa6cd83dac03aaf49b2b35ae57",
     "record_index": 108,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2613,12 +5205,36 @@
         "categories": "{\"primary\":\"accountant\"}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 14,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f27430d0a8b980030095869e58c225",
     "record_index": 109,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2637,12 +5253,36 @@
         "categories": "{\"primary\":\"Community and Government > Government Building > Law Enforcement and Public Safety > Fire Station\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 10,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 3
     }
   },
   {
     "id": "2251799821514759",
     "record_index": 110,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2661,12 +5301,36 @@
         "categories": "{\"primary\":\"supermarket\",\"alternate\":[\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 0
     }
   },
   {
     "id": "08f396091b4f364003e4546b03107cd2",
     "record_index": 111,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2685,12 +5349,36 @@
         "categories": "{\"primary\":\"Retail > Video Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08fa87694d79878b03248275fa0bff04",
     "record_index": 112,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2709,12 +5397,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Bar\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 9
+      },
+      "addresses": {
+        "winner": -1,
+        "base_q": 9,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 4
     }
   },
   {
     "id": "08f1f14a8e7a0c63033e02e2112ebd12",
     "record_index": 113,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2733,12 +5445,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Bakery\",\"alternate\":[\"Dining and Drinking > Cafe, Coffee, and Tea House\",\"Dining and Drinking > Dessert Shop > Pastry Shop\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f6941324903ae4031455cf6893414b",
     "record_index": 114,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2757,12 +5493,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Cafe, Coffee, and Tea House > Bubble Tea Shop\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 9,
+        "alt_q": 10
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f1faec4358632303ba80ddd88dd1e3",
     "record_index": 115,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2781,12 +5541,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Health and Beauty Service > Tattoo Parlor\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "08f1e8828ac4a04b03e9df4bbc9c6e7f",
     "record_index": 116,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2805,12 +5589,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Food Court\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f481b4867658ec03b5f0816ebcd5d2",
     "record_index": 117,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2829,12 +5637,36 @@
         "categories": "{\"primary\":\"used_car_dealer\",\"alternate\":[\"automotive\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 12,
+        "alt_q": 9
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08fa726cadb6eb81033e248c10d59d86",
     "record_index": 118,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2853,12 +5685,36 @@
         "categories": "{\"primary\":\"medical_spa\",\"alternate\":[\"wellness_program\",\"spas\",\"beauty_and_spa\",\"health_and_medical\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2ab2d2c6d119603b5fa4d75021a0a",
     "record_index": 119,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2877,12 +5733,36 @@
         "categories": "{\"primary\":\"sports_bar\",\"alternate\":[\"bar\",\"pizza_restaurant\",\"sandwich_shop\",\"restaurant\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f260d84244933003336dab587f799b",
     "record_index": 120,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2901,12 +5781,36 @@
         "categories": "{\"primary\":\"party_supply\",\"alternate\":[\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2830d726819b2033d44933919d04c",
     "record_index": 121,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2925,12 +5829,36 @@
         "categories": "{\"primary\":\"Retail > Miscellaneous Store\",\"alternate\":[\"Retail > Hardware Store\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f26c864395d982032a1a8b90863392",
     "record_index": 122,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2949,12 +5877,36 @@
         "categories": "{\"primary\":\"private_school\",\"alternate\":[\"school\",\"education\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f60a259b84036a037914eb4b09ff55",
     "record_index": 123,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2973,12 +5925,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Food Court\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 9,
+        "alt_q": 8
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "1125899909241385",
     "record_index": 124,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -2997,12 +5973,36 @@
         "categories": "{\"primary\":\"key_and_locksmith\"}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 4
+      },
+      "base_score": 0,
+      "alt_score": 0
     }
   },
   {
     "id": "08f48eba494e2cd6031f3fc948616b0a",
     "record_index": 125,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3021,12 +6021,36 @@
         "categories": "{\"primary\":\"Community and Government > Education\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f4995b9cb4b0c803d12af5825ac267",
     "record_index": 126,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3045,12 +6069,36 @@
         "categories": "{\"primary\":\"Retail > Convenience Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": -1,
+        "base_q": 9,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 3
     }
   },
   {
     "id": "08f2a94cecc829980380eaf9470deb85",
     "record_index": 127,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3069,12 +6117,36 @@
         "categories": "{\"primary\":\"fast_food_restaurant\",\"alternate\":[\"sandwich_shop\",\"restaurant\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 11,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f1909aed2538c603ebfbd517330f80",
     "record_index": 128,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3093,12 +6165,36 @@
         "categories": "{\"primary\":\"automotive\"}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 14,
+        "alt_q": 12
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 4
+      },
+      "base_score": 1,
+      "alt_score": 0
     }
   },
   {
     "id": "08f1ea541825054a03e000f89601f94c",
     "record_index": 129,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3117,12 +6213,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Winery\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f1f13d06cdb4dd03c2287ba2cf48a4",
     "record_index": 130,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3141,12 +6261,36 @@
         "categories": "{\"primary\":\"Retail > Textiles Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 12,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 3
     }
   },
   {
     "id": "08f1fa112e4d965b03b45fbf4da05d10",
     "record_index": 131,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3165,12 +6309,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Insurance Agency\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 11,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 5
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2ab2c0298828b039141c3ac9fc73f",
     "record_index": 132,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3189,12 +6357,36 @@
         "categories": "{\"primary\":\"auto_detailing\",\"alternate\":[\"car_wash\",\"automotive\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f44c86a28c099b03d096082cdc5ced",
     "record_index": 133,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3213,12 +6405,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Financial Service\",\"alternate\":[\"Business and Professional Services > Legal Service\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f1f15b5155a02c03727c45a590f14b",
     "record_index": 134,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3237,12 +6453,36 @@
         "categories": "{\"primary\":\"Travel and Transportation > Transportation Service > Public Transportation > Bus Line\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 1,
+        "base_q": 5,
+        "alt_q": 0
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": -1,
+        "base_q": 11,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "08f28d0a5615611c037c782aba7e8a79",
     "record_index": 135,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3261,12 +6501,36 @@
         "categories": "{\"primary\":\"travel\"}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 3
     }
   },
   {
     "id": "08f1f1d48149303303581d063afa1b3a",
     "record_index": 136,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3285,12 +6549,36 @@
         "categories": "{\"primary\":\"fabric_store\",\"alternate\":[\"clothing_store\",\"arts_and_crafts\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 11,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2aa4d98923b4503b1be6672e9cf20",
     "record_index": 137,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3309,12 +6597,36 @@
         "categories": "{\"primary\":\"coffee_shop\",\"alternate\":[\"donuts\",\"restaurant\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f64a4a728c04f303683f7ce94ba32b",
     "record_index": 138,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3333,12 +6645,36 @@
         "categories": "{\"primary\":\"Retail > Automotive Retail > Car Dealership\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 2,
+        "alt_q": 2
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 4
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2f5a37589cc640397796dcada338b",
     "record_index": 139,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3357,12 +6693,36 @@
         "categories": "{\"primary\":\"Retail\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 2,
+        "alt_q": 2
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 14,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 1,
+        "base_q": 4,
+        "alt_q": 2
+      },
+      "base_score": 1,
+      "alt_score": 0
     }
   },
   {
     "id": "08f64a4a166366150347a65308f3c1c4",
     "record_index": 140,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3381,12 +6741,36 @@
         "categories": "{\"primary\":\"Community and Government > Organization > Non-Profit Organization\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 9
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 3
     }
   },
   {
     "id": "08f499da81376a8e035b83643df59654",
     "record_index": 141,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3405,12 +6789,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Automotive Service > Automotive Repair Shop\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f81839a689436d03f651a146968d82",
     "record_index": 142,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3429,12 +6837,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Bar > Hotel Bar\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": -1,
+        "base_q": 8,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 3
     }
   },
   {
     "id": "08f1f146cd8f4d8b034df7d18ab5f6fc",
     "record_index": 143,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3453,12 +6885,36 @@
         "categories": "{\"primary\":\"Community and Government > Education > Driving School\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "1125899909900384",
     "record_index": 144,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3477,12 +6933,36 @@
         "categories": "{\"primary\":\"courier_and_delivery_services\",\"alternate\":[\"printing_services\",\"shipping_center\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 0
     }
   },
   {
     "id": "08f44d070a20622d0317f7856d1512a3",
     "record_index": 145,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3501,12 +6981,36 @@
         "categories": "{\"primary\":\"nail_salon\",\"alternate\":[\"beauty_and_spa\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f260e2e21336f303eea73ec113cab7",
     "record_index": 146,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3525,12 +7029,36 @@
         "categories": "{\"primary\":\"Retail > Construction Supplies Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f1e037ac61a06603d8c3cb00ff9a6b",
     "record_index": 147,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3549,12 +7077,36 @@
         "categories": "{\"primary\":\"Retail > Cosmetics Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 1,
+        "base_q": 5,
+        "alt_q": 0
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f1f8c4c4d82518033f6e15b29260df",
     "record_index": 148,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3573,12 +7125,36 @@
         "categories": "{\"primary\":\"Travel and Transportation\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "08f48b3c6391176103e7bd65dac904c1",
     "record_index": 149,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3597,12 +7173,36 @@
         "categories": "{\"primary\":\"convenience_store\",\"alternate\":[\"discount_store\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 1,
+        "base_q": 6,
+        "alt_q": 4
+      },
+      "base_score": 1,
+      "alt_score": 2
     }
   },
   {
     "id": "08f1ea446ed882290325e618a0d79f7e",
     "record_index": 150,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3621,12 +7221,36 @@
         "categories": "{\"primary\":\"Retail > Print Store\",\"alternate\":[\"Business and Professional Services > Home Improvement Service > Home Service\",\"Retail > Furniture and Home Store\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 7
+      },
+      "base_score": 0,
+      "alt_score": 0
     }
   },
   {
     "id": "08f2690db4b4288203675416dd188148",
     "record_index": 151,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3645,12 +7269,36 @@
         "categories": "{\"primary\":\"Travel and Transportation > Lodging > Lodge\",\"alternate\":[\"Travel and Transportation > Lodging > Vacation Rental\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08fb91682e78eb6803a3b18055780dd1",
     "record_index": 152,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3669,12 +7317,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Restaurant > Fried Chicken Joint\",\"alternate\":[\"Dining and Drinking > Restaurant > Fast Food Restaurant\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f44d980616a50b03384bab50f545d3",
     "record_index": 153,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3693,12 +7365,36 @@
         "categories": "{\"primary\":\"Retail > Boutique\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 3
     }
   },
   {
     "id": "08f395639b45db4d037334ee65a252c9",
     "record_index": 154,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3717,12 +7413,36 @@
         "categories": "{\"primary\":\"resort\",\"alternate\":[\"hotel\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 10,
+        "alt_q": 10
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 11,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2aaab4d4c0d620325d61d2ce778c7",
     "record_index": 155,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3741,12 +7461,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Factory\",\"alternate\":[\"Business and Professional Services > Business Service\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 11
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08fa8100e86e6075038ad329fbd24a96",
     "record_index": 156,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3765,12 +7509,36 @@
         "categories": "{\"primary\":\"Retail > Arts and Crafts Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": -1,
+        "base_q": 10,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 3
     }
   },
   {
     "id": "08f446c24248389c03f8f8dbd8576f9f",
     "record_index": 157,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3789,12 +7557,36 @@
         "categories": "{\"primary\":\"appliance_store\",\"alternate\":[\"sewing_and_alterations\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 10,
+        "alt_q": 10
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08fbe184e32632a503fa980d1ab35e1a",
     "record_index": 158,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3813,12 +7605,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Home Improvement Service\",\"alternate\":[\"Business and Professional Services > Metals Supplier\",\"Retail > Furniture and Home Store > Housewares Store\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 12,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f26e859b15cc0a0323c755b218aeb7",
     "record_index": 159,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3837,12 +7653,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Health and Beauty Service > Hair Salon\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f274ca76c9c9810323067e2b9f2f53",
     "record_index": 160,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3861,12 +7701,36 @@
         "categories": "{\"primary\":\"salad_bar\",\"alternate\":[\"food\",\"restaurant\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f27484ea8aca450325727be1330b18",
     "record_index": 161,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3885,12 +7749,36 @@
         "categories": "{\"primary\":\"propane_supplier\"}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f2e6104152b2d4036ff2ede18ca76b",
     "record_index": 162,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3909,12 +7797,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Restaurant > Asian Restaurant > Japanese Restaurant\",\"alternate\":[\"Dining and Drinking > Restaurant > Asian Restaurant > Japanese Restaurant > Sushi Restaurant\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 14,
+        "alt_q": 12
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f1f188488e1ca603e40f22bf79c53d",
     "record_index": 163,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3933,12 +7845,36 @@
         "categories": "{\"primary\":\"physical_therapy\",\"alternate\":[\"health_and_medical\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f8c100e5135acc0320b9849219dda3",
     "record_index": 164,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3957,12 +7893,36 @@
         "categories": "{\"primary\":\"Arts and Entertainment > Arcade\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 0,
+        "alt_q": 0
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 7
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "281474977374045",
     "record_index": 165,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -3981,12 +7941,36 @@
         "categories": "{\"primary\":\"battery_store\",\"alternate\":[\"auto_parts_and_supply_store\",\"automotive\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 11,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 7
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2659ae6d6d722036b0a17392a19e5",
     "record_index": 166,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4005,12 +7989,36 @@
         "categories": "{\"primary\":\"sandwich_shop\",\"alternate\":[\"food\",\"restaurant\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 12,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f26eec3634b47603f6d23fb1b12603",
     "record_index": 167,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4029,12 +8037,36 @@
         "categories": "{\"primary\":\"business_to_business\"}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f2814b413328ce033257fc7c3fa188",
     "record_index": 168,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4053,12 +8085,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Financial Service > Banking and Finance > ATM\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f1f99c527b17940327753501f78574",
     "record_index": 169,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4077,12 +8133,36 @@
         "categories": "{\"primary\":\"gift_shop\",\"alternate\":[\"furniture_manufacturers\",\"jewelry_store\",\"photography_store_and_services\",\"souvenir_shop\",\"b2b_furniture_and_housewares\",\"printing_equipment_and_supply\",\"jewelry_manufacturer\",\"business_to_business\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 1,
+        "base_q": 7,
+        "alt_q": 4
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f274b74c58d40503b8f3220c937c9e",
     "record_index": 170,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4101,12 +8181,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Cafe, Coffee, and Tea House > Coffee Shop\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 12,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 3
     }
   },
   {
     "id": "08f26cd0e6b6030903e056a5a4151b08",
     "record_index": 171,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4125,12 +8229,36 @@
         "categories": "{\"primary\":\"gas_station\",\"alternate\":[\"automotive\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f1f9b5987326f00333fba28cfa8efa",
     "record_index": 172,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4149,12 +8277,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Real Estate Service > Real Estate Agency\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 12,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f2a306408ceb9e0359e46ac00d27f6",
     "record_index": 173,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4173,12 +8325,36 @@
         "categories": "{\"primary\":\"massage\",\"alternate\":[\"massage_therapy\",\"wellness_program\",\"spas\",\"beauty_and_spa\",\"health_and_medical\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f19591706c64da03129d164b8f37ea",
     "record_index": 174,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4197,12 +8373,36 @@
         "categories": "{\"primary\":\"coffee_shop\",\"alternate\":[\"cafe\",\"restaurant\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 2,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2f5aade09615303fd1f4997205c68",
     "record_index": 175,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4221,12 +8421,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Restaurant > Asian Restaurant > Chinese Restaurant\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 14,
+        "alt_q": 12
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 2,
+      "alt_score": 2
     }
   },
   {
     "id": "08f2a30c5954d37503e2262ea4b83745",
     "record_index": 176,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4245,12 +8469,36 @@
         "categories": "{\"primary\":\"online_shop\",\"alternate\":[\"pharmacy\",\"drugstore\",\"corporate_office\",\"private_establishments_and_corporates\",\"retail\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f19556407113a20388e06cb7d15a6f",
     "record_index": 177,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4269,12 +8517,36 @@
         "categories": "{\"primary\":\"chiropractor\",\"alternate\":[\"doctor\",\"medical_center\",\"health_and_medical\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": -1,
+        "base_q": 12,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f1e8395978616d03959477b773f38e",
     "record_index": 178,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4293,12 +8565,36 @@
         "categories": "{\"primary\":\"Business and Professional Services\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f1fa5290a1bb24032aa1147c2c2434",
     "record_index": 179,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4317,12 +8613,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Financial Service\",\"alternate\":[\"Business and Professional Services > Legal Service\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 4
+      },
+      "base_score": 0,
+      "alt_score": 0
     }
   },
   {
     "id": "08f29a5498484496037471212e5b1e6b",
     "record_index": 180,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4341,12 +8661,36 @@
         "categories": "{\"primary\":\"rental_services\",\"alternate\":[\"apartments\",\"condominium\",\"real_estate_service\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f29a0a8c159a520338e471dcd80591",
     "record_index": 181,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4365,12 +8709,36 @@
         "categories": "{\"primary\":\"art_museum\",\"alternate\":[\"science_museum\",\"history_museum\",\"state_museum\",\"museum\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2a957a366d3a003dfb3be34505720",
     "record_index": 182,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4389,12 +8757,36 @@
         "categories": "{\"primary\":\"resort\",\"alternate\":[\"hotel\",\"inn\",\"motel\",\"travel\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 11,
+        "alt_q": 10
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f4440d8b89c95803ef5bd3cc80eac4",
     "record_index": 183,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4413,12 +8805,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Restaurant > Mexican Restaurant > Burrito Restaurant\",\"alternate\":[\"Dining and Drinking > Restaurant > Mexican Restaurant\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f29a41a556ca9a030dccaefe2a687b",
     "record_index": 184,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4437,12 +8853,36 @@
         "categories": "{\"primary\":\"taco_restaurant\",\"alternate\":[\"burger_restaurant\",\"fast_food_restaurant\",\"mexican_restaurant\",\"sandwich_shop\",\"restaurant\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 10,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f1e24aa5c50340038893d986c3d75f",
     "record_index": 185,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4461,12 +8901,36 @@
         "categories": "{\"primary\":\"Health and Medicine > Physician > Doctor's Office\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": -1,
+        "base_q": 10,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 3
     }
   },
   {
     "id": "08f1fb5819858c0e03d5420cb6ec5b99",
     "record_index": 186,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4485,12 +8949,36 @@
         "categories": "{\"primary\":\"Retail\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 12,
+        "alt_q": 10
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 4
+      },
+      "base_score": 1,
+      "alt_score": 1
     }
   },
   {
     "id": "08f1e15b0b2cbc5303c99047c56c8812",
     "record_index": 187,
-    "label": "",
+    "label": 0,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4509,12 +8997,36 @@
         "categories": "{\"primary\":\"Retail > Hardware Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": 1,
+        "base_q": 5,
+        "alt_q": 2
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 1,
+        "base_q": 4,
+        "alt_q": 2
+      },
+      "base_score": 3,
+      "alt_score": 0
     }
   },
   {
     "id": "08f1e1251b0a66c003a195f0bf6b4bc9",
     "record_index": 188,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4533,12 +9045,36 @@
         "categories": "{\"primary\":\"Business and Professional Services > Office\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2a120ca2ae36c03063f6dab55a04b",
     "record_index": 189,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4557,12 +9093,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Restaurant > Salad Restaurant\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 5
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f1ecba4972b364039b1dc77b0a0124",
     "record_index": 190,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4581,12 +9141,36 @@
         "categories": "{\"primary\":\"Dining and Drinking > Restaurant > Kebab Restaurant\",\"alternate\":[\"Dining and Drinking > Dessert Shop\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": -1,
+        "base_q": 9,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f44a908841cd9003dd047b9521fe51",
     "record_index": 191,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4605,12 +9189,36 @@
         "categories": "{\"primary\":\"Retail > Bookstore\",\"alternate\":[\"Dining and Drinking > Cafe, Coffee, and Tea House > Coffee Shop\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 12,
+        "alt_q": 15
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f298901d34a6ac033a02d493f36726",
     "record_index": 192,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4629,12 +9237,36 @@
         "categories": "{\"primary\":\"assisted_living_facility\",\"alternate\":[\"health_and_medical\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f49824998a425003760394c03c89c5",
     "record_index": 193,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4653,12 +9285,36 @@
         "categories": "{\"primary\":\"Sports and Recreation > Water Sports > Swimming > Swimming Pool\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 13,
+        "alt_q": 11
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 1,
+      "alt_score": 3
     }
   },
   {
     "id": "08f2ab174c13156b0390efabde69bef7",
     "record_index": 194,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4677,12 +9333,36 @@
         "categories": "{\"primary\":\"bank_credit_union\",\"alternate\":[\"atms\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 15,
+        "alt_q": 13
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 5,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f2ab315180ab0e03d4e77b28c4d097",
     "record_index": 195,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4701,12 +9381,36 @@
         "categories": "{\"primary\":\"bar\",\"alternate\":[\"asian_fusion_restaurant\",\"pan_asian_restaurant\",\"steakhouse\",\"sushi_restaurant\",\"restaurant\"]}",
         "confidence": 0.77
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": -1,
+        "base_q": 0,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 7,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   },
   {
     "id": "08f2f5ada102b2c803620ac981fae8cd",
     "record_index": 196,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4725,12 +9429,36 @@
         "categories": "{\"primary\":\"Retail > Convenience Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 1,
+        "base_q": 15,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 1,
+        "base_q": 14,
+        "alt_q": 10
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 2,
+      "alt_score": 2
     }
   },
   {
     "id": "08f1e8081c64bb810386cf12e531f92f",
     "record_index": 197,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4749,12 +9477,36 @@
         "categories": "{\"primary\":\"Travel and Transportation > Travel Agency\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 2,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 13
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 4,
+        "alt_q": 5
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f26c189dc58a150303c43c9fd939fa",
     "record_index": 198,
-    "label": "",
+    "label": 2,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4773,12 +9525,36 @@
         "categories": "{\"primary\":\"Retail > Construction Supplies Store\",\"alternate\":[\"Landmarks and Outdoors > Tree\",\"Business and Professional Services > Home Improvement Service > Home Service\"]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": 0,
+        "base_q": 6,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 1
     }
   },
   {
     "id": "08f29ab9838a887003228c3395264b47",
     "record_index": 199,
-    "label": "",
+    "label": 1,
     "method": "manual_review (manual)",
     "data": {
       "current": {
@@ -4797,6 +9573,30 @@
         "categories": "{\"primary\":\"Retail > Miscellaneous Store\",\"alternate\":[]}",
         "confidence": 1.0
       }
+    },
+    "scores": {
+      "phones": {
+        "winner": -1,
+        "base_q": 5,
+        "alt_q": 7
+      },
+      "websites": {
+        "winner": 0,
+        "base_q": 12,
+        "alt_q": 12
+      },
+      "addresses": {
+        "winner": 0,
+        "base_q": 13,
+        "alt_q": 14
+      },
+      "categories": {
+        "winner": -1,
+        "base_q": 4,
+        "alt_q": 6
+      },
+      "base_score": 0,
+      "alt_score": 2
     }
   }
 ]

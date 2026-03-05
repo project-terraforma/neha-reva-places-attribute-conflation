@@ -1,9 +1,9 @@
 """
-Row adapter: convert raw parquet row to canonical format for the agent.
+# AGENTIC APPROACH (necessary): Parquet row → canonical {id, base_id, base, other}.
 
 Transforms the flat parquet schema (base_names, names, base_phones, phones, etc.)
 into a nested structure {id, base_id, base: {...}, other: {...}} that the
-evidence-gathering step expects.
+unified flow expects.
 """
 
 from .schema_config import SCHEMA, CANONICAL_ATTRS

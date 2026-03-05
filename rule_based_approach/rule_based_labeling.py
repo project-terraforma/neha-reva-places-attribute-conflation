@@ -17,11 +17,10 @@ See rule_based_approach/README.md for a description of the rules used.
 
 import ast
 import json
+import math
 import re
 from pathlib import Path
 from urllib.parse import urlparse
-
-import pandas as pd
 
 PROJECT_ROOT = Path(__file__).parent.parent
 # [CHANGE: use JSON path instead of CSV - undo to revert]
@@ -39,7 +38,7 @@ def _to_obj(x):
         return None
     if isinstance(x, (list, dict)):
         return x
-    if isinstance(x, float) and pd.isna(x):
+    if isinstance(x, float) and (math.isnan(x) or str(x) == "nan"):
         return None
     if isinstance(x, str):
         s = x.strip()
@@ -452,6 +451,26 @@ def score_row(row):
     }
 
 
+def _flatten_for_scoring(rec):
+    """
+    Flatten golden_dataset record (data.base, data.current) to flat keys
+    expected by score_row (base_phones, phones, etc.).
+    """
+    data = rec.get("data") or {}
+    base = data.get("base") or {}
+    current = data.get("current") or {}
+    return {
+        "base_phones": base.get("phones"),
+        "phones": current.get("phones"),
+        "base_websites": base.get("websites"),
+        "websites": current.get("websites"),
+        "base_addresses": base.get("addresses"),
+        "addresses": current.get("addresses"),
+        "base_categories": base.get("categories"),
+        "categories": current.get("categories"),
+    }
+
+
 def main():
     # [CHANGE: read JSON instead of CSV - undo to revert]
     with open(GOLDEN_JSON_PATH, "r", encoding="utf-8") as f:
@@ -459,8 +478,9 @@ def main():
 
     # Apply scoring to each record and update scores + label
     for rec in records:
-        # score_row expects dict with base_phones, phones, etc.
-        result = score_row(rec)
+        # Flatten nested data.base / data.current to flat keys for score_row
+        flat = _flatten_for_scoring(rec)
+        result = score_row(flat)
         # [CHANGE: populate scores section with attribute scores - undo to remove]
         rec["scores"] = {
             "phones": {

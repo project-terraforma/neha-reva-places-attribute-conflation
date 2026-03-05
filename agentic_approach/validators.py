@@ -2,8 +2,8 @@
 Phone and website validation. Uses reference validators when available,
 with fallbacks for phonenumbers (libphonenumber) and requests-based website checks.
 
-Used by evidence.py to validate phone numbers extracted from web pages and to
-verify that website URLs are reachable before fetching.
+Used by evidence utilities (extract_fields) to validate phone numbers extracted
+from web pages and to verify that website URLs are reachable before fetching.
 """
 
 import re

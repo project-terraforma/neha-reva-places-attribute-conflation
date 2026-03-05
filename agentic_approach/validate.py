@@ -3,7 +3,7 @@
 Step 1 of the agentic pipeline: load parquet, adapt rows to canonical format, write JSONL.
 
 This script transforms project_a_samples.parquet into rows_adapted.jsonl, which
-is the input for Step 2 (evidence gathering). Each output row has {id, base_id, base, other}.
+is the input for the unified flow. Each output row has {id, base_id, base, other}.
 
 Usage:
   python -m agentic_approach.validate --input data/project_a_samples.parquet --limit 20 --out out/rows_preview.jsonl
