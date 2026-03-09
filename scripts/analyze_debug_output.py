@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Analyze debug output: compare our labels vs golden labels for accuracy.
+Analyze debug output: compare our labels vs golden labels for accuracy and F1.
 
 Run standalone: python scripts/analyze_debug_output.py [--debug PATH] [--golden PATH]
 Also invoked by flow --debug.
@@ -14,8 +14,36 @@ DEBUG_DEFAULT = PROJECT / "out/agentic_labels_debug.jsonl"
 GOLDEN_DEFAULT = PROJECT / "analysis/inspection/golden/golden_dataset.json"
 
 
+def _f1_score(y_true: list[int], y_pred: list[int], labels: tuple[int, ...] = (0, 1, 2)) -> tuple[float, float]:
+    """
+    Compute macro and weighted F1 for multiclass. Returns (macro_f1, weighted_f1).
+    """
+    n = len(y_true)
+    if n == 0:
+        return 0.0, 0.0
+    f1_per_class = []
+    support_per_class = []
+    for k in labels:
+        tp = sum(1 for t, p in zip(y_true, y_pred) if t == k and p == k)
+        fp = sum(1 for t, p in zip(y_true, y_pred) if p == k and t != k)
+        fn = sum(1 for t, p in zip(y_true, y_pred) if t == k and p != k)
+        support = tp + fn
+        support_per_class.append(support)
+        precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+        recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+        f1 = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0.0
+        f1_per_class.append(f1)
+    macro_f1 = sum(f1_per_class) / len(labels) if labels else 0.0
+    total_support = sum(support_per_class)
+    weighted_f1 = (
+        sum(f1 * s for f1, s in zip(f1_per_class, support_per_class)) / total_support
+        if total_support > 0 else 0.0
+    )
+    return macro_f1, weighted_f1
+
+
 def run_analysis(debug_path: Path, golden_path: Path) -> None:
-    """Print accuracy analysis. Used by flow --debug and when run standalone."""
+    """Print accuracy and F1. Used by flow --debug and when run standalone."""
     if not debug_path.exists():
         print(f"Debug file not found: {debug_path}")
         return
@@ -29,34 +57,32 @@ def run_analysis(debug_path: Path, golden_path: Path) -> None:
     with open(golden_path, "r", encoding="utf-8") as f:
         golden = {r["id"]: r for r in json.load(f)}
 
-    print("=" * 80)
-    print("DEBUG OUTPUT ANALYSIS - Accuracy vs Golden Labels")
-    print("=" * 80)
-    matches = 0
-    for i, row in enumerate(rows):
+    y_true = []
+    y_pred = []
+    for row in rows:
         rid = row.get("id", "")
         g = golden.get(rid, {})
         golden_label = g.get("label")
         our_label = row.get("label")
-        match = "✓" if our_label == golden_label else "✗"
-        if our_label == golden_label:
-            matches += 1
-        print(f"\n--- Row {i+1}: {rid[:16]}... ---")
-        print(f"  Our label: {our_label} (0=base, 1=alt, 2=abstain)")
-        print(f"  Golden label: {golden_label}")
-        print(f"  Match: {match}")
-        print(f"  base_score={row.get('base_score')} alt_score={row.get('alt_score')}")
-        print(f"  attr_winners: {row.get('attr_winners')}")
-        dbg = row.get("debug", {})
-        if dbg:
-            print(f"  website_reason: {dbg.get('website_reason')}")
-            print(f"  phones_reason: {dbg.get('phones_reason')}")
-            print(f"  address_reason: {dbg.get('address_reason')}")
-            print(f"  category_reason: {dbg.get('category_reason')}")
-            print(f"  label_reason: {dbg.get('label_reason')}")
-    print("\n" + "=" * 80)
-    print(f"Accuracy: {matches}/{len(rows)} = {100*matches/len(rows):.1f}%")
-    print("=" * 80)
+        if golden_label is not None:
+            y_true.append(int(golden_label))
+            y_pred.append(int(our_label) if our_label is not None else 2)
+
+    if not y_true:
+        print("Accuracy: No annotated golden labels found. Fill in label in golden_dataset.json.")
+        return
+
+    matches = sum(1 for t, p in zip(y_true, y_pred) if t == p)
+    accuracy = matches / len(y_true)
+    macro_f1, weighted_f1 = _f1_score(y_true, y_pred)
+
+    print("=" * 50)
+    print("Accuracy & F1 vs Golden Labels")
+    print("=" * 50)
+    print(f"Accuracy: {matches}/{len(y_true)} = {100*accuracy:.1f}%")
+    print(f"Macro F1: {macro_f1:.4f}")
+    print(f"Weighted F1: {weighted_f1:.4f}")
+    print("=" * 50)
 
 
 def main():

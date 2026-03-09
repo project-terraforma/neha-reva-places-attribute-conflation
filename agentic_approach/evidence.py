@@ -81,6 +81,18 @@ def _list_strs(val: Any) -> list[str]:
     return [s] if s else []
 
 
+def _alternate_categories(val: Any) -> list[str]:
+    """Get alternate category strings from a category value (dict with 'alternate' key)."""
+    if val is None:
+        return []
+    parsed = _parse_json_val(val)
+    if isinstance(parsed, dict):
+        alt = parsed.get("alternate")
+        if isinstance(alt, list):
+            return [str(x).strip() for x in alt if str(x).strip()]
+    return []
+
+
 def _region_from_address(addr: Any) -> str:
     """
     Infer country/region code from address text for phone parsing.

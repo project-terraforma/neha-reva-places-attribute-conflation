@@ -23,9 +23,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 PROJECT_ROOT = Path(__file__).parent.parent
-# [CHANGE: use JSON path instead of CSV - undo to revert]
 GOLDEN_JSON_PATH = PROJECT_ROOT / "analysis" / "inspection" / "golden" / "golden_dataset.json"
-GOLDEN_CSV_PATH = PROJECT_ROOT / "analysis" / "inspection" / "golden" / "golden_dataset.csv"  # kept for reference
 
 
 # ----------------------------

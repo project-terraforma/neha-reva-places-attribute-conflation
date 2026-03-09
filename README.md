@@ -32,7 +32,8 @@ This repository works with **pre-matched pairs** of place records. Each row repr
 neha-reva-places-attribute-conflation/
 ├── data/
 │   ├── project_a_samples.parquet   # Main sample (~2,000 pre-matched pairs)
-│   ├── rows_adapted.jsonl          # Adapted rows (JSONL) for agentic flow
+│   ├── rows_adapted.jsonl          # Adapted rows (JSONL) from parquet
+│   ├── agentic_input.jsonl         # Adapted rows from golden (golden_to_adapted.py)
 │   └── sampledata.parquet          # Additional sample data
 ├── out/
 │   ├── agentic_labels.jsonl        # Minimal output (label, scores, sources)
@@ -41,7 +42,7 @@ neha-reva-places-attribute-conflation/
 ├── agentic_approach/               # Agentic pipeline (validate, flow)
 ├── analysis/
 │   └── inspection/
-│       ├── golden/                 # Golden labeling dataset (CSV, 200 records)
+│       ├── golden/                 # Golden dataset (JSON, create via create_golden_dataset.py)
 │       ├── side_by_side/            # Main side-by-side sample
 │       └── attributes/             # Per-attribute pair samples
 ├── scripts/
@@ -90,17 +91,34 @@ python scripts/attributes/inspect_websites.py     # base_websites vs websites
 
 Each script prints stats (coverage, comparable count, disagreement rate), value examples, disagreement examples, and exports to `analysis/inspection/attributes/{attr}_pair_sample.json`.
 
-**Golden dataset (CSV):**
+**Golden dataset (manual annotation):**
+
+Create a golden dataset for evaluation by annotating `golden_dataset.json`:
 
 ```bash
-python scripts/create_golden_dataset.py
+# Step 1: Create template from parquet (entry info + empty annotation fields)
+python scripts/create_golden_dataset.py --limit 200   # or omit --limit for all rows
+
+# Step 2: Manually fill in golden_dataset.json: label, base_score, alt_score, scores.*.winner
+#   label: 0=base, 1=alt, 2=abstain
+#   scores.*.winner: 1=base, -1=alt, 0=both/neither
+
+# Step 3: Convert JSON → adapted JSONL (for flow input)
+python scripts/golden_to_adapted.py --limit 200
+
+# Step 4: Run agentic flow on golden data
+python -m agentic_approach.flow --golden --out out/agentic_labels.jsonl
 ```
 
-Creates `analysis/inspection/golden/golden_labeling_sample.csv` with 200 records and blank `label_*` / `notes_*` columns for manual review.
+Or with debug and accuracy analysis:
+
+```bash
+python -m agentic_approach.flow --golden --debug
+```
 
 **Output layout:**
 
-- `analysis/inspection/golden/` — golden labeling dataset (CSV)
+- `analysis/inspection/golden/` — golden dataset (JSON, manually annotated)
 - `analysis/inspection/side_by_side/` — main side-by-side sample
 - `analysis/inspection/attributes/` — per-attribute pair samples (JSON only)
 
@@ -133,13 +151,14 @@ python -m agentic_approach.flow --input data/rows_adapted.jsonl --debug
 **Flow per row:**
 
 1. Test website accessibility for base and alt
-2. If one works → point to that source; if both → compare names (prefer more info), select website that correlates
-3. If neither works → escalate to online search (DuckDuckGo)
-4. Fetch website content, compare with base/alt to determine accuracy
-5. Use LLM to aggregate keywords and pick better category/description
-6. If both same → select base
+2. Validate fetched content refers to the business by name; only award website points when validated
+3. If one validates → point to that source; if both → both get points (name is NOT a tiebreaker)
+4. If neither works → escalate to online search (DuckDuckGo)
+5. Fetch website content, compare with base/alt to determine accuracy
+6. Use LLM to aggregate keywords and pick better category/description
+7. If both same → select base
 
-**Phone comparison:** With/without area code; NOT for leading 0s.
+**Phone comparison:** Points awarded when a source's phone matches the website; with/without area code; NOT for leading 0s.
 
 **Options:** `--no-llm` to disable LLM, `--limit N` for testing, `--delay` for fetch spacing, `--debug` for full debug output and analysis.
 

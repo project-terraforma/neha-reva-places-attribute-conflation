@@ -9,8 +9,7 @@
       "website": "[\"https://www.goinpostaljacksonville.com/\"]",
       "category": "{\"primary\":\"vehicle_shipping\",\"alternate\":[\"courier_and_delivery_services\",\"mailbox_center\",\"shipping_center\",\"post_office\",\"automotive\"]}",
       "brand": "{\"names\":{}}",
-      "socials": null,
-      "email": null
+      "confidence": 0.77
     },
     "other": {
       "name": "{\"primary\":\"Goin' Postal Jacksonville\"}",
@@ -18,24 +17,51 @@
       "phones": "[\"+19049989600\"]",
       "website": "[\"http://www.goinpostaljacksonville.com/\"]",
       "category": "{\"primary\":\"shipping_center\",\"alternate\":[\"freight_and_cargo_service\",\"post_office\"]}",
-      "brand": null,
       "socials": "[\"https://www.facebook.com/463273470392736\"]",
-      "email": null
+      "confidence": 0.9962614185921548
     },
-    "label": 2,
-    "base_score": 4,
+    "label": 0,
+    "base_score": 5,
     "alt_score": 4,
     "attr_winners": {
       "name": 2,
       "phones": 2,
       "website": 2,
       "address": 2,
-      "category": 0
+      "category": 1
     },
     "evidence_used": true,
     "row_confidence": 0.6,
     "base_website_accessible": true,
     "alt_website_accessible": true,
+    "llm_aggregated": {
+      "category": "shipping_center",
+      "alternate_categories": [
+        "mailbox_center",
+        "post_office",
+        "courier",
+        "packaging",
+        "freight",
+        "document_shredding",
+        "notary_public",
+        "fingerprinting_service",
+        "mailing",
+        "virtual_mailbox_service"
+      ],
+      "description": "Goin' Postal Jacksonville is a shipping center offering services for packing, shipping, and mailing through various carriers including UPS, FedEx, and DHL, as well as providing document shredding, fingerprinting, and notary services.",
+      "keywords": [
+        "shipping",
+        "mail",
+        "packaging",
+        "mailing",
+        "fingerprinting",
+        "notary",
+        "document_shredding",
+        "freight",
+        "virtual_mailbox",
+        "physical_mailbox"
+      ]
+    },
     "debug": {
       "name_reason": "equivalent",
       "step1_accessibility": {
@@ -50,30 +76,33 @@
         "alt_accessible": true,
         "alt_working_url": "https://www.goinpostaljacksonville.com/"
       },
-      "name_comparison": {
-        "base_name": "Goin' Postal Jacksonville",
-        "alt_name": "Goin' Postal Jacksonville",
-        "mostly_match": true,
-        "more_info": 0
+      "step1_relevance": {
+        "base_relevant": true,
+        "alt_relevant": true
       },
-      "website_reason": "both_accessible_name_tie_both",
+      "website_reason": "both_valid_relevant",
       "category_llm_diagnostic": {
         "use_llm": true,
         "html_snippets_count": 1,
         "aggregate_available": true,
         "llm_called": true,
-        "llm_result": false
+        "llm_result": true
       },
-      "category_reason": "llm_returned_none",
+      "category_reason": "llm_prefers_base",
       "category_winner_debug": {
         "base_category": "vehicle_shipping",
         "alt_category": "shipping_center",
-        "decision": "abstain",
-        "reason": "llm_returned_none_check_token_or_api"
+        "llm_aggregated": "shipping_center",
+        "decision": "base",
+        "reason": "llm_prefers_base"
       },
-      "phones_reason": "equivalent",
+      "phones_reason": "both_match_website",
+      "website_phones": [
+        "904.998.9600",
+        "904.253.3492"
+      ],
       "address_reason": "equivalent",
-      "label_reason": "tie_abstain",
+      "label_reason": "base_slightly_better",
       "extracted_evidence": {
         "https://www.goinpostaljacksonville.com/": {
           "name": [
@@ -108,8 +137,7 @@
       "website": "[\"http://valleytransca.com/\"]",
       "category": "{\"primary\":\"transmission_repair\",\"alternate\":[\"automotive\"]}",
       "brand": "{\"names\":{}}",
-      "socials": null,
-      "email": null
+      "confidence": 0.77
     },
     "other": {
       "name": "{\"primary\":\"Valley Transmission\"}",
@@ -117,24 +145,55 @@
       "phones": "[\"+16194474353\"]",
       "website": "[\"http://valleytransca.com/\"]",
       "category": "{\"primary\":\"automotive_repair\",\"alternate\":[\"automotive\",\"professional_services\"]}",
-      "brand": null,
       "socials": "[\"https://www.facebook.com/107150256087765\"]",
-      "email": null
+      "confidence": 0.9962614185921548
     },
-    "label": 2,
-    "base_score": 4,
+    "label": 0,
+    "base_score": 5,
     "alt_score": 4,
     "attr_winners": {
       "name": 2,
       "phones": 2,
       "website": 2,
       "address": 2,
-      "category": 0
+      "category": 1
     },
     "evidence_used": true,
     "row_confidence": 0.6,
     "base_website_accessible": true,
     "alt_website_accessible": true,
+    "llm_aggregated": {
+      "category": "automotive_repair",
+      "alternate_categories": [
+        "mechanical_services",
+        "transmission_specialist",
+        "vehicle_services",
+        "auto_maintenance",
+        "mechanic_shop",
+        "car_repair",
+        "mechanics",
+        "transmission_rebuild",
+        "transmission_service",
+        "automotive_service",
+        "mechanical_repair",
+        "vehicle_repair",
+        "transmission_repair",
+        "auto_repair_shop"
+      ],
+      "description": "Valley Transmission is an automotive repair shop specializing in transmission repair, service, and rebuilds for various vehicle makes and models in El Cajon, CA, and the surrounding San Diego County area.",
+      "keywords": [
+        "transmission",
+        "repair",
+        "service",
+        "rebuild",
+        "automotive",
+        "mechanical",
+        "vehicle",
+        "El_Cajon",
+        "San_Diego_County",
+        "specialized"
+      ]
+    },
     "debug": {
       "name_reason": "equivalent",
       "step1_accessibility": {
@@ -149,30 +208,33 @@
         "alt_accessible": true,
         "alt_working_url": "https://valleytransca.com/"
       },
-      "name_comparison": {
-        "base_name": "Valley Transmission",
-        "alt_name": "Valley Transmission",
-        "mostly_match": true,
-        "more_info": 0
+      "step1_relevance": {
+        "base_relevant": true,
+        "alt_relevant": true
       },
-      "website_reason": "both_accessible_name_tie_both",
+      "website_reason": "both_valid_relevant",
       "category_llm_diagnostic": {
         "use_llm": true,
         "html_snippets_count": 1,
         "aggregate_available": true,
         "llm_called": true,
-        "llm_result": false
+        "llm_result": true
       },
-      "category_reason": "llm_returned_none",
+      "category_reason": "llm_prefers_base",
       "category_winner_debug": {
         "base_category": "transmission_repair",
         "alt_category": "automotive_repair",
-        "decision": "abstain",
-        "reason": "llm_returned_none_check_token_or_api"
+        "llm_aggregated": "automotive_repair",
+        "decision": "base",
+        "reason": "llm_prefers_base"
       },
-      "phones_reason": "equivalent",
+      "phones_reason": "both_match_website",
+      "website_phones": [
+        "021 (619) 447-4353",
+        "(619) 447-4353"
+      ],
       "address_reason": "equivalent",
-      "label_reason": "tie_abstain",
+      "label_reason": "base_slightly_better",
       "extracted_evidence": {
         "https://valleytransca.com/": {
           "name": [
@@ -206,8 +268,7 @@
       "website": "[\"https://nelspruitmazda.co.za/\"]",
       "category": "{\"primary\":\"used_car_dealer\",\"alternate\":[\"automotive\"]}",
       "brand": "{\"names\":{}}",
-      "socials": null,
-      "email": null
+      "confidence": 0.77
     },
     "other": {
       "name": "{\"primary\":\"Mazda Nelspruit\"}",
@@ -215,24 +276,55 @@
       "phones": "[\"+27137573800\"]",
       "website": "[\"http://bit.ly/NelspruitMazda\"]",
       "category": "{\"primary\":\"car_dealer\",\"alternate\":[\"automotive\",\"automotive_dealer\"]}",
-      "brand": null,
       "socials": "[\"https://www.facebook.com/113070635372645\"]",
-      "email": null
+      "confidence": 0.997898979043525
     },
     "label": 0,
-    "base_score": 3,
+    "base_score": 4,
     "alt_score": 2,
     "attr_winners": {
       "name": 2,
       "phones": 1,
       "website": 2,
       "address": 0,
-      "category": 0
+      "category": 1
     },
     "evidence_used": true,
     "row_confidence": 0.6,
     "base_website_accessible": true,
     "alt_website_accessible": true,
+    "llm_aggregated": {
+      "category": "automotive_repair",
+      "alternate_categories": [
+        "car_dealer",
+        "mazda_dealer",
+        "vehicle_sales",
+        "service_center",
+        "parts_supplier",
+        "finance_company",
+        "pre-owned_cars",
+        "car_services",
+        "customer_service",
+        "automotive_services",
+        "vehicle_warranty",
+        "automotive_parts",
+        "automotive_financing",
+        "automotive_marketing"
+      ],
+      "description": "Mazda Nelspruit is a dedicated Mazda dealership offering a range of services including car sales, pre-owned cars, financing, parts, and services.",
+      "keywords": [
+        "mazda",
+        "car_sales",
+        "pre-owned_cars",
+        "automotive_services",
+        "vehicle_warranty",
+        "finance",
+        "parts",
+        "services",
+        "customer_service",
+        "automotive_repair"
+      ]
+    },
     "debug": {
       "name_reason": "equivalent",
       "step1_accessibility": {
@@ -247,31 +339,32 @@
         "alt_accessible": true,
         "alt_working_url": "https://nelspruitmazda.co.za/"
       },
-      "name_comparison": {
-        "base_name": "Mazda Nelspruit",
-        "alt_name": "Mazda Nelspruit",
-        "mostly_match": true,
-        "more_info": 0
+      "step1_relevance": {
+        "base_relevant": true,
+        "alt_relevant": true
       },
-      "website_reason": "both_accessible_name_tie_both",
+      "website_reason": "both_valid_relevant",
       "category_llm_diagnostic": {
         "use_llm": true,
         "html_snippets_count": 1,
         "aggregate_available": true,
         "llm_called": true,
-        "llm_result": false
+        "llm_result": true
       },
-      "category_reason": "llm_returned_none",
+      "category_reason": "llm_prefers_base",
       "category_winner_debug": {
         "base_category": "used_car_dealer",
         "alt_category": "car_dealer",
-        "decision": "abstain",
-        "reason": "llm_returned_none_check_token_or_api"
+        "llm_aggregated": "automotive_repair",
+        "decision": "base",
+        "reason": "llm_prefers_base"
       },
-      "phones_reason": "evidence_matches_base",
-      "evidence_phone": "013 757 3800",
+      "phones_reason": "base_matches_website",
+      "website_phones": [
+        "013 757 3800"
+      ],
       "address_reason": "both_differ_no_evidence",
-      "label_reason": "base_slightly_better",
+      "label_reason": "base_score >= alt_score + 2",
       "extracted_evidence": {
         "https://nelspruitmazda.co.za/": {
           "name": [

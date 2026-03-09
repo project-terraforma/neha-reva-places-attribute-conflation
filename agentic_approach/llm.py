@@ -77,12 +77,13 @@ Website content excerpts:
 {combined}
 
 Extract and aggregate:
-1. **category**: A single, concise business category (e.g., "shipping_center", "automotive_repair", "restaurant"). Use snake_case.
-2. **description**: A 1-2 sentence description of what this business does.
-3. **keywords**: A JSON array of 5-10 key terms that describe this business (e.g., ["shipping", "mail", "packaging"]).
+1. **category**: A single, concise primary business category (e.g., "shipping_center", "automotive_repair", "restaurant"). Use snake_case.
+2. **alternate_categories**: A JSON array of 5-15 alternate categories that also describe this business. Include as many relevant alternates as you can find (e.g., ["mailbox_center", "post_office", "courier", "packaging", "freight"]).
+3. **description**: A 1-2 sentence description of what this business does.
+4. **keywords**: A JSON array of 5-10 key terms that describe this business (e.g., ["shipping", "mail", "packaging"]).
 
 Respond with valid JSON only, no markdown:
-{{"category": "...", "description": "...", "keywords": [...]}}"""
+{{"category": "...", "alternate_categories": [...], "description": "...", "keywords": [...]}}"""
 
     try:
         response = client.chat.completions.create(
@@ -103,6 +104,8 @@ def compare_categories_with_llm(
     base_category: str,
     alt_category: str,
     llm_aggregated: dict[str, Any] | None,
+    base_alternates: list[str] | None = None,
+    alt_alternates: list[str] | None = None,
     model: str | None = None,
     api_key: str | None = None,
     provider: str | None = None,
@@ -110,7 +113,7 @@ def compare_categories_with_llm(
     """
     Use LLM to pick the better category between base and alt, given aggregated website info.
 
-    Returns "base", "alt", or None (abstain).
+    Returns "base", "alt", "tie", or None (abstain).
     """
     if not llm_aggregated:
         return None
@@ -119,17 +122,27 @@ def compare_categories_with_llm(
         return None
 
     agg_cat = llm_aggregated.get("category", "")
+    agg_alternates = llm_aggregated.get("alternate_categories", [])
     agg_desc = llm_aggregated.get("description", "")
     keywords = llm_aggregated.get("keywords", [])
 
+    base_alt_str = ""
+    if base_alternates:
+        base_alt_str = f"\n  Alternate categories: {base_alternates}"
+    alt_alt_str = ""
+    if alt_alternates:
+        alt_alt_str = f"\n  Alternate categories: {alt_alternates}"
+
+    agg_alt_str = f"\nWebsite-extracted alternate categories: {agg_alternates}" if agg_alternates else ""
+
     prompt = f"""Given website-extracted information about a business, which category is more accurate?
 
-Website-extracted category: {agg_cat}
+Website-extracted category: {agg_cat}{agg_alt_str}
 Website-extracted description: {agg_desc}
 Website keywords: {keywords}
 
-Base (original) record category: {base_category}
-Alt (conflated) record category: {alt_category}
+Base (original) record category: {base_category}{base_alt_str}
+Alt (conflated) record category: {alt_category}{alt_alt_str}
 
 Which is more accurate? Respond with exactly one word: "base", "alt", or "tie" if they are equivalent."""
 
@@ -140,12 +153,12 @@ Which is more accurate? Respond with exactly one word: "base", "alt", or "tie" i
             temperature=0.1,
         )
         text = response.choices[0].message.content.strip().lower()
-        if "base" in text and "alt" not in text:
+        if "base" in text and "alt" not in text and "tie" not in text:
             return "base"
-        if "alt" in text and "base" not in text:
+        if "alt" in text and "base" not in text and "tie" not in text:
             return "alt"
         if "tie" in text:
-            return "base"  # User said: if both same, select base
+            return "tie"
         return None
     except Exception:
         return None

@@ -1,99 +1,115 @@
+#!/usr/bin/env python3
 """
-Create a golden dataset of 200 values for manual labeling.
-Biases toward "interesting" rows: conflicts or one-sided presence.
+Create golden_dataset.json from parquet for manual annotation.
 
-Run from project root: python scripts/create_golden_dataset.py
-
-Outputs: analysis/inspection/golden/golden_dataset.json
+Outputs a JSON file with entry information (base + current/other) and empty
+fields for label, base_score, alt_score, and per-attribute scores (category winners).
+Fill these in manually to create your golden dataset.
 """
 import json
-import duckdb
-import pandas as pd
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).parent.parent
-PARQUET_PATH = PROJECT_ROOT / "data" / "project_a_samples.parquet"
-OUT_DIR = PROJECT_ROOT / "analysis" / "inspection" / "golden"
+PROJECT = Path(__file__).resolve().parents[1]
+PARQUET_DEFAULT = PROJECT / "data/project_a_samples.parquet"
+GOLDEN_DEFAULT = PROJECT / "analysis/inspection/golden/golden_dataset.json"
 
-GOLDEN_SAMPLE_N = 200
+# Parquet column -> golden data.base / data.current key
+BASE_COLS = {
+    "base_names": "names",
+    "base_addresses": "addresses",
+    "base_phones": "phones",
+    "base_websites": "websites",
+    "base_categories": "categories",
+    "base_brand": "brand",
+    "base_socials": "socials",
+    "base_emails": "emails",
+}
+OTHER_COLS = {
+    "names": "names",
+    "addresses": "addresses",
+    "phones": "phones",
+    "websites": "websites",
+    "categories": "categories",
+    "brand": "brand",
+    "socials": "socials",
+    "emails": "emails",
+}
+# Parquet may have confidence columns
+BASE_CONF = "base_confidence"
+OTHER_CONF = "confidence"
+
+SCORE_ATTRS = ["name", "phones", "website", "address", "category"]
 
 
-def main():
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    con = duckdb.connect(database=":memory:")
+def _safe_val(val):
+    """Handle nulls and ensure JSON-serializable."""
+    if val is None:
+        return None
+    if hasattr(val, "__iter__") and not isinstance(val, (str, dict)):
+        try:
+            return list(val)
+        except (TypeError, ValueError):
+            return val
+    try:
+        import pandas as pd
+        if pd.isna(val):
+            return None
+    except ImportError:
+        pass
+    return val
 
-    existing = set(con.execute(f"DESCRIBE SELECT * FROM '{PARQUET_PATH}'").fetchdf()["column_name"])
-    driver = "phones" if "phones" in existing and "base_phones" in existing else None
 
-    if driver:
-        query = f"""
-            SELECT id, base_id, names, base_names, phones, base_phones, websites, base_websites,
-                   addresses, base_addresses, categories, base_categories, confidence, base_confidence
-            FROM '{PARQUET_PATH}'
-            WHERE
-                ({driver} IS NOT NULL OR base_{driver} IS NOT NULL)
-            ORDER BY
-                CASE
-                    WHEN {driver} IS NOT NULL AND base_{driver} IS NOT NULL AND {driver} != base_{driver} THEN 0
-                    WHEN {driver} IS NOT NULL AND base_{driver} IS NULL THEN 1
-                    WHEN {driver} IS NULL AND base_{driver} IS NOT NULL THEN 2
-                    ELSE 3
-                END,
-                random()
-            LIMIT {GOLDEN_SAMPLE_N}
-        """
-    else:
-        query = f"""
-            SELECT id, base_id, names, base_names, phones, base_phones, websites, base_websites,
-                   addresses, base_addresses, categories, base_categories, confidence, base_confidence
-            FROM '{PARQUET_PATH}'
-            USING SAMPLE {GOLDEN_SAMPLE_N} ROWS
-        """
+def create_golden_dataset(parquet_path: Path, json_path: Path, limit: int | None = None) -> int:
+    """Create golden_dataset.json from parquet with empty annotation fields."""
+    import pandas as pd
 
-    df = con.execute(query).fetchdf()
-
-    def to_entry_val(v, key):
-        """Convert to JSON-serializable value; use [null] for empty phones/websites."""
-        if pd.isna(v) or v is None:
-            return "[null]" if key in ("phones", "websites") else None
-        if isinstance(v, (int, float)):
-            return v
-        return str(v)
-
+    df = pd.read_parquet(parquet_path)
     records = []
-    for record_index, (_, row) in enumerate(df.iterrows()):
-        current = {
-            "names": to_entry_val(row.get("names"), "names"),
-            "phones": to_entry_val(row.get("phones"), "phones"),
-            "websites": to_entry_val(row.get("websites"), "websites"),
-            "addresses": to_entry_val(row.get("addresses"), "addresses"),
-            "categories": to_entry_val(row.get("categories"), "categories"),
-            "confidence": to_entry_val(row.get("confidence"), "confidence"),
-        }
-        base = {
-            "names": to_entry_val(row.get("base_names"), "names"),
-            "phones": to_entry_val(row.get("base_phones"), "phones"),
-            "websites": to_entry_val(row.get("base_websites"), "websites"),
-            "addresses": to_entry_val(row.get("base_addresses"), "addresses"),
-            "categories": to_entry_val(row.get("base_categories"), "categories"),
-            "confidence": to_entry_val(row.get("base_confidence"), "confidence"),
-        }
+    for idx, row in df.iterrows():
+        if limit is not None and len(records) >= limit:
+            break
+        raw = row.to_dict()
+        base = {}
+        for pcol, gkey in BASE_COLS.items():
+            v = _safe_val(raw.get(pcol))
+            if v is not None and str(v).strip():
+                base[gkey] = v
+        conf = _safe_val(raw.get(BASE_CONF))
+        if conf is not None:
+            base["confidence"] = conf
+
+        current = {}
+        for pcol, gkey in OTHER_COLS.items():
+            v = _safe_val(raw.get(pcol))
+            if v is not None and str(v).strip():
+                current[gkey] = v
+        conf = _safe_val(raw.get(OTHER_CONF))
+        if conf is not None:
+            current["confidence"] = conf
 
         records.append({
-            "id": str(row["id"]),
-            "record_index": record_index,
-            "label": "",
-            "method": "manual_review (manual)",
-            "data": {"current": current, "base": base},
+            "id": str(raw.get("id", "")),
+            "base_id": str(raw.get("base_id", "")),
+            "record_index": len(records),
+            "label": None,
+            "base_score": None,
+            "alt_score": None,
+            "method": "manual",
+            "data": {"base": base, "current": current},
+            "scores": {attr: {"winner": None} for attr in SCORE_ATTRS},
         })
-
-    out_path = OUT_DIR / "golden_dataset.json"
-    with open(out_path, "w", encoding="utf-8") as f:
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(json_path, "w", encoding="utf-8") as f:
         json.dump(records, f, indent=2, default=str)
-
-    print(f"Golden labeling sample saved to: {out_path} ({len(records)} records)")
-    con.close()
+    return len(records)
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    parser = argparse.ArgumentParser(description="Create golden_dataset.json from parquet")
+    parser.add_argument("--input", type=Path, default=PARQUET_DEFAULT, help="Input parquet path")
+    parser.add_argument("--out", type=Path, default=GOLDEN_DEFAULT, help="Output golden JSON path")
+    parser.add_argument("--limit", type=int, default=None, help="Max records (default: all)")
+    args = parser.parse_args()
+    n = create_golden_dataset(args.input, args.out, limit=args.limit)
+    print(f"Wrote {n} records to {args.out}. Fill in label, base_score, alt_score, and scores.*.winner manually.")
