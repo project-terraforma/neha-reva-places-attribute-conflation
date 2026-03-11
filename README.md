@@ -32,8 +32,7 @@ This repository works with **pre-matched pairs** of place records. Each row repr
 neha-reva-places-attribute-conflation/
 ├── data/
 │   ├── project_a_samples.parquet   # Main sample (~2,000 pre-matched pairs)
-│   ├── rows_adapted.jsonl          # Adapted rows (JSONL) from parquet
-│   ├── agentic_input.jsonl         # Adapted rows from golden (golden_to_adapted.py)
+│   ├── rows_adapted.jsonl          # Adapted rows (JSONL) for agentic flow
 │   └── sampledata.parquet          # Additional sample data
 ├── out/
 │   ├── agentic_labels.jsonl        # Minimal output (label, scores, sources)
@@ -104,16 +103,16 @@ python scripts/create_golden_dataset.py --limit 200   # or omit --limit for all 
 #   scores.*.winner: 1=base, -1=alt, 0=both/neither
 
 # Step 3: Convert JSON → adapted JSONL (for flow input)
-python scripts/golden_to_adapted.py --limit 200
+python scripts/golden_to_adapted.py --limit 200 --out data/agentic_input.jsonl
 
-# Step 4: Run agentic flow on golden data
-python -m agentic_approach.flow --golden --out out/agentic_labels.jsonl
+# Step 4: Run agentic flow
+python -m agentic_approach.flow --out out/agentic_labels.jsonl
 ```
 
 Or with debug and accuracy analysis:
 
 ```bash
-python -m agentic_approach.flow --golden --debug
+python -m agentic_approach.flow --debug
 ```
 
 **Output layout:**
@@ -131,36 +130,35 @@ python -m agentic_approach.flow --golden --debug
 Processes each row in sequence: test website accessibility, compare names, escalate to online search when needed, use LLM for categories, and produce labels.
 
 ```bash
-# Step 1: Adapt rows (parquet → JSONL)
-python -m agentic_approach.validate --input data/project_a_samples.parquet --out data/rows_adapted.jsonl
+# Step 1: Adapt rows (parquet → JSONL) and copy to agentic input
+python -m agentic_approach.validate --input data/project_a_samples.parquet --out data/agentic_input.jsonl
 
-# Step 2: Unified row-by-row flow (replaces evidence + label steps)
-python -m agentic_approach.flow --input data/rows_adapted.jsonl --out out/agentic_labels.jsonl
+# Step 2: Unified row-by-row flow (uses LLM for categories)
+python -m agentic_approach.flow --out out/agentic_labels.jsonl
 ```
 
-**Note:** `--limit N` limits how many records are processed from the input. If you get fewer rows than expected, the input file may have fewer records (e.g. `data/rows_adapted.jsonl` was created with a small limit). Regenerate with more rows: `python -m agentic_approach.validate --input data/project_a_samples.parquet --limit 10 --out data/rows_adapted.jsonl`
+**Note:** The flow always reads from `data/agentic_input.jsonl`. Use `--input PATH` to override. `--limit N` limits how many records are processed.
 
 **Output:** Every run writes minimal output to `out/agentic_labels.jsonl` (id, base_id, base, other, label, base_score, alt_score). No debug fields.
 
 **Debug mode:** Add `--debug` to also write full output to `out/agentic_labels_debug.jsonl` and `out/agentic_labels_debug_pretty.json`, and print accuracy analysis vs golden labels to the terminal:
 
 ```bash
-python -m agentic_approach.flow --input data/rows_adapted.jsonl --debug
+python -m agentic_approach.flow --debug
 ```
 
 **Flow per row:**
 
 1. Test website accessibility for base and alt
-2. Validate fetched content refers to the business by name; only award website points when validated
-3. If one validates → point to that source; if both → both get points (name is NOT a tiebreaker)
-4. If neither works → escalate to online search (DuckDuckGo)
-5. Fetch website content, compare with base/alt to determine accuracy
-6. Use LLM to aggregate keywords and pick better category/description
-7. If both same → select base
+2. If one works → point to that source; if both → compare names (prefer more info), select website that correlates
+3. If neither works → escalate to online search (DuckDuckGo)
+4. Fetch website content, compare with base/alt to determine accuracy
+5. Use LLM to aggregate keywords and pick better category/description
+6. If both same → select base
 
-**Phone comparison:** Points awarded when a source's phone matches the website; with/without area code; NOT for leading 0s.
+**Phone comparison:** With/without area code; NOT for leading 0s.
 
-**Options:** `--no-llm` to disable LLM, `--limit N` for testing, `--delay` for fetch spacing, `--debug` for full debug output and analysis.
+**Options:** `--limit N` for testing, `--delay` for fetch spacing, `--debug` for full debug output and analysis.
 
 **LLM setup:** Uses Hugging Face only (free tier).
 

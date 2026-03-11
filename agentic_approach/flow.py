@@ -3,9 +3,8 @@
 
 Processes each row in sequence:
 1. Test website accessibility for base and alt
-2. Validate fetched content refers to the business by name; only award website points when validated
-3. If one works (and validates) → point to that source; if both → both get points (name is NOT a tiebreaker)
-4. If neither works → escalate to online search
+2. If one works → point to that source; if both → compare names, prefer more info, select correlating website
+3. If neither works → escalate to online search
 4. Fetch website content, compare with base/alt to determine accuracy
 5. Use LLM to aggregate keywords and pick better category/description
 6. If both same → select base
@@ -347,48 +346,57 @@ def process_row(
             "alt_working_url": alt_working_url,
         }
 
-    # Validate that website content refers to the business by name (classify_page checks name relevance)
-    query = build_query(row)
-    base_relevant = (
-        base_accessible
-        and base_html
-        and base_working_url
-        and classify_page(base_html, 200, base_working_url, query) == CLASS_RELEVANT
-    )
-    alt_relevant = (
-        alt_accessible
-        and alt_html
-        and alt_working_url
-        and classify_page(alt_html, 200, alt_working_url, query) == CLASS_RELEVANT
-    )
-    if dbg is not None:
-        dbg["step1_relevance"] = {"base_relevant": base_relevant, "alt_relevant": alt_relevant}
-
-    # Award website points only when content validates (refers to business by name). Name is NOT a tiebreaker.
-    if base_relevant and not alt_relevant:
+    # If one works → point to that source
+    if base_accessible and not alt_accessible:
         base_score += 1
         winners["website"] = 1
         if dbg is not None:
-            dbg["website_reason"] = "only_base_valid_relevant"
-    elif alt_relevant and not base_relevant:
+            dbg["website_reason"] = "only_base_accessible"
+    elif alt_accessible and not base_accessible:
         alt_score += 1
         winners["website"] = -1
         if dbg is not None:
-            dbg["website_reason"] = "only_alt_valid_relevant"
-    elif base_relevant and alt_relevant:
-        # Both validate: both get points (name is NOT a tiebreaker)
-        base_score += 1
-        alt_score += 1
-        winners["website"] = 2
+            dbg["website_reason"] = "only_alt_accessible"
+    elif base_accessible and alt_accessible:
+        # Both accessible: compare names, prefer more info, select website that correlates
+        base_name = _first_str(base.get("name"))
+        alt_name = _first_str(other.get("name"))
         if dbg is not None:
-            dbg["website_reason"] = "both_valid_relevant"
+            dbg["name_comparison"] = {"base_name": base_name, "alt_name": alt_name, "mostly_match": _names_mostly_match(base_name or "", alt_name or ""), "more_info": _name_has_more_info(base_name or "", alt_name or "")}
+        if _names_mostly_match(base_name or "", alt_name or ""):
+            more = _name_has_more_info(base_name or "", alt_name or "")
+            if more == 1:
+                # Base has more info → prefer base's website
+                base_score += 1
+                winners["website"] = 1
+                if dbg is not None:
+                    dbg["website_reason"] = "both_accessible_base_name_has_more_info"
+            elif more == -1:
+                alt_score += 1
+                winners["website"] = -1
+                if dbg is not None:
+                    dbg["website_reason"] = "both_accessible_alt_name_has_more_info"
+            else:
+                # Tie: select website that correlates with selected name. Default: base
+                base_score += 1
+                alt_score += 1
+                winners["website"] = 2
+                if dbg is not None:
+                    dbg["website_reason"] = "both_accessible_name_tie_both"
+        else:
+            base_score += 1
+            alt_score += 1
+            winners["website"] = 2
+            if dbg is not None:
+                dbg["website_reason"] = "both_accessible_names_dont_match_both"
     else:
-        # Neither validates or neither accessible: escalate to online search
+        # Neither accessible: escalate to online search
         winners["website"] = 0
         if dbg is not None:
-            dbg["website_reason"] = "neither_valid_or_accessible"
+            dbg["website_reason"] = "neither_accessible"
 
     # --- Step 2: Fetch website content and compare with base/alt ---
+    query = build_query(row)
     region = _region_from_address(other.get("address") or base.get("address"))
     html_snippets = []
     extracted_per_url = {}
@@ -508,62 +516,50 @@ def process_row(
     # --- Step 4: Compare phones, address (using evidence if available) ---
     base_phones = _list_strs(base.get("phones"))
     alt_phones = _list_strs(other.get("phones"))
-
-    # Collect all phones from website evidence
-    website_phones = [
-        p
-        for url, fields in extracted_per_url.items()
-        for p, _ in fields.get("phones", [])
-        if p
-    ]
-    if website_phones:
-        # Award points when a source's phone matches the website (not just when both sources match)
-        base_match = any(
-            any(_phones_equivalent(b, wp) for wp in website_phones) for b in base_phones
-        )
-        alt_match = any(
-            any(_phones_equivalent(a, wp) for wp in website_phones) for a in alt_phones
-        )
-        if base_match:
-            base_score += 1
-        if alt_match:
-            alt_score += 1
-        if base_match and alt_match:
-            winners["phones"] = 2
-            if dbg is not None:
-                dbg["phones_reason"] = "both_match_website"
-                dbg["website_phones"] = website_phones[:5]
-        elif base_match:
-            winners["phones"] = 1
-            if dbg is not None:
-                dbg["phones_reason"] = "base_matches_website"
-                dbg["website_phones"] = website_phones[:5]
-        elif alt_match:
-            winners["phones"] = -1
-            if dbg is not None:
-                dbg["phones_reason"] = "alt_matches_website"
-                dbg["website_phones"] = website_phones[:5]
-        elif dbg is not None:
-            dbg["phones_reason"] = "neither_matches_website"
-            dbg["website_phones"] = website_phones[:5]
+    if _any_phones_equivalent(base_phones, alt_phones):
+        base_score += 1
+        alt_score += 1
+        winners["phones"] = 2
+        if dbg is not None:
+            dbg["phones_reason"] = "equivalent"
+    elif base_phones and not alt_phones:
+        base_score += 1
+        winners["phones"] = 1
+        if dbg is not None:
+            dbg["phones_reason"] = "only_base"
+    elif alt_phones and not base_phones:
+        alt_score += 1
+        winners["phones"] = -1
+        if dbg is not None:
+            dbg["phones_reason"] = "only_alt"
     else:
-        # No website evidence: fall back to source comparison
-        if _any_phones_equivalent(base_phones, alt_phones):
-            base_score += 1
-            alt_score += 1
-            winners["phones"] = 2
-            if dbg is not None:
-                dbg["phones_reason"] = "equivalent"
-        elif base_phones and not alt_phones:
-            base_score += 1
-            winners["phones"] = 1
-            if dbg is not None:
-                dbg["phones_reason"] = "only_base"
-        elif alt_phones and not base_phones:
-            alt_score += 1
-            winners["phones"] = -1
-            if dbg is not None:
-                dbg["phones_reason"] = "only_alt"
+        # Both have different phones - use website evidence if we have it
+        best_phone = None
+        for url, fields in extracted_per_url.items():
+            for p, _ in fields.get("phones", []):
+                if p:
+                    best_phone = p
+                    break
+            if best_phone:
+                break
+        if best_phone:
+            base_match = any(_phones_equivalent(b, best_phone) for b in base_phones)
+            alt_match = any(_phones_equivalent(a, best_phone) for a in alt_phones)
+            if base_match and not alt_match:
+                base_score += 1
+                winners["phones"] = 1
+                if dbg is not None:
+                    dbg["phones_reason"] = "evidence_matches_base"
+                    dbg["evidence_phone"] = best_phone
+            elif alt_match and not base_match:
+                alt_score += 1
+                winners["phones"] = -1
+                if dbg is not None:
+                    dbg["phones_reason"] = "evidence_matches_alt"
+                    dbg["evidence_phone"] = best_phone
+            elif dbg is not None:
+                dbg["phones_reason"] = "evidence_inconclusive"
+                dbg["evidence_phone"] = best_phone
         elif dbg is not None:
             dbg["phones_reason"] = "both_differ_no_evidence"
             dbg["base_phones"] = base_phones
@@ -718,7 +714,6 @@ def run_flow(
     *,
     limit: int | None = None,
     delay: float = 0.5,
-    use_llm: bool = True,
     llm_model: str | None = None,
     debug: bool = False,
 ) -> int:
@@ -738,7 +733,7 @@ def run_flow(
 
     with open(output_path, "w", encoding="utf-8") as fout:
         for row in rows:
-            out = process_row(row, delay=delay, use_llm=use_llm, llm_model=llm_model, debug=debug)
+            out = process_row(row, delay=delay, use_llm=True, llm_model=llm_model, debug=debug)
             minimal = _minimal_output(out)
             fout.write(json.dumps(minimal, default=str) + "\n")
             count += 1
@@ -765,17 +760,12 @@ def run_flow(
 def main():
     import argparse
     parser = argparse.ArgumentParser(
-        description="Unified row-by-row agentic flow. Input: rows_adapted.jsonl, Output: agentic_labels.jsonl"
+        description="Unified row-by-row agentic flow. Input: data/agentic_input.jsonl, Output: agentic_labels.jsonl"
     )
     parser.add_argument(
         "--input",
-        default=None,
-        help="Input JSONL path (default: data/rows_adapted.jsonl, or data/agentic_input.jsonl if --golden)",
-    )
-    parser.add_argument(
-        "--golden",
-        action="store_true",
-        help="Use golden dataset (data/agentic_input.jsonl). Run scripts/create_golden_dataset.py and scripts/golden_to_adapted.py first.",
+        default="data/agentic_input.jsonl",
+        help="Input JSONL path (default: data/agentic_input.jsonl)",
     )
     parser.add_argument(
         "--out",
@@ -784,14 +774,10 @@ def main():
     )
     parser.add_argument("--limit", type=int, default=None, help="Max rows")
     parser.add_argument("--delay", type=float, default=0.5, help="Delay between fetches")
-    parser.add_argument("--no-llm", action="store_true", help="Disable LLM for categories")
     parser.add_argument("--llm-model", default=None, help="LLM model (default: from HF_MODEL or provider default)")
     parser.add_argument("--debug", action="store_true", help="Include debug reasoning per row")
     args = parser.parse_args()
-    input_path = Path(
-        args.input
-        or ("data/agentic_input.jsonl" if args.golden else "data/rows_adapted.jsonl")
-    )
+    input_path = Path(args.input)
     if not input_path.exists():
         print(f"Error: input not found: {input_path}")
         return 1
@@ -800,7 +786,6 @@ def main():
         Path(args.out),
         limit=args.limit,
         delay=args.delay,
-        use_llm=not args.no_llm,
         llm_model=args.llm_model or None,
         debug=args.debug,
     )
