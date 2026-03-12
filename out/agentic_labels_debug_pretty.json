@@ -21,13 +21,13 @@
       "confidence": 0.9962614185921548
     },
     "label": 0,
-    "base_score": 5,
-    "alt_score": 4,
+    "base_score": 4,
+    "alt_score": 3,
     "attr_winners": {
       "name": 2,
       "phones": 2,
       "website": 2,
-      "address": 2,
+      "address": 0,
       "category": 1
     },
     "evidence_used": true,
@@ -43,10 +43,12 @@
         "packaging",
         "freight",
         "document_shredding",
+        "fax_services",
+        "document_scanning",
         "notary_public",
-        "fingerprinting_service"
+        "fingerprinting"
       ],
-      "description": "Goin' Postal Jacksonville is a shipping center offering services such as packing, shipping, and mailing through various carriers including UPS, FedEx, and DHL, as well as providing document shredding and fingerprinting services.",
+      "description": "Goin' Postal Jacksonville is a shipping center offering services such as packing, shipping, and mailing through various carriers including UPS, FedEx, DHL, and the US Postal Service, along with business services like document shredding and notary public.",
       "keywords": [
         "shipping",
         "mail",
@@ -54,11 +56,10 @@
         "fingerprinting",
         "notary",
         "document_shredding",
-        "mailing",
         "courier",
-        "freight",
-        "UPS",
-        "FedEx"
+        "mailing",
+        "business_services",
+        "federal_express"
       ]
     },
     "debug": {
@@ -75,16 +76,11 @@
         "alt_accessible": true,
         "alt_working_url": "https://www.goinpostaljacksonville.com/"
       },
-      "name_comparison": {
-        "base_name": "Goin' Postal Jacksonville",
-        "alt_name": "Goin' Postal Jacksonville",
-        "mostly_match": true,
-        "more_info": 0
-      },
-      "website_reason": "both_accessible_name_tie_both",
+      "website_reason": "both_accessible_both",
+      "contact_page_fetches": 1,
       "category_llm_diagnostic": {
         "use_llm": true,
-        "html_snippets_count": 1,
+        "html_snippets_count": 2,
         "aggregate_available": true,
         "llm_called": true,
         "llm_result": true
@@ -97,14 +93,35 @@
         "decision": "base",
         "reason": "llm_prefers_base"
       },
-      "phones_reason": "equivalent",
-      "address_reason": "equivalent",
+      "phones_reason": "website_evidence_matches_both",
+      "evidence_phone": "904.998.9600",
+      "address_reason": "website_evidence_inconclusive",
+      "evidence_address": "904.998.9600 7643 Gate Pkwy Ste 104 Jacksonville, FL  32256",
       "label_reason": "base_slightly_better",
       "extracted_evidence": {
         "https://www.goinpostaljacksonville.com/": {
           "name": [
             "Packing, Shipping, Mailing | Jacksonville, FL | Goin' Postal Jacksonville",
             "Welcome To Goin' Postal Jacksonville"
+          ],
+          "phones": [
+            "904.998.9600",
+            "904.253.3492"
+          ],
+          "address": [
+            "904.998.9600 7643 Gate Pkwy Ste 104 Jacksonville, FL  32256",
+            "7643 Gate Pkwy Ste 104 Jacksonville, FL 32256"
+          ],
+          "category": [],
+          "emails": [],
+          "socials": [
+            "https://www.facebook.com/GOINPOSTALJAX/",
+            "https://twitter.com/goinpostaljax"
+          ]
+        },
+        "https://www.goinpostaljacksonville.com/ABOUT-US": {
+          "name": [
+            "About Us | Jacksonville, FL | Goin' Postal Jacksonville"
           ],
           "phones": [
             "904.998.9600",
@@ -146,13 +163,13 @@
       "confidence": 0.9962614185921548
     },
     "label": 0,
-    "base_score": 5,
-    "alt_score": 4,
+    "base_score": 4,
+    "alt_score": 3,
     "attr_winners": {
       "name": 2,
       "phones": 2,
       "website": 2,
-      "address": 2,
+      "address": 0,
       "category": 1
     },
     "evidence_used": true,
@@ -163,28 +180,28 @@
       "category": "automotive_repair",
       "alternate_categories": [
         "transmission_repair",
-        "mechanical_services",
-        "car_services",
-        "vehicle_maintenance",
         "mechanic_shop",
-        "auto_mechanic",
-        "vehicle_repair",
+        "vehicle_service",
+        "auto_maintenance",
+        "car_repair",
+        "mechanics",
+        "transmission_specialist",
+        "automotive_service",
         "mechanical_repair",
-        "transmission_service",
-        "automotive_service"
+        "vehicle_repair"
       ],
-      "description": "Valley Transmission is an automotive repair shop specializing in transmission repair, service, and rebuilds for various vehicle makes and models in El Cajon and the San Diego County area.",
+      "description": "Valley Transmission is an automotive repair shop specializing in transmission repair services, including transmission rebuilds, torque converter repair, and various truck and automatic transmission repairs in El Cajon, CA.",
       "keywords": [
         "transmission",
         "repair",
         "automotive",
+        "mechanic",
         "service",
-        "rebuild",
         "El_Cajon",
-        "San_Diego_County",
-        "mechanical",
-        "vehicle",
-        "diagnostic"
+        "California",
+        "transmission_rebuild",
+        "torque_converter",
+        "truck_transmission"
       ]
     },
     "debug": {
@@ -201,16 +218,11 @@
         "alt_accessible": true,
         "alt_working_url": "https://valleytransca.com/"
       },
-      "name_comparison": {
-        "base_name": "Valley Transmission",
-        "alt_name": "Valley Transmission",
-        "mostly_match": true,
-        "more_info": 0
-      },
-      "website_reason": "both_accessible_name_tie_both",
+      "website_reason": "both_accessible_both",
+      "contact_page_fetches": 2,
       "category_llm_diagnostic": {
         "use_llm": true,
-        "html_snippets_count": 1,
+        "html_snippets_count": 3,
         "aggregate_available": true,
         "llm_called": true,
         "llm_result": true
@@ -223,14 +235,54 @@
         "decision": "base",
         "reason": "llm_prefers_base"
       },
-      "phones_reason": "equivalent",
-      "address_reason": "equivalent",
+      "phones_reason": "website_evidence_matches_both",
+      "evidence_phone": "021 (619) 447-4353",
+      "address_reason": "website_evidence_inconclusive",
+      "evidence_address": "447-4353 Contact Us OUR LOCATION 1158 N 2nd St. El Cajon, CA 92021",
       "label_reason": "base_slightly_better",
       "extracted_evidence": {
         "https://valleytransca.com/": {
           "name": [
             "Transmission Repair Shop In El Cajon, CA",
             "Transmission Repair Shop In El Cajon, CAServing The Entire San Diego County Area"
+          ],
+          "phones": [
+            "021 (619) 447-4353",
+            "(619) 447-4353"
+          ],
+          "address": [
+            "447-4353 Contact Us OUR LOCATION 1158 N 2nd St. El Cajon, CA 92021",
+            "1158 N 2nd St. El Cajon, CA 92021"
+          ],
+          "category": [],
+          "emails": [],
+          "socials": [
+            "https://www.facebook.com/Valley-Transmission-107150256087765/"
+          ]
+        },
+        "https://valleytransca.com/contact-us/": {
+          "name": [
+            "Contact Us",
+            "Contact Us"
+          ],
+          "phones": [
+            "021 (619) 447-4353",
+            "(619) 447-4353"
+          ],
+          "address": [
+            "447-4353 Contact Us OUR LOCATION 1158 N 2nd St. El Cajon, CA 92021",
+            "1158 N 2nd St. El Cajon, CA 92021"
+          ],
+          "category": [],
+          "emails": [],
+          "socials": [
+            "https://www.facebook.com/Valley-Transmission-107150256087765/"
+          ]
+        },
+        "https://valleytransca.com/about-us/": {
+          "name": [
+            "About Valley Transmission of El Cajon, CA",
+            "About Valley Transmission of El Cajon, CA"
           ],
           "phones": [
             "021 (619) 447-4353",
@@ -271,51 +323,19 @@
       "confidence": 0.997898979043525
     },
     "label": 0,
-    "base_score": 4,
+    "base_score": 3,
     "alt_score": 2,
     "attr_winners": {
       "name": 2,
       "phones": 1,
       "website": 2,
       "address": 0,
-      "category": 1
+      "category": 0
     },
     "evidence_used": true,
     "row_confidence": 0.6,
     "base_website_accessible": true,
     "alt_website_accessible": true,
-    "llm_aggregated": {
-      "category": "automotive_repair",
-      "alternate_categories": [
-        "car_dealer",
-        "mazda_dealer",
-        "vehicle_sales",
-        "service_center",
-        "parts_supplier",
-        "finance_company",
-        "pre-owned_cars",
-        "car_services",
-        "customer_service",
-        "automotive_services",
-        "vehicle_warranty",
-        "automotive_parts",
-        "automotive_financing",
-        "automotive_marketing"
-      ],
-      "description": "Mazda Nelspruit is a dedicated Mazda dealership offering a range of services including car sales, pre-owned cars, financing, parts, and services, with a focus on customer satisfaction and comprehensive care.",
-      "keywords": [
-        "mazda",
-        "car_sales",
-        "pre-owned_cars",
-        "automotive_services",
-        "customer_service",
-        "vehicle_warranty",
-        "finance",
-        "parts",
-        "services",
-        "nelspruit"
-      ]
-    },
     "debug": {
       "name_reason": "equivalent",
       "step1_accessibility": {
@@ -330,32 +350,34 @@
         "alt_accessible": true,
         "alt_working_url": "https://nelspruitmazda.co.za/"
       },
-      "name_comparison": {
-        "base_name": "Mazda Nelspruit",
-        "alt_name": "Mazda Nelspruit",
-        "mostly_match": true,
-        "more_info": 0
+      "website_reason": "both_accessible_both",
+      "contact_page_fetches": 1,
+      "search_escalation_missing_contact": {
+        "has_phone": true,
+        "has_address": false,
+        "urls_tried": [
+          "https://nelspruitmazda.co.za/",
+          "https://nelspruitmazda.co.za/contact-us/"
+        ]
       },
-      "website_reason": "both_accessible_name_tie_both",
       "category_llm_diagnostic": {
         "use_llm": true,
-        "html_snippets_count": 1,
+        "html_snippets_count": 2,
         "aggregate_available": true,
         "llm_called": true,
-        "llm_result": true
+        "llm_result": false
       },
-      "category_reason": "llm_prefers_base",
+      "category_reason": "llm_returned_none",
       "category_winner_debug": {
         "base_category": "used_car_dealer",
         "alt_category": "car_dealer",
-        "llm_aggregated": "automotive_repair",
-        "decision": "base",
-        "reason": "llm_prefers_base"
+        "decision": "abstain",
+        "reason": "llm_returned_none_check_token_or_api"
       },
-      "phones_reason": "evidence_matches_base",
+      "phones_reason": "website_evidence_matches_base",
       "evidence_phone": "013 757 3800",
-      "address_reason": "both_differ_no_evidence",
-      "label_reason": "base_score >= alt_score + 2",
+      "address_reason": "no_website_evidence",
+      "label_reason": "base_slightly_better",
       "extracted_evidence": {
         "https://nelspruitmazda.co.za/": {
           "name": [
@@ -367,6 +389,24 @@
           "address": [],
           "category": [],
           "emails": [],
+          "socials": [
+            "https://www.facebook.com/Mazda.Nelspruit.Dealership/",
+            "https://www.instagram.com/mazda_nelspruit/?hl=da"
+          ]
+        },
+        "https://nelspruitmazda.co.za/contact-us/": {
+          "name": [
+            "Contact Us - Mazda Nelspruit"
+          ],
+          "phones": [
+            "013 757 3800",
+            "071 388 4533"
+          ],
+          "address": [],
+          "category": [],
+          "emails": [
+            "ColinN@nelauto.co.za"
+          ],
           "socials": [
             "https://www.facebook.com/Mazda.Nelspruit.Dealership/",
             "https://www.instagram.com/mazda_nelspruit/?hl=da"
@@ -396,51 +436,20 @@
       "brand": "{\"names\":{}}",
       "confidence": 0.77
     },
-    "label": 2,
-    "base_score": 2,
-    "alt_score": 2,
+    "label": 1,
+    "base_score": 0,
+    "alt_score": 1,
     "attr_winners": {
       "name": 0,
-      "phones": 2,
+      "phones": 0,
       "website": -1,
       "address": 0,
-      "category": 1
+      "category": 0
     },
     "evidence_used": true,
     "row_confidence": 0.6,
     "base_website_accessible": false,
     "alt_website_accessible": true,
-    "llm_aggregated": {
-      "category": "shoe_store",
-      "alternate_categories": [
-        "boots_store",
-        "work_boots_store",
-        "hiking_boots_store",
-        "footwear_store",
-        "outdoor_gear_store",
-        "leather_goods_store",
-        "repair_shop",
-        "accessories_store",
-        "customer_service_center",
-        "retail_store",
-        "local_business",
-        "premium_shoes",
-        "craftsmanship_store"
-      ],
-      "description": "Red Wing Shoe Store in Roswell, Georgia, offers a wide selection of premium boots, work boots, and other footwear, along with accessories and repair services, focusing on customer satisfaction and quality.",
-      "keywords": [
-        "shoes",
-        "boots",
-        "work_boots",
-        "hiking_boots",
-        "footwear",
-        "repair",
-        "accessories",
-        "customer_service",
-        "quality",
-        "premium"
-      ]
-    },
     "debug": {
       "name_reason": "differ_no_evidence",
       "step1_accessibility": {
@@ -456,17 +465,17 @@
         "alt_working_url": "https://stores.redwingshoes.com/roswell-ga"
       },
       "website_reason": "only_alt_accessible",
-      "category_reason": "llm_prefers_base",
-      "category_winner_debug": {
-        "base_category": "shoe_store",
-        "alt_category": "shoe_store",
-        "llm_aggregated": "shoe_store",
-        "decision": "base",
-        "reason": "llm_prefers_base"
+      "search_escalation_missing_contact": {
+        "has_phone": true,
+        "has_address": false,
+        "urls_tried": [
+          "https://stores.redwingshoes.com/roswell-ga"
+        ]
       },
-      "phones_reason": "equivalent",
-      "address_reason": "both_differ_no_evidence",
-      "label_reason": "tie_abstain",
+      "phones_reason": "website_evidence_inconclusive",
+      "evidence_phone": "1 (800) 733-9464",
+      "address_reason": "no_website_evidence",
+      "label_reason": "alt_slightly_better",
       "extracted_evidence": {
         "https://stores.redwingshoes.com/roswell-ga": {
           "name": [
@@ -509,12 +518,12 @@
       "socials": "[\"https://www.facebook.com/295967644448975\"]",
       "confidence": 0.9962614185921548
     },
-    "label": 2,
-    "base_score": 2,
-    "alt_score": 2,
+    "label": 1,
+    "base_score": 1,
+    "alt_score": 1,
     "attr_winners": {
       "name": 0,
-      "phones": 2,
+      "phones": 0,
       "website": 2,
       "address": 0,
       "category": 0
@@ -537,28 +546,20 @@
         "alt_accessible": true,
         "alt_working_url": "https://centro.norauto.es/alacant/finestrat/c-rei-jaume-i-n-9"
       },
-      "name_comparison": {
-        "base_name": "Norauto",
-        "alt_name": "Norauto Espa\u00f1a",
-        "mostly_match": false,
-        "more_info": -1
+      "website_reason": "both_accessible_both",
+      "search_escalation_missing_contact": {
+        "has_phone": false,
+        "has_address": false,
+        "urls_tried": []
       },
-      "website_reason": "both_accessible_names_dont_match_both",
       "category_llm_diagnostic": {
         "use_llm": true,
         "html_snippets_count": 0,
         "aggregate_available": true
       },
-      "category_reason": "different_no_llm",
-      "category_winner_debug": {
-        "base_category": "brake_service_and_repair",
-        "alt_category": "automotive_repair",
-        "decision": "abstain",
-        "reason": "different_no_website_evidence_or_llm"
-      },
-      "phones_reason": "equivalent",
-      "address_reason": "both_differ_no_evidence",
-      "label_reason": "tie_abstain",
+      "phones_reason": "no_website_evidence",
+      "address_reason": "no_website_evidence",
+      "label_reason": "tie_prefer_alt",
       "extracted_evidence": {}
     }
   },
@@ -583,15 +584,15 @@
       "brand": "{\"names\":{}}",
       "confidence": 0.77
     },
-    "label": 2,
-    "base_score": 4,
-    "alt_score": 4,
+    "label": 1,
+    "base_score": 2,
+    "alt_score": 2,
     "attr_winners": {
       "name": 2,
-      "phones": 2,
+      "phones": 0,
       "website": 2,
       "address": 0,
-      "category": 2
+      "category": 0
     },
     "evidence_used": false,
     "row_confidence": null,
@@ -611,23 +612,15 @@
         "alt_accessible": true,
         "alt_working_url": "https://www.newportinstitute.com/?utm_source=soci&utm_medium=referral&utm_campaign=listing&utm_content=shady-creek"
       },
-      "name_comparison": {
-        "base_name": "Newport Institute",
-        "alt_name": "Newport Institute",
-        "mostly_match": true,
-        "more_info": 0
+      "website_reason": "both_accessible_both",
+      "search_escalation_missing_contact": {
+        "has_phone": false,
+        "has_address": false,
+        "urls_tried": []
       },
-      "website_reason": "both_accessible_name_tie_both",
-      "category_reason": "same_category_both",
-      "category_winner_debug": {
-        "base_category": "doctor",
-        "alt_category": "doctor",
-        "decision": "both",
-        "reason": "identical"
-      },
-      "phones_reason": "equivalent",
-      "address_reason": "both_differ_no_evidence",
-      "label_reason": "tie_abstain",
+      "phones_reason": "no_website_evidence",
+      "address_reason": "no_website_evidence",
+      "label_reason": "tie_prefer_alt",
       "extracted_evidence": {}
     }
   },
@@ -652,14 +645,14 @@
       "confidence": 0.77
     },
     "label": 1,
-    "base_score": 3,
-    "alt_score": 4,
+    "base_score": 0,
+    "alt_score": 1,
     "attr_winners": {
       "name": -1,
-      "phones": 2,
+      "phones": 0,
       "website": 0,
-      "address": 2,
-      "category": 2
+      "address": 0,
+      "category": 0
     },
     "evidence_used": false,
     "row_confidence": null,
@@ -680,18 +673,24 @@
       "website_reason": "neither_accessible",
       "search_escalation": {
         "query": "Comfort Inn Alexandria West - Landmark Alexandria VA",
-        "urls_found": [],
-        "urls_fetched": []
+        "urls_found": [
+          "https://www.choicehotels.com/virginia/alexandria/comfort-inn-hotels/va403?mc=llgoxxpx",
+          "https://www.tripadvisor.com/Hotel_Review-g30226-d83886-Reviews-Comfort_Inn_Suites_Alexandria_West-Alexandria_Virginia.html",
+          "https://www.booking.com/hotel/us/comfort-inn-alexandria.html",
+          "https://www.expedia.com/Alexandria-Hotels-Comfort-Inn-Suites-Alexandria-Van-Dorn-Street.h14163.Hotel-Information",
+          "https://www.hotels-rates.com/hotel/us-va-alexandria-8363.html"
+        ],
+        "urls_fetched": [
+          "https://www.booking.com/hotel/us/comfort-inn-alexandria.html"
+        ]
       },
-      "category_reason": "same_category_both",
-      "category_winner_debug": {
-        "base_category": "hotel",
-        "alt_category": "hotel",
-        "decision": "both",
-        "reason": "identical"
+      "search_escalation_missing_contact": {
+        "has_phone": false,
+        "has_address": false,
+        "urls_tried": []
       },
-      "phones_reason": "equivalent",
-      "address_reason": "equivalent",
+      "phones_reason": "no_website_evidence",
+      "address_reason": "no_website_evidence",
       "label_reason": "alt_slightly_better",
       "extracted_evidence": {}
     }
@@ -719,13 +718,13 @@
       "confidence": 0.9962614185921548
     },
     "label": 0,
-    "base_score": 3,
-    "alt_score": 2,
+    "base_score": 2,
+    "alt_score": 1,
     "attr_winners": {
       "name": 0,
       "phones": 0,
       "website": 2,
-      "address": 2,
+      "address": 0,
       "category": 1
     },
     "evidence_used": true,
@@ -737,31 +736,32 @@
       "alternate_categories": [
         "japanese_cuisine",
         "fast_casual",
+        "takeout",
         "delivery_service",
-        "snack_bar",
         "bubble_tea_shop",
         "sushi_bar",
-        "dining_out",
-        "food_service",
         "eatery",
+        "food_service",
         "food_delivery",
+        "snack_bar",
+        "dining_outlet",
         "food_stand",
+        "eat_in",
         "food_court",
-        "food_truck",
-        "eat_in"
+        "food_truck"
       ],
-      "description": "SushiCo in Ede offers a wide variety of authentic Japanese cuisine including sushi, poke bowls, and bubble tea, all made with fresh ingredients and delivered directly to your doorstep.",
+      "description": "SushiCo is a Japanese restaurant offering a wide variety of sushi, poke bowls, and bubble tea, all made with fresh ingredients and delivered or eaten on-site.",
       "keywords": [
         "sushi",
+        "pok\u00e9",
         "bubble_tea",
         "japanese",
         "delivery",
         "fresh",
-        "assortment",
         "eatery",
-        "dining",
-        "pok\u00e9",
-        "uramaki"
+        "sashimi",
+        "uramaki",
+        "gyoza"
       ]
     },
     "debug": {
@@ -778,13 +778,15 @@
         "alt_accessible": true,
         "alt_working_url": "https://www.sushico.nl/"
       },
-      "name_comparison": {
-        "base_name": "SushiCo | Sushi & Bubble Tea Ede",
-        "alt_name": "SushiCo",
-        "mostly_match": false,
-        "more_info": 1
+      "website_reason": "both_accessible_both",
+      "search_escalation_missing_contact": {
+        "has_phone": false,
+        "has_address": false,
+        "urls_tried": [
+          "https://www.sushico.nl/",
+          "https://florya-sushico.arimenu.com/"
+        ]
       },
-      "website_reason": "both_accessible_names_dont_match_both",
       "category_reason": "llm_prefers_base",
       "category_winner_debug": {
         "base_category": "sushi_restaurant",
@@ -793,14 +795,8 @@
         "decision": "base",
         "reason": "llm_prefers_base"
       },
-      "phones_reason": "both_differ_no_evidence",
-      "base_phones": [
-        "0318255062"
-      ],
-      "alt_phones": [
-        "+31318255062"
-      ],
-      "address_reason": "equivalent",
+      "phones_reason": "no_website_evidence",
+      "address_reason": "no_website_evidence",
       "label_reason": "base_slightly_better",
       "extracted_evidence": {
         "https://www.sushico.nl/": {
@@ -817,6 +813,16 @@
             "https://www.instagram.com/sushico.nl/",
             "https://www.facebook.com/sushico.nl/"
           ]
+        },
+        "https://florya-sushico.arimenu.com/": {
+          "name": [
+            "SushiCo / Florya QR Menu"
+          ],
+          "phones": [],
+          "address": [],
+          "category": [],
+          "emails": [],
+          "socials": []
         }
       }
     }
@@ -842,20 +848,52 @@
       "brand": "{\"names\":{}}",
       "confidence": 0.77
     },
-    "label": 2,
-    "base_score": 4,
-    "alt_score": 4,
+    "label": 1,
+    "base_score": 2,
+    "alt_score": 2,
     "attr_winners": {
       "name": 2,
       "phones": 2,
       "website": 0,
-      "address": 2,
-      "category": 2
+      "address": 0,
+      "category": 0
     },
-    "evidence_used": false,
-    "row_confidence": null,
+    "evidence_used": true,
+    "row_confidence": 0.6,
     "base_website_accessible": false,
     "alt_website_accessible": false,
+    "llm_aggregated": {
+      "category": "urgent_care",
+      "alternate_categories": [
+        "healthcare_facility",
+        "medical_clinic",
+        "primary_care",
+        "emergency_room_alternative",
+        "walk_in_clinic",
+        "health_service",
+        "medical_service",
+        "health_care_facility",
+        "healthcare_provider",
+        "medical_care",
+        "health_service_provider",
+        "healthcare_service",
+        "medical_facility",
+        "healthcare_center"
+      ],
+      "description": "NextCare Urgent Care provides quick and reliable access to medical services for non-emergency conditions, offering walk-in clinics with extended hours and various convenient options for patients to receive immediate care.",
+      "keywords": [
+        "urgent_care",
+        "medical_services",
+        "healthcare",
+        "walk_in_clinic",
+        "primary_care",
+        "non_emergency",
+        "health_services",
+        "medical_facility",
+        "healthcare_facility",
+        "health_care"
+      ]
+    },
     "debug": {
       "name_reason": "equivalent",
       "step1_accessibility": {
@@ -873,20 +911,86 @@
       "website_reason": "neither_accessible",
       "search_escalation": {
         "query": "NextCare Urgent Care Gastonia Gastonia NC",
-        "urls_found": [],
-        "urls_fetched": []
+        "urls_found": [
+          "https://nextcare.com/locations/nc/gastonia/",
+          "https://nextcare.com/north-carolina-community-sponsors/",
+          "https://www.nextcare-urgentcare.com/near-me/",
+          "https://www.nextcare-urgentcare.com/gastonia/",
+          "https://www.newchoicehealth.com/places/north-carolina/gastonia"
+        ],
+        "urls_fetched": [
+          "https://www.nextcare-urgentcare.com/near-me/"
+        ]
       },
-      "category_reason": "same_category_both",
+      "contact_page_fetches": 1,
+      "search_escalation_missing_contact": {
+        "has_phone": false,
+        "has_address": false,
+        "urls_tried": [
+          "https://www.nextcare-urgentcare.com/near-me/",
+          "https://www.nextcare-urgentcare.com/contact-us/",
+          "https://www.urgentcare.com/practice/U2706-nextcare-urgent-care-gastonia-nc-28054"
+        ]
+      },
+      "category_reason": "llm_abstain",
       "category_winner_debug": {
         "base_category": "doctor",
         "alt_category": "doctor",
-        "decision": "both",
-        "reason": "identical"
+        "llm_aggregated": "urgent_care",
+        "decision": "abstain",
+        "reason": "llm_abstain"
       },
-      "phones_reason": "equivalent",
-      "address_reason": "equivalent",
-      "label_reason": "tie_abstain",
-      "extracted_evidence": {}
+      "phones_reason": "website_evidence_matches_both",
+      "evidence_phone": "(704) 215-4057",
+      "address_reason": "website_evidence_inconclusive",
+      "evidence_address": "3680 Robinwood Rd Gastonia NC 28054",
+      "label_reason": "tie_prefer_alt",
+      "extracted_evidence": {
+        "https://www.nextcare-urgentcare.com/near-me/": {
+          "name": [
+            "Locations Near Me! - NextCareUrgentCare",
+            "Locations Near Me!"
+          ],
+          "phones": [],
+          "address": [],
+          "category": [],
+          "emails": [],
+          "socials": [
+            "https://twitter.com/NextCare",
+            "https://www.facebook.com/NextCareUrgentCare/"
+          ]
+        },
+        "https://www.nextcare-urgentcare.com/contact-us/": {
+          "name": [
+            "Contact Us - NextCareUrgentCare",
+            "Contact Us"
+          ],
+          "phones": [],
+          "address": [],
+          "category": [],
+          "emails": [],
+          "socials": [
+            "https://twitter.com/NextCare",
+            "https://www.facebook.com/NextCareUrgentCare/"
+          ]
+        },
+        "https://www.urgentcare.com/practice/U2706-nextcare-urgent-care-gastonia-nc-28054": {
+          "name": [
+            "NextCare Urgent Care 3680 Robinwood Rd Gastonia NC 28054 - UrgentCare.com",
+            "NextCare Urgent Care"
+          ],
+          "phones": [
+            "(704) 215-4057"
+          ],
+          "address": [
+            "3680 Robinwood Rd Gastonia NC 28054",
+            "170 Month Get Started 3680 Robinwood Rd NextCare Urgent Care 3680 Robinwood Rd Gastonia , NC 28054"
+          ],
+          "category": [],
+          "emails": [],
+          "socials": []
+        }
+      }
     }
   },
   {
@@ -911,18 +1015,18 @@
       "socials": "[\"https://www.facebook.com/2023469851040046\"]",
       "confidence": 0.9872500778573653
     },
-    "label": 2,
-    "base_score": 4,
-    "alt_score": 4,
+    "label": 1,
+    "base_score": 2,
+    "alt_score": 2,
     "attr_winners": {
       "name": 2,
-      "phones": 2,
+      "phones": 0,
       "website": 2,
-      "address": 2,
+      "address": 0,
       "category": 0
     },
-    "evidence_used": false,
-    "row_confidence": null,
+    "evidence_used": true,
+    "row_confidence": 0.6,
     "base_website_accessible": true,
     "alt_website_accessible": true,
     "debug": {
@@ -939,29 +1043,62 @@
         "alt_accessible": true,
         "alt_working_url": "https://www.bp.com/es_es/spain/home.html"
       },
-      "name_comparison": {
-        "base_name": "BP",
-        "alt_name": "BP",
-        "mostly_match": true,
-        "more_info": 0
+      "website_reason": "both_accessible_both",
+      "search_escalation_missing_contact": {
+        "has_phone": false,
+        "has_address": false,
+        "urls_tried": [
+          "https://www.tiendeo.com/Tiendas/alicante/bp",
+          "https://rocketreach.co/colin-spain-email_5430783"
+        ]
       },
-      "website_reason": "both_accessible_name_tie_both",
       "category_llm_diagnostic": {
         "use_llm": true,
-        "html_snippets_count": 0,
-        "aggregate_available": true
+        "html_snippets_count": 2,
+        "aggregate_available": true,
+        "llm_called": true,
+        "llm_result": false
       },
-      "category_reason": "different_no_llm",
+      "category_reason": "llm_returned_none",
       "category_winner_debug": {
         "base_category": "car_wash",
         "alt_category": "gas_station",
         "decision": "abstain",
-        "reason": "different_no_website_evidence_or_llm"
+        "reason": "llm_returned_none_check_token_or_api"
       },
-      "phones_reason": "equivalent",
-      "address_reason": "equivalent",
-      "label_reason": "tie_abstain",
-      "extracted_evidence": {}
+      "phones_reason": "website_evidence_inconclusive",
+      "evidence_phone": "122.2034444",
+      "address_reason": "no_website_evidence",
+      "label_reason": "tie_prefer_alt",
+      "extracted_evidence": {
+        "https://www.tiendeo.com/Tiendas/alicante/bp": {
+          "name": [
+            "BP  Alicante | Horarios y tel\u00e9fonos | Tiendeo",
+            "BP Alicante - Tel\u00e9fonos, horarios y direcciones"
+          ],
+          "phones": [],
+          "address": [],
+          "category": [],
+          "emails": [],
+          "socials": []
+        },
+        "https://rocketreach.co/colin-spain-email_5430783": {
+          "name": [
+            "Colin Spain Email & Phone Number | SSE Renewables Director Corporate PPAs Contact Information",
+            "Colin Spain Email & Phone Number"
+          ],
+          "phones": [
+            "122.2034444"
+          ],
+          "address": [],
+          "category": [],
+          "emails": [],
+          "socials": [
+            "https://www.facebook.com/RocketReach-1209517052395769/",
+            "https://twitter.com/RocketReachCo"
+          ]
+        }
+      }
     }
   },
   {
@@ -986,13 +1123,13 @@
       "confidence": 0.9918379237288135
     },
     "label": 1,
-    "base_score": 3,
-    "alt_score": 4,
+    "base_score": 1,
+    "alt_score": 2,
     "attr_winners": {
       "name": 2,
-      "phones": 2,
+      "phones": 0,
       "website": -1,
-      "address": 2,
+      "address": 0,
       "category": 0
     },
     "evidence_used": false,
@@ -1012,20 +1149,18 @@
         "alt_working_url": "https://www.pettigrew.us/"
       },
       "website_reason": "only_alt_accessible",
+      "search_escalation_missing_contact": {
+        "has_phone": false,
+        "has_address": false,
+        "urls_tried": []
+      },
       "category_llm_diagnostic": {
         "use_llm": true,
         "html_snippets_count": 0,
         "aggregate_available": true
       },
-      "category_reason": "different_no_llm",
-      "category_winner_debug": {
-        "base_category": "civil_engineers",
-        "alt_category": "engineering_services",
-        "decision": "abstain",
-        "reason": "different_no_website_evidence_or_llm"
-      },
-      "phones_reason": "equivalent",
-      "address_reason": "equivalent",
+      "phones_reason": "no_website_evidence",
+      "address_reason": "no_website_evidence",
       "label_reason": "alt_slightly_better",
       "extracted_evidence": {}
     }
@@ -1052,48 +1187,20 @@
       "socials": "[\"https://www.facebook.com/111067831985657\"]",
       "confidence": 0.9962614185921548
     },
-    "label": 0,
-    "base_score": 4,
-    "alt_score": 3,
+    "label": 1,
+    "base_score": 2,
+    "alt_score": 2,
     "attr_winners": {
       "name": 2,
-      "phones": 2,
+      "phones": 0,
       "website": 2,
       "address": 0,
-      "category": 1
+      "category": 0
     },
     "evidence_used": true,
     "row_confidence": 0.6,
     "base_website_accessible": true,
     "alt_website_accessible": true,
-    "llm_aggregated": {
-      "category": "ice_cream_shop",
-      "alternate_categories": [
-        "convenience_store",
-        "dessert_shop",
-        "snack_bar",
-        "frozen-dessert",
-        "ice_cream_parlor",
-        "candy_store",
-        "sweet_shop",
-        "treat_shop",
-        "food_stand",
-        "ice_cream_stand"
-      ],
-      "description": "Jeremiah's Italian Ice is an ice cream shop offering a variety of Italian ice, soft ice cream, and custom Jelati cakes, celebrating 30 years of serving refreshing and delicious treats.",
-      "keywords": [
-        "italian_ice",
-        "soft_ice_cream",
-        "jelati",
-        "treats",
-        "flavors",
-        "catering",
-        "rewards",
-        "franchise",
-        "hop_away_treats",
-        "flavorites"
-      ]
-    },
     "debug": {
       "name_reason": "equivalent",
       "step1_accessibility": {
@@ -1108,36 +1215,52 @@
         "alt_accessible": true,
         "alt_working_url": "https://jeremiahsice.com/?y_source=1_MTAwNjkxNTI0My01NTktbG9jYXRpb24ud2Vic2l0ZQ%3D%3D"
       },
-      "name_comparison": {
-        "base_name": "Jeremiah's Italian Ice",
-        "alt_name": "Jeremiah's Italian Ice",
-        "mostly_match": true,
-        "more_info": 0
+      "website_reason": "both_accessible_both",
+      "contact_page_fetches": 1,
+      "search_escalation_missing_contact": {
+        "has_phone": false,
+        "has_address": false,
+        "urls_tried": [
+          "https://jeremiahsice.com/?y_source=1_MTAwNjkxNTI0My01NTktbG9jYXRpb24ud2Vic2l0ZQ%3D%3D",
+          "https://jeremiahsice.com/about/"
+        ]
       },
-      "website_reason": "both_accessible_name_tie_both",
       "category_llm_diagnostic": {
         "use_llm": true,
-        "html_snippets_count": 1,
+        "html_snippets_count": 2,
         "aggregate_available": true,
         "llm_called": true,
-        "llm_result": true
+        "llm_result": false
       },
-      "category_reason": "llm_prefers_base",
+      "category_reason": "llm_returned_none",
       "category_winner_debug": {
         "base_category": "ice_cream_and_frozen_yoghurt",
         "alt_category": "ice_cream_shop",
-        "llm_aggregated": "ice_cream_shop",
-        "decision": "base",
-        "reason": "llm_prefers_base"
+        "decision": "abstain",
+        "reason": "llm_returned_none_check_token_or_api"
       },
-      "phones_reason": "equivalent",
-      "address_reason": "both_differ_no_evidence",
-      "label_reason": "base_slightly_better",
+      "phones_reason": "no_website_evidence",
+      "address_reason": "no_website_evidence",
+      "label_reason": "tie_prefer_alt",
       "extracted_evidence": {
         "https://jeremiahsice.com/?y_source=1_MTAwNjkxNTI0My01NTktbG9jYXRpb24ud2Vic2l0ZQ%3D%3D": {
           "name": [
             "Jeremiah\u2019s Italian Ice - Jelati, Soft Ice Cream, and Italian Ice",
             "Homepage"
+          ],
+          "phones": [],
+          "address": [],
+          "category": [],
+          "emails": [],
+          "socials": [
+            "https://www.facebook.com/jeremiahsice/",
+            "https://twitter.com/jeremiahsice"
+          ]
+        },
+        "https://jeremiahsice.com/about/": {
+          "name": [
+            "About Us & History - Jeremiah\u2019s Italian Ice",
+            "Introducing\u2026Jeremiah\u2019s  Italian Ice"
           ],
           "phones": [],
           "address": [],
@@ -1172,52 +1295,20 @@
       "brand": "{\"names\":{}}",
       "confidence": 0.77
     },
-    "label": 0,
-    "base_score": 4,
-    "alt_score": 3,
+    "label": 1,
+    "base_score": 1,
+    "alt_score": 1,
     "attr_winners": {
       "name": 0,
-      "phones": 2,
+      "phones": 0,
       "website": 2,
-      "address": 2,
-      "category": 1
+      "address": 0,
+      "category": 0
     },
     "evidence_used": true,
     "row_confidence": 0.6,
     "base_website_accessible": true,
     "alt_website_accessible": true,
-    "llm_aggregated": {
-      "category": "gas_station",
-      "alternate_categories": [
-        "convenience_store",
-        "fuel_station",
-        "petrol_station",
-        "auto_service",
-        "travel_stop",
-        "recreation_area",
-        "local_business",
-        "retail_store",
-        "community_center",
-        "service_station",
-        "outdoor_recreation",
-        "local_service",
-        "travel_service",
-        "fuel_supplier"
-      ],
-      "description": "Murphy USA is a large independent retailer of gasoline and convenience store merchandise, offering low prices and rewards programs to help customers save on fuel and other essentials.",
-      "keywords": [
-        "gasoline",
-        "convenience_store",
-        "fuel",
-        "rewards",
-        "savings",
-        "snacks",
-        "drinks",
-        "travel",
-        "retail",
-        "america"
-      ]
-    },
     "debug": {
       "name_reason": "differ_no_evidence",
       "step1_accessibility": {
@@ -1232,24 +1323,12 @@
         "alt_accessible": true,
         "alt_working_url": "https://www.murphyusa.com/murphyusa/home"
       },
-      "name_comparison": {
-        "base_name": "Murphy Express",
-        "alt_name": "Murphy USA",
-        "mostly_match": false,
-        "more_info": 1
-      },
-      "website_reason": "both_accessible_names_dont_match_both",
-      "category_reason": "llm_prefers_base",
-      "category_winner_debug": {
-        "base_category": "convenience_store",
-        "alt_category": "convenience_store",
-        "llm_aggregated": "gas_station",
-        "decision": "base",
-        "reason": "llm_prefers_base"
-      },
-      "phones_reason": "equivalent",
-      "address_reason": "equivalent",
-      "label_reason": "base_slightly_better",
+      "website_reason": "both_accessible_both",
+      "phones_reason": "website_evidence_inconclusive",
+      "evidence_phone": "800 843 4298",
+      "address_reason": "website_evidence_inconclusive",
+      "evidence_address": "200 E. Peach Street El Dorado, AR 71730",
+      "label_reason": "tie_prefer_alt",
       "extracted_evidence": {
         "https://www.murphyusa.com/murphyusa/home": {
           "name": [
@@ -1293,12 +1372,12 @@
       "socials": "[\"https://www.facebook.com/437045240458850\"]",
       "confidence": 0.9696941176470588
     },
-    "label": 0,
+    "label": 1,
     "base_score": 3,
-    "alt_score": 2,
+    "alt_score": 3,
     "attr_winners": {
       "name": 2,
-      "phones": 0,
+      "phones": -1,
       "website": 2,
       "address": 0,
       "category": 1
@@ -1311,28 +1390,29 @@
       "category": "large_format_printing",
       "alternate_categories": [
         "retail_signage",
-        "print_signage",
-        "outdoor_signage",
+        "print_solutions",
+        "sign_making",
         "graphic_design",
-        "marketing_materials",
-        "retail_marketing",
-        "business_signage",
+        "business_signs",
+        "outdoor_signage",
+        "window_display",
+        "banner_printing",
+        "poster_printing",
         "custom_signage",
-        "print_services",
-        "visual_communication"
+        "retail_marketing"
       ],
-      "description": "Certa Opportune Inc. specializes in providing high-quality large format printing services for retail stores, mini-malls, and marketplaces, with a focus on impactful signage to drive sales and enhance retail presence.",
+      "description": "Certa Opportune Inc. specializes in high-quality large-format printing and retail signage, providing impactful solutions for retail stores, mini-malls, and marketplaces to enhance brand presence and drive sales.",
       "keywords": [
         "large_format_printing",
         "retail_signage",
-        "signage",
-        "print_services",
-        "marketing_materials",
-        "retail_marketing",
-        "visual_impact",
-        "sales",
-        "retail_stores",
-        "marketplaces"
+        "sign_making",
+        "graphic_design",
+        "business_signs",
+        "outdoor_signage",
+        "window_display",
+        "banner_printing",
+        "poster_printing",
+        "custom_signage"
       ]
     },
     "debug": {
@@ -1349,13 +1429,17 @@
         "alt_accessible": true,
         "alt_working_url": "https://certaopportune.ca/"
       },
-      "name_comparison": {
-        "base_name": "Certa Opportune Inc.",
-        "alt_name": "Certa Opportune Inc.",
-        "mostly_match": true,
-        "more_info": 0
+      "website_reason": "both_accessible_both",
+      "contact_page_fetches": 2,
+      "search_escalation_missing_contact": {
+        "has_phone": true,
+        "has_address": false,
+        "urls_tried": [
+          "https://certaopportune.ca/about-us/",
+          "https://certaopportune.ca/contact-us/",
+          "https://covid-19.ontario.ca/fr/node/456"
+        ]
       },
-      "website_reason": "both_accessible_name_tie_both",
       "category_reason": "llm_prefers_base",
       "category_winner_debug": {
         "base_category": "sign_making",
@@ -1364,15 +1448,10 @@
         "decision": "base",
         "reason": "llm_prefers_base"
       },
-      "phones_reason": "both_differ_no_evidence",
-      "base_phones": [
-        "4164094360"
-      ],
-      "alt_phones": [
-        "+14375517377"
-      ],
-      "address_reason": "both_differ_no_evidence",
-      "label_reason": "base_slightly_better",
+      "phones_reason": "website_evidence_matches_alt",
+      "evidence_phone": "+1 (437) 551-7377",
+      "address_reason": "no_website_evidence",
+      "label_reason": "tie_prefer_alt",
       "extracted_evidence": {
         "https://certaopportune.ca/": {
           "name": [
@@ -1383,6 +1462,49 @@
           "address": [],
           "category": [],
           "emails": [],
+          "socials": []
+        },
+        "https://certaopportune.ca/about-us/": {
+          "name": [
+            "Learn About Us CertaOpportune | About Us",
+            "Elevating Brands withQuality Signage"
+          ],
+          "phones": [],
+          "address": [],
+          "category": [],
+          "emails": [],
+          "socials": []
+        },
+        "https://certaopportune.ca/contact-us/": {
+          "name": [
+            "Contact Us | Customer Support by certaopportune.ca",
+            "Get in Touch forMore Information"
+          ],
+          "phones": [
+            "+1 (437) 551-7377",
+            "(437) 551-7377"
+          ],
+          "address": [],
+          "category": [],
+          "emails": [
+            "info@certaopportune.ca"
+          ],
+          "socials": []
+        },
+        "https://covid-19.ontario.ca/fr/node/456": {
+          "name": [
+            "4903 - fr - Certa Opportune Inc. | La COVID\u201119 (le coronavirus) en Ontario",
+            "4903 - fr - Certa Opportune Inc."
+          ],
+          "phones": [
+            "+14372326852",
+            "4372326852"
+          ],
+          "address": [],
+          "category": [],
+          "emails": [
+            "eric.clark@certaopportune.ca"
+          ],
           "socials": []
         }
       }
@@ -1410,14 +1532,14 @@
       "confidence": 0.77
     },
     "label": 1,
-    "base_score": 2,
+    "base_score": 1,
     "alt_score": 3,
     "attr_winners": {
       "name": 2,
       "phones": -1,
       "website": -1,
       "address": 0,
-      "category": 1
+      "category": 0
     },
     "evidence_used": true,
     "row_confidence": 0.6,
@@ -1430,29 +1552,28 @@
         "apparel_store",
         "clothing_store",
         "accessories_store",
-        "sports_store",
-        "outdoor_store",
-        "mens_clothing_store",
-        "womens_clothing_store",
-        "kids_clothing_store",
+        "mens_clothing",
+        "womens_clothing",
+        "kids_clothing",
         "sale_store",
-        "online_store",
-        "department_store",
-        "retailer",
-        "boutique"
+        "outdoor_apparel",
+        "basketball_apparel",
+        "running_apparel",
+        "casual_apparel",
+        "online_shopping"
       ],
       "description": "DTLR is a retail store specializing in footwear, apparel, and accessories for men, women, and kids, offering a wide range of brands and styles with regular new arrivals and sales.",
       "keywords": [
         "footwear",
         "apparel",
-        "clothing",
         "accessories",
-        "retail",
-        "DTLR",
-        "new_arrivals",
+        "mens_clothing",
+        "womens_clothing",
+        "kids_clothing",
         "sale",
+        "new_arrivals",
         "brands",
-        "styles"
+        "outdoor_apparel"
       ]
     },
     "debug": {
@@ -1468,19 +1589,19 @@
         "alt_working_url": "https://locations.dtlr.com/va/richmond/southside-plaza.html"
       },
       "website_reason": "only_alt_accessible",
-      "category_reason": "llm_prefers_base",
+      "category_reason": "llm_abstain",
       "category_winner_debug": {
         "base_category": "shoe_store",
         "alt_category": "shoe_store",
         "llm_aggregated": "retail_store",
-        "decision": "base",
-        "reason": "llm_prefers_base"
+        "decision": "abstain",
+        "reason": "llm_abstain"
       },
-      "phones_reason": "evidence_matches_alt",
+      "phones_reason": "website_evidence_matches_alt",
       "evidence_phone": "224 (804) 232-7880",
-      "address_reason": "evidence_inconclusive",
+      "address_reason": "website_evidence_inconclusive",
       "evidence_address": "0 Select Store Search Use Current Location Home Locator All\n                    DTLR Stores Virginia",
-      "label_reason": "alt_slightly_better",
+      "label_reason": "alt_score >= base_score + 2",
       "extracted_evidence": {
         "https://locations.dtlr.com/va/richmond/southside-plaza.html": {
           "name": [
@@ -1530,47 +1651,19 @@
       "confidence": 0.9962614185921548
     },
     "label": 1,
-    "base_score": 4,
-    "alt_score": 5,
+    "base_score": 2,
+    "alt_score": 2,
     "attr_winners": {
       "name": 2,
-      "phones": 2,
+      "phones": 0,
       "website": 2,
-      "address": 2,
-      "category": -1
+      "address": 0,
+      "category": 0
     },
     "evidence_used": true,
     "row_confidence": 0.6,
     "base_website_accessible": true,
     "alt_website_accessible": true,
-    "llm_aggregated": {
-      "category": "restaurant",
-      "alternate_categories": [
-        "fast_food_restaurant",
-        "quick_service_restaurant",
-        "chain_restaurant",
-        "grill_restaurant",
-        "sandwich_shop",
-        "food_service",
-        "eatery",
-        "food_stand",
-        "food_outlet",
-        "restaurant_chain"
-      ],
-      "description": "Burger King is a global fast-food chain known for serving burgers, fries, and other quick-service food items.",
-      "keywords": [
-        "burger",
-        "king",
-        "fast_food",
-        "sandwich",
-        "restaurant",
-        "chain",
-        "grill",
-        "fries",
-        "food_service",
-        "quick_service"
-      ]
-    },
     "debug": {
       "name_reason": "equivalent",
       "step1_accessibility": {
@@ -1585,31 +1678,34 @@
         "alt_accessible": true,
         "alt_working_url": "https://www.bk.com/store-locator/store/restaurant_5319"
       },
-      "name_comparison": {
-        "base_name": "Burger King",
-        "alt_name": "Burger King",
-        "mostly_match": true,
-        "more_info": 0
+      "website_reason": "both_accessible_both",
+      "search_escalation_missing_contact": {
+        "has_phone": false,
+        "has_address": false,
+        "urls_tried": [
+          "https://www.bk.com/store-locator/store/restaurant_5319",
+          "https://usarestaurants.info/explore/united-states/oregon/klamath-county/klamath-falls/burger-king-541-850-2820.htm"
+        ]
       },
-      "website_reason": "both_accessible_name_tie_both",
       "category_llm_diagnostic": {
         "use_llm": true,
-        "html_snippets_count": 1,
+        "html_snippets_count": 2,
         "aggregate_available": true,
         "llm_called": true,
-        "llm_result": true
+        "llm_result": false
       },
-      "category_reason": "llm_prefers_alt",
+      "category_reason": "llm_returned_none",
       "category_winner_debug": {
         "base_category": "beverage_supplier",
         "alt_category": "fast_food_restaurant",
-        "llm_aggregated": "restaurant",
-        "decision": "alt",
-        "reason": "llm_prefers_alt"
+        "decision": "abstain",
+        "reason": "llm_returned_none_check_token_or_api"
       },
-      "phones_reason": "equivalent",
-      "address_reason": "equivalent",
-      "label_reason": "alt_slightly_better",
+      "phones_reason": "website_evidence_inconclusive",
+      "evidence_phone": "(541) 850-2820",
+      "address_reason": "website_evidence_inconclusive",
+      "evidence_address": "5441 S 6th St, Klamath Falls, OR 97603",
+      "label_reason": "tie_prefer_alt",
       "extracted_evidence": {
         "https://www.bk.com/store-locator/store/restaurant_5319": {
           "name": [
@@ -1617,6 +1713,22 @@
           ],
           "phones": [],
           "address": [],
+          "category": [],
+          "emails": [],
+          "socials": []
+        },
+        "https://usarestaurants.info/explore/united-states/oregon/klamath-county/klamath-falls/burger-king-541-850-2820.htm": {
+          "name": [
+            "Burger King | 5441 S 6th St, Klamath Falls, OR 97603, USA",
+            "Burger King"
+          ],
+          "phones": [
+            "(541) 850-2820"
+          ],
+          "address": [
+            "5441 S 6th St, Klamath Falls, OR 97603",
+            "5538 S 6th St, Klamath Falls, OR 97603"
+          ],
           "category": [],
           "emails": [],
           "socials": []
@@ -1644,49 +1756,20 @@
       "category": "{\"primary\":\"hair_stylist\",\"alternate\":[\"hair_salon\",\"beauty_and_spa\"]}",
       "confidence": 0.8606545961002786
     },
-    "label": 2,
-    "base_score": 4,
-    "alt_score": 4,
+    "label": 1,
+    "base_score": 2,
+    "alt_score": 2,
     "attr_winners": {
       "name": 2,
-      "phones": 2,
+      "phones": 0,
       "website": 2,
-      "address": 2,
+      "address": 0,
       "category": 0
     },
     "evidence_used": true,
     "row_confidence": 0.6,
     "base_website_accessible": true,
     "alt_website_accessible": true,
-    "llm_aggregated": {
-      "category": "hair_saloon",
-      "alternate_categories": [
-        "beauty_salon",
-        "hair_care",
-        "cosmetology",
-        "spa",
-        "hair_styling",
-        "hair_extension",
-        "foot_massage",
-        "online_shopping",
-        "mobile_app",
-        "customer_service",
-        "appointment_scheduling"
-      ],
-      "description": "Bellaiuto Coiffure is a hair salon offering a range of hair care services, including styling, extensions, and foot spa treatments, with an online shop for product purchases and mobile app booking.",
-      "keywords": [
-        "hair",
-        "styling",
-        "extensions",
-        "spa",
-        "online_shop",
-        "mobile_app",
-        "appointments",
-        "cosmetology",
-        "foot_massage",
-        "products"
-      ]
-    },
     "debug": {
       "name_reason": "equivalent",
       "step1_accessibility": {
@@ -1701,24 +1784,17 @@
         "alt_accessible": true,
         "alt_working_url": "https://bellaiuto.ch/"
       },
-      "name_comparison": {
-        "base_name": "bellaiuto coiffure",
-        "alt_name": "bellaiuto coiffure",
-        "mostly_match": true,
-        "more_info": 0
+      "website_reason": "both_accessible_both",
+      "search_escalation_missing_contact": {
+        "has_phone": false,
+        "has_address": false,
+        "urls_tried": [
+          "https://bellaiuto.ch/"
+        ]
       },
-      "website_reason": "both_accessible_name_tie_both",
-      "category_reason": "llm_abstain",
-      "category_winner_debug": {
-        "base_category": "hair_stylist",
-        "alt_category": "hair_stylist",
-        "llm_aggregated": "hair_saloon",
-        "decision": "abstain",
-        "reason": "llm_abstain"
-      },
-      "phones_reason": "equivalent",
-      "address_reason": "equivalent",
-      "label_reason": "tie_abstain",
+      "phones_reason": "no_website_evidence",
+      "address_reason": "no_website_evidence",
+      "label_reason": "tie_prefer_alt",
       "extracted_evidence": {
         "https://bellaiuto.ch/": {
           "name": [
@@ -1757,18 +1833,18 @@
       "socials": "[\"https://www.facebook.com/106821481775458\"]",
       "confidence": 0.9792361111111111
     },
-    "label": 2,
-    "base_score": 4,
-    "alt_score": 4,
+    "label": 1,
+    "base_score": 2,
+    "alt_score": 2,
     "attr_winners": {
       "name": 2,
-      "phones": 2,
+      "phones": 0,
       "website": 2,
-      "address": 2,
+      "address": 0,
       "category": 0
     },
-    "evidence_used": false,
-    "row_confidence": null,
+    "evidence_used": true,
+    "row_confidence": 0.6,
     "base_website_accessible": true,
     "alt_website_accessible": true,
     "debug": {
@@ -1785,29 +1861,47 @@
         "alt_accessible": true,
         "alt_working_url": "https://alexandria-soccer.com/about/"
       },
-      "name_comparison": {
-        "base_name": "LuLu's Bar & Resto",
-        "alt_name": "LuLu's Bar & Resto",
-        "mostly_match": true,
-        "more_info": 0
+      "website_reason": "both_accessible_both",
+      "search_escalation_missing_contact": {
+        "has_phone": false,
+        "has_address": false,
+        "urls_tried": [
+          "https://www.restaurantji.com/fl/panama-city-beach/lulus-bar-and-resto-/"
+        ]
       },
-      "website_reason": "both_accessible_name_tie_both",
       "category_llm_diagnostic": {
         "use_llm": true,
-        "html_snippets_count": 0,
-        "aggregate_available": true
+        "html_snippets_count": 1,
+        "aggregate_available": true,
+        "llm_called": true,
+        "llm_result": false
       },
-      "category_reason": "different_no_llm",
+      "category_reason": "llm_returned_none",
       "category_winner_debug": {
         "base_category": "pub",
         "alt_category": "bar_and_grill_restaurant",
         "decision": "abstain",
-        "reason": "different_no_website_evidence_or_llm"
+        "reason": "llm_returned_none_check_token_or_api"
       },
-      "phones_reason": "equivalent",
-      "address_reason": "equivalent",
-      "label_reason": "tie_abstain",
-      "extracted_evidence": {}
+      "phones_reason": "no_website_evidence",
+      "address_reason": "no_website_evidence",
+      "label_reason": "tie_prefer_alt",
+      "extracted_evidence": {
+        "https://www.restaurantji.com/fl/panama-city-beach/lulus-bar-and-resto-/": {
+          "name": [
+            "LuLu's Bar & Resto, Panama City Beach - Menu, Reviews (240), Photos (44) - Restaurantji",
+            "LuLu's Bar & Resto"
+          ],
+          "phones": [],
+          "address": [],
+          "category": [],
+          "emails": [],
+          "socials": [
+            "https://www.facebook.com/luluspcb/",
+            "https://www.instagram.com/lulus.resto.bar/?hl=en"
+          ]
+        }
+      }
     }
   },
   {
@@ -1831,15 +1925,15 @@
       "brand": "{\"names\":{}}",
       "confidence": 0.77
     },
-    "label": 2,
-    "base_score": 5,
-    "alt_score": 5,
+    "label": 1,
+    "base_score": 2,
+    "alt_score": 2,
     "attr_winners": {
       "name": 2,
-      "phones": 2,
+      "phones": 0,
       "website": 2,
-      "address": 2,
-      "category": 2
+      "address": 0,
+      "category": 0
     },
     "evidence_used": false,
     "row_confidence": null,
@@ -1859,23 +1953,15 @@
         "alt_accessible": true,
         "alt_working_url": "https://www.fastestlabs.com/pittsburgh/"
       },
-      "name_comparison": {
-        "base_name": "Fastest Labs Pittsburgh",
-        "alt_name": "Fastest Labs Pittsburgh",
-        "mostly_match": true,
-        "more_info": 0
+      "website_reason": "both_accessible_both",
+      "search_escalation_missing_contact": {
+        "has_phone": false,
+        "has_address": false,
+        "urls_tried": []
       },
-      "website_reason": "both_accessible_name_tie_both",
-      "category_reason": "same_category_both",
-      "category_winner_debug": {
-        "base_category": "laboratory_testing",
-        "alt_category": "laboratory_testing",
-        "decision": "both",
-        "reason": "identical"
-      },
-      "phones_reason": "equivalent",
-      "address_reason": "equivalent",
-      "label_reason": "tie_abstain",
+      "phones_reason": "no_website_evidence",
+      "address_reason": "no_website_evidence",
+      "label_reason": "tie_prefer_alt",
       "extracted_evidence": {}
     }
   },
@@ -1900,13 +1986,13 @@
       "confidence": 0.77
     },
     "label": 0,
-    "base_score": 4,
-    "alt_score": 3,
+    "base_score": 3,
+    "alt_score": 2,
     "attr_winners": {
       "name": 2,
       "phones": 2,
       "website": 1,
-      "address": 2,
+      "address": 0,
       "category": 0
     },
     "evidence_used": true,
@@ -1926,8 +2012,10 @@
         "alt_working_url": null
       },
       "website_reason": "only_base_accessible",
-      "phones_reason": "equivalent",
-      "address_reason": "equivalent",
+      "phones_reason": "website_evidence_matches_both",
+      "evidence_phone": "314 (918) 227-1000",
+      "address_reason": "website_evidence_inconclusive",
+      "evidence_address": "1021 E Bryan Ave Sapulpa, OK 74066",
       "label_reason": "base_slightly_better",
       "extracted_evidence": {
         "https://healthcare.ascension.org/find-care/provider/1356415574/jill-johnson": {
@@ -1944,10 +2032,7 @@
           ],
           "category": [],
           "emails": [],
-          "socials": [
-            "https://www.facebook.com/ascension.org",
-            "https://www.linkedin.com/company/ascensionorg"
-          ]
+          "socials": []
         }
       }
     }

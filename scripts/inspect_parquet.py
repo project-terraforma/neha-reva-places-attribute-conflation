@@ -185,11 +185,14 @@ def main():
     pretty_print_schema(con)
 
     # --- Null/missing stats ---
-    print("\nNULL COUNTS per column")
+    print("\nNULL/EMPTY COUNTS per column")
     print("-" * 40)
     null_counts = []
     for col in schema["column_name"]:
-        n = con.execute(f"SELECT COUNT(*) FROM '{DATA_PATH}' WHERE {col} IS NULL").fetchone()[0]
+        n = con.execute(f"""
+            SELECT COUNT(*) FROM '{DATA_PATH}'
+            WHERE {col} IS NULL OR TRIM(COALESCE({col}::VARCHAR, '')) = ''
+        """).fetchone()[0]
         pct = 100 * n / row_count
         null_counts.append((col, n, pct))
     for col, n, pct in sorted(null_counts, key=lambda x: -x[1]):

@@ -162,6 +162,61 @@ def _normalize_url(url: str) -> str:
     return s
 
 
+def find_contact_or_about_links(html: str, current_url: str, max_links: int = 3) -> list[str]:
+    """
+    Find same-domain links that look like contact/about pages (to scope past the first page).
+    Returns list of absolute URLs, up to max_links.
+    """
+    if not html or not current_url:
+        return []
+    try:
+        parsed = urlparse(_normalize_url(current_url))
+        base_netloc = (parsed.netloc or "").lower().replace("www.", "")
+        base_scheme = parsed.scheme or "https"
+    except Exception:
+        return []
+    if not BeautifulSoup:
+        return []
+    urls = []
+    seen = set()
+    try:
+        soup = BeautifulSoup(html, "html.parser")
+        for a in soup.find_all("a", href=True):
+            href = (a.get("href") or "").strip()
+            text = (a.get_text() or "").strip().lower()
+            if not href or href.startswith("#") or href.startswith("mailto:") or href.startswith("tel:"):
+                continue
+            try:
+                if href.startswith("//"):
+                    full = base_scheme + ":" + href
+                elif href.startswith("/"):
+                    full = f"{base_scheme}://{parsed.netloc or ''}{href}"
+                else:
+                    full = href
+                p = urlparse(full)
+                netloc = (p.netloc or "").lower().replace("www.", "")
+                if netloc != base_netloc:
+                    continue
+                path_lower = (p.path or "").lower()
+                if "contact" in path_lower or "about" in path_lower or "about-us" in path_lower:
+                    if full not in seen:
+                        seen.add(full)
+                        urls.append(full)
+                        if len(urls) >= max_links:
+                            return urls
+                if "contact" in text or "about" in text:
+                    if full not in seen:
+                        seen.add(full)
+                        urls.append(full)
+                        if len(urls) >= max_links:
+                            return urls
+            except Exception:
+                continue
+    except Exception:
+        pass
+    return urls[:max_links]
+
+
 def _is_parked(html: str, url: str) -> bool:
     """Heuristic: detect parked domain / for-sale page (not the actual business)."""
     if not html:

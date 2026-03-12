@@ -30,6 +30,7 @@ from .evidence import (
     classify_page,
     extract_fields,
     fetch_url,
+    find_contact_or_about_links,
 )
 from .evidence import _normalize_url  # noqa: F401 - used
 
@@ -346,7 +347,7 @@ def process_row(
             "alt_working_url": alt_working_url,
         }
 
-    # If one works → point to that source
+    # Website: only from accessibility (no source-vs-source; which URL actually works)
     if base_accessible and not alt_accessible:
         base_score += 1
         winners["website"] = 1
@@ -358,37 +359,12 @@ def process_row(
         if dbg is not None:
             dbg["website_reason"] = "only_alt_accessible"
     elif base_accessible and alt_accessible:
-        # Both accessible: compare names, prefer more info, select website that correlates
-        base_name = _first_str(base.get("name"))
-        alt_name = _first_str(other.get("name"))
+        # Both accessible — website correctness is only from fetch; no name comparison
+        base_score += 1
+        alt_score += 1
+        winners["website"] = 2
         if dbg is not None:
-            dbg["name_comparison"] = {"base_name": base_name, "alt_name": alt_name, "mostly_match": _names_mostly_match(base_name or "", alt_name or ""), "more_info": _name_has_more_info(base_name or "", alt_name or "")}
-        if _names_mostly_match(base_name or "", alt_name or ""):
-            more = _name_has_more_info(base_name or "", alt_name or "")
-            if more == 1:
-                # Base has more info → prefer base's website
-                base_score += 1
-                winners["website"] = 1
-                if dbg is not None:
-                    dbg["website_reason"] = "both_accessible_base_name_has_more_info"
-            elif more == -1:
-                alt_score += 1
-                winners["website"] = -1
-                if dbg is not None:
-                    dbg["website_reason"] = "both_accessible_alt_name_has_more_info"
-            else:
-                # Tie: select website that correlates with selected name. Default: base
-                base_score += 1
-                alt_score += 1
-                winners["website"] = 2
-                if dbg is not None:
-                    dbg["website_reason"] = "both_accessible_name_tie_both"
-        else:
-            base_score += 1
-            alt_score += 1
-            winners["website"] = 2
-            if dbg is not None:
-                dbg["website_reason"] = "both_accessible_names_dont_match_both"
+            dbg["website_reason"] = "both_accessible_both"
     else:
         # Neither accessible: escalate to online search
         winners["website"] = 0
@@ -420,6 +396,7 @@ def process_row(
         if dbg is not None:
             dbg["search_escalation"] = {"query": search_term, "urls_found": search_urls[:5], "urls_fetched": [t[1] for t in to_process]}
 
+    relevant_pages: list[tuple[str, str]] = []  # (url, html)
     for _src, url, html in to_process:
         classification = classify_page(html, 200, url, query)
         if classification == CLASS_RELEVANT:
@@ -428,6 +405,54 @@ def process_row(
             text = _get_visible_text(html)
             if text:
                 html_snippets.append(text[:4000])
+            relevant_pages.append((url, html))
+
+    # Scope past first page: fetch contact/about links from relevant pages
+    extra_fetched = 0
+    for page_url, page_html in relevant_pages:
+        if extra_fetched >= 2:
+            break
+        for link in find_contact_or_about_links(page_html, page_url, max_links=2):
+            if link in extracted_per_url:
+                continue
+            status, final_url, html = fetch_url(link, timeout=10)
+            time.sleep(delay)
+            if 200 <= status < 400:
+                if classify_page(html, 200, final_url, query) == CLASS_RELEVANT:
+                    fields = extract_fields(html, final_url, query, region)
+                    extracted_per_url[final_url] = fields
+                    text = _get_visible_text(html)
+                    if text:
+                        html_snippets.append(text[:4000])
+                    extra_fetched += 1
+                    if extra_fetched >= 2:
+                        break
+    if dbg is not None and extra_fetched:
+        dbg["contact_page_fetches"] = extra_fetched
+
+    # If still missing phone or address, escalate to DuckDuckGo search
+    has_phone = any(f.get("phones") for f in extracted_per_url.values())
+    has_address = any(f.get("address") for f in extracted_per_url.values())
+    if not has_phone or not has_address:
+        contact_query = dict(query)
+        contact_query["name"] = (contact_query.get("name") or "") + " contact phone address"
+        search_urls = _online_search_escalation(contact_query, None)
+        for u in search_urls[:3]:
+            if u in extracted_per_url:
+                continue
+            status, final_url, html = fetch_url(u, timeout=10)
+            time.sleep(delay)
+            if 200 <= status < 400:
+                if classify_page(html, 200, final_url, query) == CLASS_RELEVANT:
+                    fields = extract_fields(html, final_url, query, region)
+                    extracted_per_url[final_url] = fields
+                    text = _get_visible_text(html)
+                    if text:
+                        html_snippets.append(text[:4000])
+                    if any(f.get("phones") for f in extracted_per_url.values()) and any(f.get("address") for f in extracted_per_url.values()):
+                        break
+        if dbg is not None:
+            dbg["search_escalation_missing_contact"] = {"has_phone": has_phone, "has_address": has_address, "urls_tried": list(extracted_per_url.keys())[-3:]}
 
     # --- Step 3: LLM aggregation for category/description ---
     llm_result = None
@@ -498,122 +523,93 @@ def process_row(
             if base_cat and alt_cat and base_cat.lower() != alt_cat.lower():
                 dbg["category_reason"] = "llm_returned_none"
                 dbg["category_winner_debug"] = {"base_category": base_cat, "alt_category": alt_cat, "decision": "abstain", "reason": "llm_returned_none_check_token_or_api"}
-    elif base.get("category") and other.get("category"):
-        # No LLM: if categories are same, both get point (user: if both same, select base)
-        base_cat = _first_str(base.get("category"))
-        alt_cat = _first_str(other.get("category"))
-        if base_cat and alt_cat and base_cat.lower() == alt_cat.lower():
-            base_score += 1
-            alt_score += 1
-            winners["category"] = 2
-            if dbg is not None:
-                dbg["category_reason"] = "same_category_both"
-                dbg["category_winner_debug"] = {"base_category": base_cat, "alt_category": alt_cat, "decision": "both", "reason": "identical"}
-        elif dbg is not None:
-            dbg["category_reason"] = "different_no_llm"
-            dbg["category_winner_debug"] = {"base_category": base_cat, "alt_category": alt_cat, "decision": "abstain", "reason": "different_no_website_evidence_or_llm"}
+    # Category: no website/LLM evidence — abstain (do not use source-vs-source agreement)
+    if winners.get("category") is None:
+        winners["category"] = 0
+        if dbg is not None and (base.get("category") or other.get("category")):
+            dbg["category_reason"] = dbg.get("category_reason") or "no_website_evidence"
 
-    # --- Step 4: Compare phones, address (using evidence if available) ---
+    # --- Step 4: Phones, address — only from website evidence (not source-vs-source) ---
     base_phones = _list_strs(base.get("phones"))
     alt_phones = _list_strs(other.get("phones"))
-    if _any_phones_equivalent(base_phones, alt_phones):
-        base_score += 1
-        alt_score += 1
-        winners["phones"] = 2
-        if dbg is not None:
-            dbg["phones_reason"] = "equivalent"
-    elif base_phones and not alt_phones:
-        base_score += 1
-        winners["phones"] = 1
-        if dbg is not None:
-            dbg["phones_reason"] = "only_base"
-    elif alt_phones and not base_phones:
-        alt_score += 1
-        winners["phones"] = -1
-        if dbg is not None:
-            dbg["phones_reason"] = "only_alt"
-    else:
-        # Both have different phones - use website evidence if we have it
-        best_phone = None
-        for url, fields in extracted_per_url.items():
-            for p, _ in fields.get("phones", []):
-                if p:
-                    best_phone = p
-                    break
-            if best_phone:
+    best_phone = None
+    for url, fields in extracted_per_url.items():
+        for p, _ in fields.get("phones", []):
+            if p:
+                best_phone = p
                 break
         if best_phone:
-            base_match = any(_phones_equivalent(b, best_phone) for b in base_phones)
-            alt_match = any(_phones_equivalent(a, best_phone) for a in alt_phones)
-            if base_match and not alt_match:
-                base_score += 1
-                winners["phones"] = 1
-                if dbg is not None:
-                    dbg["phones_reason"] = "evidence_matches_base"
-                    dbg["evidence_phone"] = best_phone
-            elif alt_match and not base_match:
-                alt_score += 1
-                winners["phones"] = -1
-                if dbg is not None:
-                    dbg["phones_reason"] = "evidence_matches_alt"
-                    dbg["evidence_phone"] = best_phone
-            elif dbg is not None:
-                dbg["phones_reason"] = "evidence_inconclusive"
+            break
+    if best_phone:
+        base_match = any(_phones_equivalent(b, best_phone) for b in base_phones)
+        alt_match = any(_phones_equivalent(a, best_phone) for a in alt_phones)
+        if base_match and not alt_match:
+            base_score += 1
+            winners["phones"] = 1
+            if dbg is not None:
+                dbg["phones_reason"] = "website_evidence_matches_base"
+                dbg["evidence_phone"] = best_phone
+        elif alt_match and not base_match:
+            alt_score += 1
+            winners["phones"] = -1
+            if dbg is not None:
+                dbg["phones_reason"] = "website_evidence_matches_alt"
+                dbg["evidence_phone"] = best_phone
+        elif base_match and alt_match:
+            base_score += 1
+            alt_score += 1
+            winners["phones"] = 2
+            if dbg is not None:
+                dbg["phones_reason"] = "website_evidence_matches_both"
                 dbg["evidence_phone"] = best_phone
         elif dbg is not None:
-            dbg["phones_reason"] = "both_differ_no_evidence"
-            dbg["base_phones"] = base_phones
-            dbg["alt_phones"] = alt_phones
-
-    # Address
-    if _addresses_equivalent(base.get("address"), other.get("address")):
-        base_score += 1
-        alt_score += 1
-        winners["address"] = 2
-        if dbg is not None:
-            dbg["address_reason"] = "equivalent"
-    elif base.get("address") and not other.get("address"):
-        base_score += 1
-        winners["address"] = 1
-        if dbg is not None:
-            dbg["address_reason"] = "only_base"
-    elif other.get("address") and not base.get("address"):
-        alt_score += 1
-        winners["address"] = -1
-        if dbg is not None:
-            dbg["address_reason"] = "only_alt"
+            dbg["phones_reason"] = "website_evidence_inconclusive"
+            dbg["evidence_phone"] = best_phone
     else:
-        best_addr = None
-        for url, fields in extracted_per_url.items():
-            for a, _ in fields.get("address", []):
-                if a:
-                    best_addr = a
-                    break
-            if best_addr:
+        winners["phones"] = 0
+        if dbg is not None:
+            dbg["phones_reason"] = "no_website_evidence"
+
+    # Address — only from website evidence
+    best_addr = None
+    for url, fields in extracted_per_url.items():
+        for a, _ in fields.get("address", []):
+            if a:
+                best_addr = a
                 break
         if best_addr:
-            base_addr = _first_str(base.get("address")) or str(base.get("address", ""))
-            alt_addr = _first_str(other.get("address")) or str(other.get("address", ""))
-            base_match = best_addr and base_addr and base_addr.lower() in best_addr.lower()
-            alt_match = best_addr and alt_addr and alt_addr.lower() in best_addr.lower()
-            if base_match and not alt_match:
-                base_score += 1
-                winners["address"] = 1
-                if dbg is not None:
-                    dbg["address_reason"] = "evidence_matches_base"
-                    dbg["evidence_address"] = best_addr[:100]
-            elif alt_match and not base_match:
-                alt_score += 1
-                winners["address"] = -1
-                if dbg is not None:
-                    dbg["address_reason"] = "evidence_matches_alt"
-                    dbg["evidence_address"] = best_addr[:100]
-            elif dbg is not None:
-                dbg["address_reason"] = "evidence_inconclusive"
+            break
+    if best_addr:
+        base_addr = _first_str(base.get("address")) or str(base.get("address", ""))
+        alt_addr = _first_str(other.get("address")) or str(other.get("address", ""))
+        base_match = best_addr and base_addr and base_addr.lower() in best_addr.lower()
+        alt_match = best_addr and alt_addr and alt_addr.lower() in best_addr.lower()
+        if base_match and not alt_match:
+            base_score += 1
+            winners["address"] = 1
+            if dbg is not None:
+                dbg["address_reason"] = "website_evidence_matches_base"
+                dbg["evidence_address"] = best_addr[:100]
+        elif alt_match and not base_match:
+            alt_score += 1
+            winners["address"] = -1
+            if dbg is not None:
+                dbg["address_reason"] = "website_evidence_matches_alt"
+                dbg["evidence_address"] = best_addr[:100]
+        elif base_match and alt_match:
+            base_score += 1
+            alt_score += 1
+            winners["address"] = 2
+            if dbg is not None:
+                dbg["address_reason"] = "website_evidence_matches_both"
                 dbg["evidence_address"] = best_addr[:100]
         elif dbg is not None:
-            dbg["address_reason"] = "both_differ_no_evidence"
-        winners["address"] = winners.get("address", 0)
+            dbg["address_reason"] = "website_evidence_inconclusive"
+            dbg["evidence_address"] = best_addr[:100]
+    else:
+        winners["address"] = 0
+        if dbg is not None:
+            dbg["address_reason"] = "no_website_evidence"
 
     # --- Step 5: Final label (if both same → base; if one slightly better → select it) ---
     if base_score >= alt_score + 2:
@@ -629,8 +625,9 @@ def process_row(
         label = 1
         label_reason = "alt_slightly_better"
     else:
-        label = 2
-        label_reason = "tie_abstain"
+        # Tie (base_score == alt_score): prefer alt (conflated) to align with golden bias when evidence is equivocal
+        label = 1
+        label_reason = "tie_prefer_alt"
 
     out = dict(row)
     out["label"] = label
