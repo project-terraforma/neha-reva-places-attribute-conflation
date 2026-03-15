@@ -29,7 +29,7 @@ This repository works with **pre-matched pairs** of place records. Each row repr
 ## Project Structure
 
 ```
-neha-reva-places-attribute-conflation/
+neha-places-attribute-conflation/
 ├── data/
 │   ├── project_a_samples.parquet   # Main sample (~2,000 pre-matched pairs)
 │   ├── agentic_input.jsonl          # Adapted rows (JSONL) for agentic flow
