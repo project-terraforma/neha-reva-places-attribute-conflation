@@ -8,7 +8,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 PARQUET_PATH = PROJECT_ROOT / "data" / "project_a_samples.parquet"
-OUT_DIR = PROJECT_ROOT / "analysis" / "inspection" / "attributes"
+OUT_DIR = PROJECT_ROOT / "inspection" / "attributes"
 
 SAMPLE_N = 50
 DISAGREEMENT_SAMPLE_N = 20
@@ -29,6 +29,7 @@ def run_attr_analysis(attr: str) -> None:
         con.close()
         return
 
+    # ensure out directory exists, else create it 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     total = con.execute(f"SELECT COUNT(*) FROM '{PARQUET_PATH}'").fetchone()[0]
@@ -48,12 +49,12 @@ def run_attr_analysis(attr: str) -> None:
     print("=" * 60)
     print(f"ATTRIBUTE PAIR: base_{attr} vs {attr}")
     print("=" * 60)
-    print(f"\nTotal rows:           {total:,}")
-    print(f"Rows with {attr}:         {has_attr:,} ({100*has_attr/total:.1f}%)")
-    print(f"Rows with base_{attr}:  {has_base:,} ({100*has_base/total:.1f}%)")
-    print(f"Comparable (both):    {comparable:,}")
-    print(f"  Agree:              {agree:,}")
-    print(f"  Disagree:           {disagree:,} ({disagree_pct:.1f}%)")
+    print(f"\nTotal rows:\t\t\t{total:,}")
+    print(f"Rows with {attr}:\t\t{has_attr:,} ({100*has_attr/total:.1f}%)")
+    print(f"Rows with base_{attr}:\t{has_base:,} ({100*has_base/total:.1f}%)")
+    print(f"Comparable (both):\t\t{comparable:,}")
+    print(f"Agree:\t\t\t\t{agree:,}")
+    print(f"Disagree:\t\t\t{disagree:,} ({disagree_pct:.1f}%)")
     print("-" * 60)
 
     # Value examples
@@ -83,7 +84,7 @@ def run_attr_analysis(attr: str) -> None:
             print(f"    base_{attr}: {_trunc(str(r[base_attr]), 80)}")
             print(f"    {attr}:      {_trunc(str(r[attr]), 80)}")
 
-    # Export full sample for this attribute (JSON only)
+    # Export full sample for this attribute
     df_export = con.execute(f"""
         SELECT id, base_id, {base_attr}, {attr}
         FROM '{PARQUET_PATH}'
@@ -103,6 +104,6 @@ def run_attr_analysis(attr: str) -> None:
     print("\n" + "=" * 60)
     con.close()
 
-
+# truncates strings to max len
 def _trunc(s: str, max_len: int) -> str:
     return s[:max_len] + "..." if len(s) > max_len else s

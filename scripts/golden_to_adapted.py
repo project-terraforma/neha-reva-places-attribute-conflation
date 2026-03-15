@@ -1,18 +1,15 @@
 #!/usr/bin/env python3
 """
-Convert golden_dataset.json to rows_adapted.jsonl format for flow input.
-
-Golden JSON is created via scripts/create_golden_dataset.py from parquet.
-Annotate label, base_score, alt_score, and scores.*.winner manually.
-Golden uses: names, addresses, websites, categories (plural).
-Adapted uses: name, address, website, category (singular).
+Convert golden_dataset.json to agentic_input.jsonl format for flow input.
+For the adapted output required by the downstream "flow", these plural keys are mapped to their singular forms (name, address, website, category).
+This conversion script outputs agentic_input.jsonl, with each line containing a simplified record in the adapted format.
 """
 import argparse
 import json
 from pathlib import Path
 
-GOLDEN = Path(__file__).resolve().parents[1] / "analysis/inspection/golden/golden_dataset.json"
-OUT_DEFAULT = Path(__file__).resolve().parents[1] / "data" / "rows_adapted_from_golden.jsonl"
+GOLDEN = Path(__file__).resolve().parents[1] / "inspection/golden/golden_dataset.json"
+OUT_DEFAULT = Path(__file__).resolve().parents[1] / "data" / "agentic_input.jsonl"
 
 
 def golden_to_adapted(golden_path: Path, out_path: Path, limit: int | None = None) -> int:

@@ -10,7 +10,7 @@ Creating a single reliable record from multiple location sources.
 
 Real-world places often appear in multiple datasets with inconsistent, outdated, or conflicting information. This project tackles the problem of **attribute-level conflation**: given multiple representations of the same place, how do we decide which attributes (phone, website, email, etc.) are the most accurate?
 
-Our goal is to produce a high-quality golden dataset and evaluate different strategies—rule-based logic vs. machine learning—for selecting the best attributes.
+Our goal is to produce a high-quality golden dataset and evaluate different strategies, rule-based logic vs. web scraping with LLMs, for selecting the best attributes.
 
 This project is developed as part of coursework at the University of California, Santa Cruz, in partnership with the [Overture Maps Foundation](https://overturemaps.org/), and is motivated by the structure and constraints of the Overture Maps Places dataset.
 
@@ -20,9 +20,9 @@ This project is developed as part of coursework at the University of California,
 
 This repository works with **pre-matched pairs** of place records. Each row represents a conflation: one place (the *base*) merged with attributes from other sources to produce a conflated record. We use this data to understand and evaluate how well attributes from different datasets can be combined into a single, trustworthy place entry.
 
-### Team
+### Contributor
 
-**Neha Ashwin, Reva Agarwal**
+**Neha Ashwin**
 
 ---
 
@@ -32,18 +32,16 @@ This repository works with **pre-matched pairs** of place records. Each row repr
 neha-reva-places-attribute-conflation/
 ├── data/
 │   ├── project_a_samples.parquet   # Main sample (~2,000 pre-matched pairs)
-│   ├── rows_adapted.jsonl          # Adapted rows (JSONL) for agentic flow
-│   └── sampledata.parquet          # Additional sample data
+│   ├── agentic_input.jsonl          # Adapted rows (JSONL) for agentic flow
 ├── out/
 │   ├── agentic_labels.jsonl        # Minimal output (label, scores, sources)
 │   ├── agentic_labels_debug.jsonl  # Full output with debug (--debug only)
 │   └── agentic_labels_debug_pretty.json  # Pretty-printed debug output (--debug only)
-├── agentic_approach/               # Agentic pipeline (validate, flow)
-├── analysis/
-│   └── inspection/
-│       ├── golden/                 # Golden dataset (JSON, create via create_golden_dataset.py)
-│       ├── side_by_side/            # Main side-by-side sample
-│       └── attributes/             # Per-attribute pair samples
+├── agentic_approach/               # Agentic pipeline
+├── inspection/
+│   ├── golden/                 # Golden dataset
+│   ├── side_by_side/            # side-by-side samples
+│   └── attributes/             # Per-attribute pair samples
 ├── scripts/
 │   ├── inspect_parquet.py         # Dataset overview & stats (DuckDB)
 │   ├── create_golden_dataset.py   # Create 200-record golden labeling CSV
@@ -64,7 +62,6 @@ neha-reva-places-attribute-conflation/
 From the project root:
 
 ```bash
-source overture/bin/activate
 python scripts/inspect_parquet.py
 ```
 
@@ -75,7 +72,6 @@ This prints a dataset overview including:
 - **Null counts** — Which attributes are often missing
 - **Confidence distribution** — Conflated vs base record confidence
 - **Sample rows** — Example key attributes
-- **Uniqueness** — `id` and `base_id` cardinality
 
 ### Attribute-specific scripts
 
@@ -88,7 +84,7 @@ python scripts/attributes/inspect_phones.py       # base_phones vs phones
 python scripts/attributes/inspect_websites.py     # base_websites vs websites
 ```
 
-Each script prints stats (coverage, comparable count, disagreement rate), value examples, disagreement examples, and exports to `analysis/inspection/attributes/{attr}_pair_sample.json`.
+Each script prints stats (coverage, comparable count, disagreement rate), value examples, disagreement examples, and exports to `inspection/attributes/{attr}_pair_sample.json`.
 
 **Golden dataset (manual annotation):**
 
@@ -103,10 +99,10 @@ python scripts/create_golden_dataset.py --limit 200   # or omit --limit for all 
 #   scores.*.winner: 1=base, -1=alt, 0=both/neither
 
 # Step 3: Convert JSON → adapted JSONL (for flow input)
-python scripts/golden_to_adapted.py --limit 200 --out data/agentic_input.jsonl
+python scripts/golden_to_adapted.py --limit 200
 
 # Step 4: Run agentic flow
-python -m agentic_approach.flow --out out/agentic_labels.jsonl
+python -m agentic_approach.flow
 ```
 
 Or with debug and accuracy analysis:
@@ -117,15 +113,15 @@ python -m agentic_approach.flow --debug
 
 **Output layout:**
 
-- `analysis/inspection/golden/` — golden dataset (JSON, manually annotated)
-- `analysis/inspection/side_by_side/` — main side-by-side sample
-- `analysis/inspection/attributes/` — per-attribute pair samples (JSON only)
+- `inspection/golden/` — golden dataset (JSON, manually annotated)
+- `inspection/side_by_side/` — main side-by-side sample
+- `inspection/attributes/` — per-attribute pair samples (JSON only)
 
 ---
 
-## Agentic Approach Pipeline
+## LLM-Assisted Approach Pipeline
 
-### Unified flow (recommended)
+### Unified flow
 
 Processes each row in sequence: test website accessibility, compare names, escalate to online search when needed, use LLM for categories, and produce labels.
 
@@ -156,13 +152,11 @@ python -m agentic_approach.flow --debug
 5. Use LLM to aggregate keywords and pick better category/description
 6. If both same → select base
 
-**Phone comparison:** With/without area code; NOT for leading 0s.
-
 **Options:** `--limit N` for testing, `--delay` for fetch spacing, `--debug` for full debug output and analysis.
 
 **LLM setup:** Uses Hugging Face only (free tier).
 
-**Output schema:** See [`agentic_approach/OUTPUT_SCHEMA.md`](agentic_approach/OUTPUT_SCHEMA.md) for field descriptions and output formats.
+**Output schema:** See `[out/OUTPUT_SCHEMA.md](out/OUTPUT_SCHEMA.md)` for field descriptions and output formats.
 
 ---
 

@@ -6,7 +6,7 @@ Run standalone: python scripts/analyze_debug_output.py [--debug PATH] [--golden 
 Also invoked by flow --debug.
 
 Reports overall label accuracy and per-attribute (name, website, category, phones, address)
-accuracy and macro F1.
+accuracy.
 """
 import argparse
 import json
@@ -14,10 +14,10 @@ from pathlib import Path
 
 PROJECT = Path(__file__).resolve().parents[1]
 DEBUG_DEFAULT = PROJECT / "out/agentic_labels_debug.jsonl"
-GOLDEN_DEFAULT = PROJECT / "analysis/inspection/golden/golden_dataset.json"
+GOLDEN_DEFAULT = PROJECT / "inspection/golden/golden_dataset.json"
 
-# Golden winner: B=base, R=alt, L=both/tie, N=neither. Our: 1=base, -1=alt, 2=both, 0=abstain
-GOLDEN_TO_OUR = {"B": 1, "R": -1, "L": 2, "N": 0}
+# Golden winner: L=Left/Base, R=Right/Alt, B=Both, N=Neither. Our: 1=base, -1=alt, 2=both, 0=abstain
+GOLDEN_TO_OUR = {"L": 1, "R": -1, "B": 2, "N": 0}
 ATTR_KEYS = ["name", "website", "category", "phones", "address"]  # website not "website" in golden scores
 GOLDEN_ATTR_MAP = {"name": "name", "website": "website", "category": "category", "phones": "phones", "address": "address"}
 
@@ -29,32 +29,6 @@ def _golden_winner_to_our(winner: str | None) -> int | None:
     if w not in GOLDEN_TO_OUR:
         return None
     return GOLDEN_TO_OUR[w]
-
-
-def _macro_f1(our_list: list, golden_list: list, classes: tuple = (1, -1, 2, 0)) -> float:
-    """Macro F1 over classes. Pairs where golden is None are skipped."""
-    pairs = [(o, g) for o, g in zip(our_list, golden_list) if g is not None]
-    if not pairs:
-        return 0.0
-    our_vals, golden_vals = zip(*pairs)
-    f1s = []
-    for c in classes:
-        tp = sum(1 for o, g in zip(our_vals, golden_vals) if o == c and g == c)
-        fp = sum(1 for o, g in zip(our_vals, golden_vals) if o == c and g != c)
-        fn = sum(1 for o, g in zip(our_vals, golden_vals) if o != c and g == c)
-        if tp + fp == 0:
-            prec = 0.0
-        else:
-            prec = tp / (tp + fp)
-        if tp + fn == 0:
-            rec = 0.0
-        else:
-            rec = tp / (tp + fn)
-        if prec + rec == 0:
-            f1s.append(0.0)
-        else:
-            f1s.append(2 * prec * rec / (prec + rec))
-    return sum(f1s) / len(f1s) if f1s else 0.0
 
 
 def run_analysis(debug_path: Path, golden_path: Path) -> None:
@@ -119,7 +93,7 @@ def run_analysis(debug_path: Path, golden_path: Path) -> None:
     if annotated_count > 0:
         print(f"Overall label accuracy: {matches}/{annotated_count} = {100*matches/annotated_count:.1f}%")
         print()
-        print("Per-attribute (vs golden scores.*.winner: B=base, R=alt, L=both, N=neither):")
+        print("Per-attribute (vs golden scores.*.winner: L=base, R=alt, B=both, N=neither):")
         print("-" * 60)
         for attr in ATTR_KEYS:
             our_list = attr_our[attr]
@@ -130,8 +104,7 @@ def run_analysis(debug_path: Path, golden_path: Path) -> None:
             n = len(golden_list)
             correct = sum(1 for o, g in zip(our_list, golden_list) if o == g)
             acc = 100 * correct / n
-            f1 = _macro_f1(our_list, golden_list)
-            print(f"  {attr}: accuracy = {correct}/{n} = {acc:.1f}%  macro F1 = {f1:.3f}")
+            print(f"  {attr}: accuracy = {correct}/{n} = {acc:.1f}%")
     else:
         print("Accuracy: No annotated golden labels found. Fill in label in golden_dataset.json.")
     print("=" * 80)

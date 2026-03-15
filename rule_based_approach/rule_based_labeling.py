@@ -4,7 +4,7 @@ Rule-based approach to the attribute conflation problem.
 
 This script implements a rule-based method for deciding which attributes (base vs conflated)
 are higher quality when multiple representations of the same place disagree. It reads
-analysis/inspection/golden/golden_dataset.json, scores each attribute pair (phones,
+inspection/golden/golden_dataset.json, scores each attribute pair (phones,
 websites, addresses, categories), and updates the label field in-place.
 
 Label meanings: 0=base wins, 1=alt (conflated) wins, 2=abstain (no clear winner)
@@ -23,7 +23,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 PROJECT_ROOT = Path(__file__).parent.parent
-GOLDEN_JSON_PATH = PROJECT_ROOT / "analysis" / "inspection" / "golden" / "golden_dataset.json"
+GOLDEN_JSON_PATH = PROJECT_ROOT / "inspection" / "golden" / "golden_dataset.json"
 
 
 # ----------------------------

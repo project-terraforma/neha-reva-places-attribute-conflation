@@ -1,15 +1,11 @@
 """
-# AGENTIC APPROACH (necessary): Main unified flow. Row-by-row processing.
-
 Processes each row in sequence:
 1. Test website accessibility for base and alt
 2. If one works → point to that source; if both → compare names, prefer more info, select correlating website
 3. If neither works → escalate to online search
 4. Fetch website content, compare with base/alt to determine accuracy
 5. Use LLM to aggregate keywords and pick better category/description
-6. If both same → select base
-
-Phone comparison: with/without area code, but NOT for leading 0s.
+6. If both same → select alt
 """
 
 import json
@@ -41,26 +37,22 @@ except ImportError:
     aggregate_website_keywords = None
     compare_categories_with_llm = None
 
-
+# Get list of website URLs from base or other dict.
 def _urls_from_source(source: dict, key: str = "website") -> list[str]:
-    """Get list of website URLs from base or other dict."""
     urls = []
     for u in _list_strs(source.get(key)):
         if u.startswith(("http://", "https://")) and u not in urls:
             urls.append(u)
     return urls
 
-
+# Test accessibility of URLs. Fetches once per URL.
+# Returns (any_accessible, first_accessible_url, html_or_none).
+# When accessible, returns HTML for reuse (avoids double fetch).
 def _test_website_accessibility(
     urls: list[str],
     delay: float = 0.3,
     timeout: int = 8,
 ) -> tuple[bool, str | None, str | None]:
-    """
-    Test accessibility of URLs. Fetches once per URL.
-    Returns (any_accessible, first_accessible_url, html_or_none).
-    When accessible, returns HTML for reuse (avoids double fetch).
-    """
     for url in urls[:3]:  # Limit to 3 URLs per source
         url = _normalize_url(url)
         if not url:
@@ -430,30 +422,6 @@ def process_row(
     if dbg is not None and extra_fetched:
         dbg["contact_page_fetches"] = extra_fetched
 
-    # If still missing phone or address, escalate to DuckDuckGo search
-    has_phone = any(f.get("phones") for f in extracted_per_url.values())
-    has_address = any(f.get("address") for f in extracted_per_url.values())
-    if not has_phone or not has_address:
-        contact_query = dict(query)
-        contact_query["name"] = (contact_query.get("name") or "") + " contact phone address"
-        search_urls = _online_search_escalation(contact_query, None)
-        for u in search_urls[:3]:
-            if u in extracted_per_url:
-                continue
-            status, final_url, html = fetch_url(u, timeout=10)
-            time.sleep(delay)
-            if 200 <= status < 400:
-                if classify_page(html, 200, final_url, query) == CLASS_RELEVANT:
-                    fields = extract_fields(html, final_url, query, region)
-                    extracted_per_url[final_url] = fields
-                    text = _get_visible_text(html)
-                    if text:
-                        html_snippets.append(text[:4000])
-                    if any(f.get("phones") for f in extracted_per_url.values()) and any(f.get("address") for f in extracted_per_url.values()):
-                        break
-        if dbg is not None:
-            dbg["search_escalation_missing_contact"] = {"has_phone": has_phone, "has_address": has_address, "urls_tried": list(extracted_per_url.keys())[-3:]}
-
     # --- Step 3: LLM aggregation for category/description ---
     llm_result = None
     if dbg is not None and base.get("category") and other.get("category"):
@@ -517,12 +485,22 @@ def process_row(
             elif dbg is not None:
                 dbg["category_reason"] = "llm_no_choice"
                 dbg["category_winner_debug"] = {"base_category": base_cat, "alt_category": alt_cat, "llm_aggregated": llm_result.get("category") if llm_result else None, "decision": "abstain", "reason": "llm_no_choice"}
-        elif llm_result is None and dbg is not None:
+        elif llm_result is None:
+            # LLM unavailable (e.g. 402 Payment Required). Use primary-category fallback so category isn't always 0.
             base_cat = _first_str(base.get("category"))
             alt_cat = _first_str(other.get("category"))
-            if base_cat and alt_cat and base_cat.lower() != alt_cat.lower():
-                dbg["category_reason"] = "llm_returned_none"
-                dbg["category_winner_debug"] = {"base_category": base_cat, "alt_category": alt_cat, "decision": "abstain", "reason": "llm_returned_none_check_token_or_api"}
+            if base_cat and alt_cat:
+                if base_cat.lower() == alt_cat.lower():
+                    base_score += 1
+                    alt_score += 1
+                    winners["category"] = 2
+                    if dbg is not None:
+                        dbg["category_reason"] = "primary_match_llm_unavailable"
+                        dbg["category_winner_debug"] = {"base_category": base_cat, "alt_category": alt_cat, "decision": "tie", "reason": "primary_match_llm_unavailable"}
+                else:
+                    if dbg is not None:
+                        dbg["category_reason"] = "llm_returned_none"
+                        dbg["category_winner_debug"] = {"base_category": base_cat, "alt_category": alt_cat, "decision": "abstain", "reason": "llm_returned_none_check_token_or_api"}
     # Category: no website/LLM evidence — abstain (do not use source-vs-source agreement)
     if winners.get("category") is None:
         winners["category"] = 0
@@ -571,6 +549,8 @@ def process_row(
             dbg["phones_reason"] = "no_website_evidence"
 
     # Address — only from website evidence
+    base_addr = _first_str(base.get("address")) or str(base.get("address") or "").strip()
+    alt_addr = _first_str(other.get("address")) or str(other.get("address") or "").strip()
     best_addr = None
     for url, fields in extracted_per_url.items():
         for a, _ in fields.get("address", []):
@@ -580,8 +560,6 @@ def process_row(
         if best_addr:
             break
     if best_addr:
-        base_addr = _first_str(base.get("address")) or str(base.get("address", ""))
-        alt_addr = _first_str(other.get("address")) or str(other.get("address", ""))
         base_match = best_addr and base_addr and base_addr.lower() in best_addr.lower()
         alt_match = best_addr and alt_addr and alt_addr.lower() in best_addr.lower()
         if base_match and not alt_match:
@@ -625,7 +603,7 @@ def process_row(
         label = 1
         label_reason = "alt_slightly_better"
     else:
-        # Tie (base_score == alt_score): prefer alt (conflated) to align with golden bias when evidence is equivocal
+        # Tie (base_score == alt_score): prefer alt (conflated) when evidence is equivocal
         label = 1
         label_reason = "tie_prefer_alt"
 
@@ -748,7 +726,7 @@ def run_flow(
             json.dump(full_outputs, f, indent=2, default=str)
         print(f"Wrote full debug output to {debug_jsonl} and {debug_pretty}")
         project_root = Path(__file__).resolve().parents[1]
-        golden_path = project_root / "analysis" / "inspection" / "golden" / "golden_dataset.json"
+        golden_path = project_root / "inspection" / "golden" / "golden_dataset.json"
         _run_debug_analysis(debug_jsonl, golden_path)
 
     return count

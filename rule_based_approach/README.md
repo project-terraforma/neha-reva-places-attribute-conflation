@@ -97,4 +97,4 @@ The margin of 2 is intentionally conservative: we abstain when the outcome is un
 python rule_based_approach/rule_based_labeling.py
 ```
 
-Reads `analysis/inspection/golden/golden_dataset.json` and updates each record with `scores` (per-attribute quality and winner) and `label` (0, 1, or 2).
+Reads `inspection/golden/golden_dataset.json` and updates each record with `scores` (per-attribute quality and winner) and `label` (0, 1, or 2).

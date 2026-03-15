@@ -6,6 +6,7 @@ Uses Hugging Face InferenceClient only. Set HF_TOKEN. See agentic_approach/LLM_S
 
 import json
 import os
+import re
 from typing import Any
 
 try:
@@ -153,12 +154,10 @@ Which is more accurate? Respond with exactly one word: "base", "alt", or "tie" i
             temperature=0.1,
         )
         text = response.choices[0].message.content.strip().lower()
-        if "base" in text and "alt" not in text and "tie" not in text:
-            return "base"
-        if "alt" in text and "base" not in text and "tie" not in text:
-            return "alt"
-        if "tie" in text:
-            return "tie"
+        # Prefer first whole-word match so we handle "base is better than alt" etc.
+        for word in ("base", "alt", "tie"):
+            if re.search(rf"\b{re.escape(word)}\b", text):
+                return word
         return None
     except Exception:
         return None
